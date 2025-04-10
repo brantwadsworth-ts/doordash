@@ -1,0 +1,390 @@
+guid: 9659d399-7b0e-47bb-8104-545a27413de1
+liveboard:
+  name: '*** BrantW Example LB'
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Total Sales by Monthly Date
+      tables:
+      - id: Brant Test Connection
+        name: Brant Test Connection
+        fqn: 2fd419dc-032b-4c36-89f6-2a8b7e5bc0a7
+      search_query: "[Sales] [Date].monthly average [Sales]"
+      answer_columns:
+      - name: Average Sales
+      - name: Month(Date)
+      - name: Total Sales
+      table:
+        table_columns:
+        - column_id: Average Sales
+          headline_aggregation: TABLE_AGGR
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Sales
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Month(Date)
+        - Total Sales
+        - Average Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}]}"
+      chart:
+        type: LINE_STACKED_COLUMN
+        chart_columns:
+        - column_id: Average Sales
+        - column_id: Month(Date)
+        - column_id: Total Sales
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Total Sales
+        - x:
+          - Month(Date)
+          "y":
+          - Average Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"isStackedAsPercent\": false,\"stackedAsPercentFormat\": {\"category\": \"PERCENTAGE\",\"percentageFormatConfig\": {\"decimals\": 2.0,\"removeTrailingZeroes\": false},\"isCategoryEditable\": false},\"dataFieldArea\": \"column\"},\"showStackedLabels\": false},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Average Sales\",\"columnProperty\": {\"dataLabels\": true,\"customProps\": \"{\\\"advancedProperties\\\":{\\\"dataLabels\\\":{\\\"backgroundColor\\\":\\\"\\\",\\\"borderColor\\\":\\\"\\\",\\\"borderWidth\\\":\\\"\\\",\\\"filter\\\":{\\\"operator\\\":\\\"\\\",\\\"value\\\":\\\"\\\"},\\\"align\\\":\\\"center\\\",\\\"style\\\":{\\\"color\\\":\\\"#049160\\\",\\\"fontSize\\\":\\\"12\\\",\\\"boldFontWeight\\\":true,\\\"underlineTextDecoration\\\":false,\\\"italicFontStyle\\\":false},\\\"maxCharacters\\\":\\\"\\\"}}}\"}}],\"axisProperties\": [{\"id\": \"c78180a1-330b-4b8f-ab73-0d0da8e6ae49\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": false}},{\"id\": \"e99738d0-7bb8-4d6c-8288-31f3d7f2711d\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Average Sales\"],\"isOpposite\": true}},{\"id\": \"5918e4aa-a7c1-4f6d-92f3-81bef1e9f796\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Sales\",\"color\": \"#48D1E0\"},{\"serieName\": \"Average Sales\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 71de6ad8-3f77-4c17-911f-134f9bdc423a
+  - id: Viz_2
+    answer:
+      name: MoM Sales
+      tables:
+      - id: Brant Test Connection
+        name: Brant Test Connection
+        fqn: 2fd419dc-032b-4c36-89f6-2a8b7e5bc0a7
+      search_query: "growth of [Sales] by [Date] [Date].monthly"
+      answer_columns:
+      - name: Growth of Total Sales
+      - name: Month(Date)
+      table:
+        table_columns:
+        - column_id: Growth of Total Sales
+          headline_aggregation: MIN
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        ordered_column_ids:
+        - Month(Date)
+        - Growth of Total Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Sales\",\"columnProperty\": {}}]}"
+      chart:
+        type: WATERFALL
+        chart_columns:
+        - column_id: Growth of Total Sales
+        - column_id: Month(Date)
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Growth of Total Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Sales\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"4fb7e3ca-1269-4b6b-af79-89570dd3608b\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Sales\"],\"isOpposite\": false}},{\"id\": \"19ea2f66-e7b0-4e60-8f23-2b7ad6d5b71e\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Sales\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 9230b7f6-7e88-4c78-83e0-a73ed0c5ac8f
+  - id: Viz_3
+    answer:
+      name: Sales Trend Monthly
+      tables:
+      - id: Brant Test Connection
+        name: Brant Test Connection
+        fqn: 2fd419dc-032b-4c36-89f6-2a8b7e5bc0a7
+      search_query: "[Sales] [Date].monthly"
+      answer_columns:
+      - name: Month(Date)
+      - name: Total Sales
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          show_headline: false
+        - column_id: Total Sales
+          show_headline: false
+        ordered_column_ids:
+        - Month(Date)
+        - Total Sales
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Total Sales
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Total Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"b67949db-8894-4e4d-b627-2fa7d32ac061\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": false}},{\"id\": \"4bd538ca-d653-4144-9fbd-b410fadd4212\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}]}"
+      display_mode: CHART_MODE
+    viz_guid: 69b6535a-b2e0-4e48-8838-0fb924624582
+  - id: Viz_4
+    answer:
+      name: Top Product Categories
+      tables:
+      - id: Brant Test Connection
+        name: Brant Test Connection
+        fqn: 2fd419dc-032b-4c36-89f6-2a8b7e5bc0a7
+      search_query: "[Sales] top [Product type]"
+      answer_columns:
+      - name: Product type
+      - name: Total Sales
+      table:
+        table_columns:
+        - column_id: Product type
+          show_headline: false
+        - column_id: Total Sales
+          show_headline: false
+        ordered_column_ids:
+        - Product type
+        - Total Sales
+        client_state: ""
+      chart:
+        type: BAR
+        chart_columns:
+        - column_id: Product type
+        - column_id: Total Sales
+        axis_configs:
+        - x:
+          - Product type
+          "y":
+          - Total Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": false,\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Product type\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"e5757ac4-00ed-469c-a338-caa768e3418f\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": false}},{\"id\": \"a5d54d2e-d51f-441f-9535-d61627d3362d\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Product type\"]}}],\"seriesColors\": [{\"serieName\": \"Total Sales\",\"color\": \"#56D3A8\"}],\"systemSeriesColors\": [{\"serieName\": \"Total Sales\",\"color\": \"#747E8C\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: fd1896d7-0eac-48e0-a9d8-88680cb63b4e
+  - id: Viz_5
+    answer:
+      name: Sales Vs Qty Monthly
+      tables:
+      - id: Brant Test Connection
+        name: Brant Test Connection
+        fqn: 2fd419dc-032b-4c36-89f6-2a8b7e5bc0a7
+      search_query: "[Sales] vs [Qty] [Date].monthly"
+      answer_columns:
+      - name: Month(Date)
+      - name: Qty(Qty)
+      - name: Sales(Sales)
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          show_headline: false
+        - column_id: Qty(Qty)
+          show_headline: false
+        - column_id: Sales(Sales)
+          show_headline: false
+        ordered_column_ids:
+        - Month(Date)
+        - Qty(Qty)
+        - Sales(Sales)
+        client_state: ""
+      chart:
+        type: LINE_STACKED_COLUMN
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Qty(Qty)
+        - column_id: Sales(Sales)
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Sales(Sales)
+        - x:
+          - Month(Date)
+          "y":
+          - Qty(Qty)
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": false,\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Qty(Qty)\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Sales(Sales)\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"2d55470a-4104-4c69-b9c6-7dd14f66d900\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Qty(Qty)\"],\"isOpposite\": false}},{\"id\": \"7659d261-0d5e-4773-9847-b6e840586030\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Sales(Sales)\"],\"isOpposite\": true}},{\"id\": \"9baa87ec-d43d-491b-ba26-840fa8b438b9\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}],\"seriesColors\": [{\"serieName\": \"2947ea8b-95f4-436a-8057-02e84d0a0b89\",\"color\": \"#56D3A8\"}],\"systemSeriesColors\": [{\"serieName\": \"2947ea8b-95f4-436a-8057-02e84d0a0b89\",\"color\": \"#56D3A8\"},{\"serieName\": \"Qty(Qty)\",\"color\": \"#48D1E0\"},{\"serieName\": \"Sales(Sales)\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: c8304689-5a4a-43f2-acd7-4d77252fe9f0
+  - id: Viz_6
+    answer:
+      name: Product Distribution
+      tables:
+      - id: Brant Test Connection
+        name: Brant Test Connection
+        fqn: 2fd419dc-032b-4c36-89f6-2a8b7e5bc0a7
+      search_query: "[Sales] [Product type] [Product name] [Region] [State]"
+      answer_columns:
+      - name: Product name
+      - name: Product type
+      - name: Region
+      - name: State
+      - name: Total Sales
+      table:
+        table_columns:
+        - column_id: Product name
+          show_headline: false
+        - column_id: Product type
+          show_headline: false
+        - column_id: Region
+          show_headline: false
+        - column_id: State
+          show_headline: false
+        - column_id: Total Sales
+          show_headline: false
+        ordered_column_ids:
+        - Product type
+        - Product name
+        - Region
+        - State
+        - Total Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"orderedColumnIds\": [\"Region\",\"Product type\",\"Product name\",\"Total Sales\"]}"
+      chart:
+        type: SANKEY
+        chart_columns:
+        - column_id: Product name
+        - column_id: Product type
+        - column_id: Region
+        - column_id: State
+        - column_id: Total Sales
+        axis_configs:
+        - x:
+          - Product type
+          - Region
+          "y":
+          - Total Sales
+        - x:
+          - Region
+          - State
+          "y":
+          - Total Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": false,\"yGridlineEnabled\": true},\"chartSpecific\": {\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Product name\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Total Sales\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Product type\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"Region\",\"columnProperty\": {\"dataLabels\": true}},{\"columnId\": \"State\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"58a529e1-b3af-49a9-b1b9-de1f4cc45ec6\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Sales\"],\"isOpposite\": false}},{\"id\": \"86b59a02-dd8e-499d-a93a-07386173142b\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Region\",\"State\",\"Product type\"]}}],\"seriesColors\": [{\"serieName\": \"2947ea8b-95f4-436a-8057-02e84d0a0b89\",\"color\": \"#56D3A8\"}],\"systemSeriesColors\": [{\"serieName\": \"2947ea8b-95f4-436a-8057-02e84d0a0b89\",\"color\": \"#56D3A8\"},{\"serieName\": \"90132925-7475-5329-8db1-3797f56da676\",\"color\": \"#48D1E0\"},{\"serieName\": \"fe1a00b3-31d9-59a7-9267-953861ad8378\",\"color\": \"#2E75F0\"},{\"serieName\": \"bags\",\"color\": \"#6A4ABA\"},{\"serieName\": \"dresses\",\"color\": \"#B094F8\"},{\"serieName\": \"headwear\",\"color\": \"#8C62F5\"},{\"serieName\": \"jackets\",\"color\": \"#049160\"},{\"serieName\": \"jeans\",\"color\": \"#56D3A8\"},{\"serieName\": \"pants\",\"color\": \"#06BF7F\"},{\"serieName\": \"shirts\",\"color\": \"#BF982A\"},{\"serieName\": \"shorts\",\"color\": \"#FCD977\"},{\"serieName\": \"skirts\",\"color\": \"#FCC838\"},{\"serieName\": \"socks\",\"color\": \"#369FAA\"},{\"serieName\": \"sweaters\",\"color\": \"#82DFE9\"},{\"serieName\": \"sweatshirts\",\"color\": \"#48D1E0\"},{\"serieName\": \"swimwear\",\"color\": \"#2359B6\"},{\"serieName\": \"underwear\",\"color\": \"#71A1F4\"},{\"serieName\": \"vests\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 902f652c-ddcd-41f0-b77e-77da2920665d
+  - id: Viz_7
+    viz_guid: 77b41d9e-b3d3-49a8-b353-94c806b3ef0e
+    note_tile:
+      html_parsed_string: "<p class=\"theme-module__editor-paragraph\"><img id=\"4c7f30fc-0bd0-4a5a-97e9-23254c3814d1\" alt=\"UPLOAD\" style=\"height: inherit; width: 100%; max-width: 100%;\"></p><p class=\"theme-module__editor-paragraph\"><br></p><p class=\"theme-module__editor-paragraph\"><br></p><hr><p class=\"theme-module__editor-paragraph\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">This is an example of a Liveboard with example visuals that were created using advanced search</span></p><p class=\"theme-module__editor-paragraph\"><br></p><p class=\"theme-module__editor-paragraph\"><br></p><div class=\"pinboard-note-tile-module__noteTileBg editor-module__bgNode\" style=\"background-color: rgb(255, 255, 255);\"></div>"
+  - id: Viz_8
+    answer:
+      name: Qty Sold Trend Monthly
+      tables:
+      - id: Brant Test Connection
+        name: Brant Test Connection
+        fqn: 2fd419dc-032b-4c36-89f6-2a8b7e5bc0a7
+      search_query: "[Date].monthly [Qty]"
+      answer_columns:
+      - name: Month(Date)
+      - name: Total Qty
+      table:
+        table_columns:
+        - column_id: Month(Date)
+          show_headline: false
+        - column_id: Total Qty
+          show_headline: false
+        ordered_column_ids:
+        - Month(Date)
+        - Total Qty
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Month(Date)
+        - column_id: Total Qty
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Total Qty
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": true,\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"showLinearRegressionLine\": true,\"chartSpecific\": {\"markersEnabled\": true,\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Qty\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"ee8860df-8d56-4125-b65b-7fec21f4d58c\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Qty\"],\"isOpposite\": false}},{\"id\": \"97e8aba2-4149-49f7-af9c-2bf25c21eeb2\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}]}"
+      display_mode: CHART_MODE
+    viz_guid: 5aeae868-d117-4a69-8721-ed4fc332ea60
+  - id: Viz_9
+    answer:
+      name: Avg Sales Trend Monthly
+      tables:
+      - id: Brant Test Connection
+        name: Brant Test Connection
+        fqn: 2fd419dc-032b-4c36-89f6-2a8b7e5bc0a7
+      search_query: "[Date].monthly average [Sales]"
+      answer_columns:
+      - name: Average Sales
+      - name: Month(Date)
+      table:
+        table_columns:
+        - column_id: Average Sales
+          show_headline: false
+        - column_id: Month(Date)
+          show_headline: false
+        ordered_column_ids:
+        - Month(Date)
+        - Average Sales
+        client_state: ""
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Average Sales
+        - column_id: Month(Date)
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Average Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": false,\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"showLinearRegressionLine\": false,\"chartSpecific\": {\"markersEnabled\": true,\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Average Sales\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"c3ffb630-843d-4db9-ad92-39c346d14042\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Average Sales\"],\"isOpposite\": false}},{\"id\": \"1dde4548-ea54-4315-a530-fd5058684bf7\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}]}"
+      display_mode: CHART_MODE
+    viz_guid: a198fe54-c2dc-48db-a9a5-1bc32519e0d7
+  filters:
+  - column:
+    - State
+    is_mandatory: false
+    is_single_value: false
+    display_name: ""
+  layout:
+    tabs:
+    - name: Main Tab
+      description: ""
+      tiles:
+      - visualization_id: Viz_1
+        x: 6
+        "y": 8
+        height: 4
+        width: 6
+      - visualization_id: Viz_2
+        x: 0
+        "y": 4
+        height: 4
+        width: 6
+      - visualization_id: Viz_3
+        x: 3
+        "y": 0
+        height: 4
+        width: 3
+      - visualization_id: Viz_4
+        x: 0
+        "y": 8
+        height: 4
+        width: 6
+      - visualization_id: Viz_5
+        x: 0
+        "y": 12
+        height: 4
+        width: 5
+      - visualization_id: Viz_6
+        x: 6
+        "y": 4
+        height: 4
+        width: 6
+      - visualization_id: Viz_7
+        x: 0
+        "y": 0
+        height: 4
+        width: 3
+      - visualization_id: Viz_8
+        x: 6
+        "y": 0
+        height: 4
+        width: 3
+      - visualization_id: Viz_9
+        x: 9
+        "y": 0
+        height: 4
+        width: 3
+      id: 6790e0c1-dfa2-4059-932e-ca9a4911a702
+  ordered_chips:
+  - name: State
+    type: FILTER
