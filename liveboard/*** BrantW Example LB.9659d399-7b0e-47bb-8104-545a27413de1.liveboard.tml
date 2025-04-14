@@ -104,6 +104,7 @@ liveboard:
         - Month(Date)
         - Total Sales
         client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}]}"
       chart:
         type: KPI
         chart_columns:
@@ -139,6 +140,7 @@ liveboard:
         - Product type
         - Total Sales
         client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Product type\",\"columnProperty\": {}},{\"columnId\": \"Total Sales\",\"columnProperty\": {}}]}"
       chart:
         type: BAR
         chart_columns:
@@ -178,6 +180,7 @@ liveboard:
         - Qty(Qty)
         - Sales(Sales)
         client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Qty(Qty)\",\"columnProperty\": {}},{\"columnId\": \"Sales(Sales)\",\"columnProperty\": {}}]}"
       chart:
         type: LINE_STACKED_COLUMN
         chart_columns:
@@ -279,6 +282,7 @@ liveboard:
         - Month(Date)
         - Total Qty
         client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Qty\",\"columnProperty\": {}}]}"
       chart:
         type: KPI
         chart_columns:
@@ -314,6 +318,7 @@ liveboard:
         - Month(Date)
         - Average Sales
         client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Average Sales\",\"columnProperty\": {}}]}"
       chart:
         type: KPI
         chart_columns:
@@ -385,6 +390,9 @@ liveboard:
         height: 4
         width: 3
       id: 6790e0c1-dfa2-4059-932e-ca9a4911a702
+    - name: New stuff
+      description: ""
+      id: bca578a5-a691-4eaa-ba13-8f51fea75457
   ordered_chips:
   - name: State
     type: FILTER
