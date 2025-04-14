@@ -1,0 +1,111 @@
+guid: 04abdaa5-3ecb-4cb0-8155-cb3c34af1190
+table:
+  name: REPORT_SCHEDULES
+  db: MODE_DISCOVERY
+  schema: ORGANIZATION_USAGE
+  db_table: REPORT_SCHEDULES
+  connection:
+    name: dd_snow_test_poc
+    fqn: e42247fb-93de-430e-90ed-6896314e1026
+  columns:
+  - name: ID
+    db_column_name: ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: OBJECT_NAME
+    db_column_name: OBJECT_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ORG_USERNAME
+    db_column_name: ORG_USERNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LAST_RUN_AT
+    db_column_name: LAST_RUN_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: CADENCE
+    db_column_name: CADENCE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CRONLINE
+    db_column_name: CRONLINE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LAST_SUCCEEDED_AT
+    db_column_name: LAST_SUCCEEDED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: CREATED_AT
+    db_column_name: CREATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: DELETED_AT
+    db_column_name: DELETED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: TIMEOUT
+    db_column_name: TIMEOUT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: UPDATED_AT
+    db_column_name: UPDATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: REPORT_ID
+    db_column_name: REPORT_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CREATOR_ID
+    db_column_name: CREATOR_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STATE
+    db_column_name: STATE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  joins_with:
+  - name: REPORT_SCHEDULES_to_REPORTS
+    destination:
+      name: REPORTS
+      fqn: d3226996-c837-419e-8a99-1b9844f6b038
+    "on": "[REPORT_SCHEDULES::REPORT_ID] = [REPORTS::ID]"
+    type: INNER
+  properties:
+    sage_config:
+      is_sage_enabled: false
