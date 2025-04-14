@@ -43,3 +43,44 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Month(Dte Hour)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Cost\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"be47e272-fde2-4a46-a53f-1c063bd34255\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Cost\"],\"isOpposite\": false}},{\"id\": \"341e9e07-23be-4d29-823f-492d3514fed8\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Dte Hour)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Cost\",\"color\": \"#48D1E0\"}]}"
       display_mode: CHART_MODE
     viz_guid: aad79c4d-238f-4e11-9078-49c7b5fc9f91
+  - id: Viz_2
+    answer:
+      name: Copy of Growth of Total Cost by Monthly Dte Hour
+      tables:
+      - id: Mode Cost Exploration
+        name: Mode Cost Exploration
+        fqn: 7df0fe59-1fe4-4f26-8430-dbdd07734b61
+      search_query: "growth of sum [Total Cost] by [Dte Hour] [Dte Hour].monthly [Date].monthly"
+      answer_columns:
+      - name: Growth of Total Cost
+      - name: Month(Date)
+      - name: Month(Dte Hour)
+      table:
+        table_columns:
+        - column_id: Growth of Total Cost
+          headline_aggregation: MIN
+        - column_id: Month(Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Month(Dte Hour)
+          headline_aggregation: MIN-MAX
+        ordered_column_ids:
+        - Month(Date)
+        - Month(Dte Hour)
+        - Growth of Total Cost
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Growth of Total Cost
+        - column_id: Month(Date)
+        - column_id: Month(Dte Hour)
+        axis_configs:
+        - x:
+          - Month(Dte Hour)
+          "y":
+          - Growth of Total Cost
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Month(Dte Hour)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Cost\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"be47e272-fde2-4a46-a53f-1c063bd34255\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Cost\"],\"isOpposite\": false}},{\"id\": \"341e9e07-23be-4d29-823f-492d3514fed8\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Dte Hour)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Cost\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 83f71ab8-9ce6-48e8-a38e-018c68894012
