@@ -333,6 +333,42 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": false,\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"showLinearRegressionLine\": false,\"chartSpecific\": {\"markersEnabled\": true,\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Average Sales\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"c3ffb630-843d-4db9-ad92-39c346d14042\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Average Sales\"],\"isOpposite\": false}},{\"id\": \"1dde4548-ea54-4315-a530-fd5058684bf7\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}]}"
       display_mode: CHART_MODE
     viz_guid: a198fe54-c2dc-48db-a9a5-1bc32519e0d7
+  - id: Viz_10
+    answer:
+      name: Copy of Avg Sales Trend Monthly
+      tables:
+      - id: Brant Test Connection
+        name: Brant Test Connection
+        fqn: 2fd419dc-032b-4c36-89f6-2a8b7e5bc0a7
+      search_query: "[Date].monthly average [Sales]"
+      answer_columns:
+      - name: Average Sales
+      - name: Month(Date)
+      table:
+        table_columns:
+        - column_id: Average Sales
+          show_headline: false
+        - column_id: Month(Date)
+          show_headline: false
+        ordered_column_ids:
+        - Month(Date)
+        - Average Sales
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Average Sales\",\"columnProperty\": {}}]}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Average Sales
+        - column_id: Month(Date)
+        axis_configs:
+        - x:
+          - Month(Date)
+          "y":
+          - Average Sales
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {\"xGridlineEnabled\": false,\"yGridlineEnabled\": true},\"responsiveLayoutPreference\": \"AUTO_ON\",\"showLinearRegressionLine\": false,\"chartSpecific\": {\"markersEnabled\": true,\"pivotSummariesState\": {}},\"showStackedLabels\": true,\"allLabels\": true},\"columnProperties\": [{\"columnId\": \"Month(Date)\",\"columnProperty\": {}},{\"columnId\": \"Average Sales\",\"columnProperty\": {\"dataLabels\": true}}],\"axisProperties\": [{\"id\": \"c3ffb630-843d-4db9-ad92-39c346d14042\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Average Sales\"],\"isOpposite\": false}},{\"id\": \"1dde4548-ea54-4315-a530-fd5058684bf7\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Average Sales\",\"color\": \"#48D1E0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 2be5b385-a96c-466d-a03c-e0023f3d1a84
   filters:
   - column:
     - State
@@ -392,6 +428,8 @@ liveboard:
       id: 6790e0c1-dfa2-4059-932e-ca9a4911a702
     - name: New stuff
       description: ""
+      tiles:
+      - visualization_id: Viz_10
       id: bca578a5-a691-4eaa-ba13-8f51fea75457
   ordered_chips:
   - name: State
