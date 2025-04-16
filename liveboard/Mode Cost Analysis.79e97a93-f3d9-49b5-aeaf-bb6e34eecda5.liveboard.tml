@@ -45,7 +45,7 @@ liveboard:
       - id: Mode Cost Exploration
         name: Mode Cost Exploration
         fqn: 7df0fe59-1fe4-4f26-8430-dbdd07734b61
-      search_query: "[Total Cost] [Date Hourly].monthly"
+      search_query: "[Total Cost] [Date Hourly].monthly [Date Hourly] != 'this month'"
       answer_columns:
       - name: Month(Date Hourly)
       - name: Total Cost
