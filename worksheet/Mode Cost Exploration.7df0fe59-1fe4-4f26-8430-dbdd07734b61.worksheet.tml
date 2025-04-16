@@ -16,42 +16,69 @@ model:
     - with: REPORTS
       referencing_join: REPORT_SCHEDULES_to_REPORTS
   formulas:
+  - id: Schedule Count
+    name: Schedule Count
+    expr: count ( [REPORT_SCHEDULES::ID] )
   - id: Total Cost
     name: Total Cost
     expr: round ( sum ( [TEMP_MODE_COST::CREDITS_USED] * 1.4 ) )
   columns:
   - name: Total Cost
+    description: Total cost for the Mode Report
     formula_id: Total Cost
     properties:
       column_type: MEASURE
       aggregation: SUM
       index_type: DONT_INDEX
       synonym_type: USER_DEFINED
+  - name: Created At Date
+    description: Report Created At Date
+    column_id: REPORTS::CREATED_AT_UTC
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
   - name: Date
+    description: Calendar Date to use when a user is looking for historical trends
     column_id: TEMP_MODE_COST::DTE
     properties:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
   - name: Queued Overload Time Min
+    description: Total Queuing Time  for the Mode Report
     column_id: TEMP_MODE_COST::QUEUED_OVERLOAD_TIME_MIN
     properties:
       column_type: MEASURE
       aggregation: SUM
       index_type: DONT_INDEX
       synonym_type: USER_DEFINED
+  - name: Date Hourly
+    description: Calendar Date at the Hourly Frequency
+    column_id: TEMP_MODE_COST::DTE_HOUR
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Last Edited Date
+    description: Last edited date of the report
+    column_id: REPORTS::LAST_EDITED_AT_UTC
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
   - name: Queued Provisioning Time Min
+    description: Total Snowflake Warehouse Provisioning Time  for the Mode Report
     column_id: TEMP_MODE_COST::QUEUED_PROVISIONING_TIME_MIN
     properties:
       column_type: MEASURE
       aggregation: SUM
       index_type: DONT_INDEX
       synonym_type: USER_DEFINED
-  - name: Dte Hour
-    column_id: TEMP_MODE_COST::DTE_HOUR
+  - name: Last Succeeded At Date
+    description: Last Succeeded Date of the Schedule
+    column_id: REPORT_SCHEDULES::LAST_SUCCEEDED_AT
     properties:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
   - name: Credits Used
+    description: Total Snowflake Credits consumed by the Mode Report
     column_id: TEMP_MODE_COST::CREDITS_USED
     properties:
       column_type: MEASURE
@@ -59,79 +86,84 @@ model:
       index_type: DONT_INDEX
       synonym_type: USER_DEFINED
   - name: Report Id
+    description: Unique Identifier for the Report
     column_id: TEMP_MODE_COST::REPORT_ID
     properties:
       column_type: ATTRIBUTE
-  - name: Query Type
-    column_id: TEMP_MODE_COST::QUERY_TYPE
-    properties:
-      column_type: ATTRIBUTE
   - name: Warehouse Name
+    description: Snowflake Warehouse Name
     column_id: TEMP_MODE_COST::WAREHOUSE_NAME
     properties:
       column_type: ATTRIBUTE
-  - name: Gb Scanned
+  - name: GB Scanned
+    description: Total GB Scanned by Report
     column_id: TEMP_MODE_COST::GB_SCANNED
     properties:
       column_type: MEASURE
       aggregation: SUM
       index_type: DONT_INDEX
   - name: Total Elapsed Time Min
+    description: Total Execution Time by Report
     column_id: TEMP_MODE_COST::TOTAL_ELAPSED_TIME_MIN
     properties:
       column_type: MEASURE
       aggregation: SUM
       index_type: DONT_INDEX
-  - name: Name
+  - name: Query Type
+    column_id: TEMP_MODE_COST::QUERY_TYPE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Report Name
+    description: Report Name
     column_id: REPORTS::NAME
     properties:
       column_type: ATTRIBUTE
-  - name: Url
+  - name: Report URL
+    description: Mode Report URL
     column_id: REPORTS::URL
     properties:
       column_type: ATTRIBUTE
-  - name: Created At Utc
-    column_id: REPORTS::CREATED_AT_UTC
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
   - name: Creator Email
+    description: Creator email of the mode report
     column_id: REPORTS::CREATOR_EMAIL
     properties:
       column_type: ATTRIBUTE
   - name: Report State
+    description: Represents Current state of Mode Report, either its active or inactive.
     column_id: REPORTS::STATE
     properties:
       column_type: ATTRIBUTE
-  - name: Last Edited At Utc
-    column_id: REPORTS::LAST_EDITED_AT_UTC
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
   - name: Collection Name
+    description: Name of the collections to which is report is related to.
     column_id: REPORTS::COLLECTION_NAME
     properties:
       column_type: ATTRIBUTE
   - name: Collection Type
+    description: Type of the collections. Either its residing on the personal or others.
     column_id: REPORTS::COLLECTION_TYPE
     properties:
       column_type: ATTRIBUTE
-  - name: Id
+  - name: Schedule ID
+    description: Unique identifier of schedules for a given report
     column_id: REPORT_SCHEDULES::ID
     properties:
       column_type: ATTRIBUTE
-  - name: Cadence
+  - name: Schedule Cadence
+    description: Cadence in which Schedule is running
     column_id: REPORT_SCHEDULES::CADENCE
     properties:
       column_type: ATTRIBUTE
   - name: Schedule State
+    description: Represents Current state of  Report Schedules, either its active or inactive.
     column_id: REPORT_SCHEDULES::STATE
     properties:
       column_type: ATTRIBUTE
-  - name: Last Succeeded At
-    column_id: REPORT_SCHEDULES::LAST_SUCCEEDED_AT
+  - name: Schedule Count
+    description: Total Schedule Count
+    formula_id: Schedule Count
     properties:
-      column_type: ATTRIBUTE
+      column_type: MEASURE
+      aggregation: SUM
       index_type: DONT_INDEX
   properties:
     is_bypass_rls: false

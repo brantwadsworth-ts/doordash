@@ -1,0 +1,76 @@
+guid: 79e97a93-f3d9-49b5-aeaf-bb6e34eecda5
+liveboard:
+  name: Mode Cost Analysis
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Growth of Total Cost by Monthly Date Hourly
+      tables:
+      - id: Mode Cost Exploration
+        name: Mode Cost Exploration
+        fqn: 7df0fe59-1fe4-4f26-8430-dbdd07734b61
+      search_query: "growth of sum [Total Cost] by [Date Hourly] [Date Hourly].monthly [Date Hourly] != 'this month'"
+      answer_columns:
+      - name: Growth of Total Cost
+      - name: Month(Date Hourly)
+      table:
+        table_columns:
+        - column_id: Growth of Total Cost
+          headline_aggregation: MIN
+        - column_id: Month(Date Hourly)
+          headline_aggregation: MIN-MAX
+        ordered_column_ids:
+        - Month(Date Hourly)
+        - Growth of Total Cost
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: WATERFALL
+        chart_columns:
+        - column_id: Growth of Total Cost
+        - column_id: Month(Date Hourly)
+        axis_configs:
+        - x:
+          - Month(Date Hourly)
+          "y":
+          - Growth of Total Cost
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Cost\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"431bf689-d557-4cb6-8232-b50c30a65b50\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Cost\"],\"isOpposite\": false}},{\"id\": \"f6205909-6929-4d23-bb0d-edcfaaa2d2d1\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date Hourly)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Cost\",\"color\": \"#8C62F5\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 0b0f0b84-a5f8-4b26-b384-0ec990cd06e0
+  - id: Viz_2
+    answer:
+      name: Total Cost by Monthly Date Hourly
+      tables:
+      - id: Mode Cost Exploration
+        name: Mode Cost Exploration
+        fqn: 7df0fe59-1fe4-4f26-8430-dbdd07734b61
+      search_query: "[Total Cost] [Date Hourly].monthly"
+      answer_columns:
+      - name: Month(Date Hourly)
+      - name: Total Cost
+      table:
+        table_columns:
+        - column_id: Month(Date Hourly)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Cost
+          headline_aggregation: TABLE_AGGR
+        ordered_column_ids:
+        - Month(Date Hourly)
+        - Total Cost
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Month(Date Hourly)
+        - column_id: Total Cost
+        axis_configs:
+        - x:
+          - Month(Date Hourly)
+          "y":
+          - Total Cost
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Total Cost\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"4bb9fe51-f759-4dad-82bb-14080ef43003\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Cost\"],\"isOpposite\": false}},{\"id\": \"5db8e7fd-036c-4e10-8bb6-f15b47ca990d\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date Hourly)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Cost\",\"color\": \"#8C62F5\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: a3f25f92-881c-458f-bfcb-b2a37e652f97
