@@ -4,7 +4,7 @@ liveboard:
   visualizations:
   - id: Viz_1
     answer:
-      name: Growth of Total Cost by Monthly Date Hourly
+      name: MoM Total Cost Difference
       tables:
       - id: Mode Cost Exploration
         name: Mode Cost Exploration
@@ -40,7 +40,7 @@ liveboard:
     viz_guid: 0b0f0b84-a5f8-4b26-b384-0ec990cd06e0
   - id: Viz_2
     answer:
-      name: Total Cost by Monthly Date Hourly
+      name: Total Cost MoM
       tables:
       - id: Mode Cost Exploration
         name: Mode Cost Exploration
@@ -74,3 +74,15 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Total Cost\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"4bb9fe51-f759-4dad-82bb-14080ef43003\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Cost\"],\"isOpposite\": false}},{\"id\": \"5db8e7fd-036c-4e10-8bb6-f15b47ca990d\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date Hourly)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Cost\",\"color\": \"#8C62F5\"}]}"
       display_mode: CHART_MODE
     viz_guid: a3f25f92-881c-458f-bfcb-b2a37e652f97
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      x: 6
+      "y": 0
+      height: 5
+      width: 6
+    - visualization_id: Viz_2
+      x: 0
+      "y": 0
+      height: 5
+      width: 6
