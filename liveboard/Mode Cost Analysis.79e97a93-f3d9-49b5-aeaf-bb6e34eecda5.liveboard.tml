@@ -35,7 +35,7 @@ liveboard:
           "y":
           - Growth of Total Cost
         client_state: ""
-        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Cost\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"431bf689-d557-4cb6-8232-b50c30a65b50\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Cost\"],\"isOpposite\": false}},{\"id\": \"f6205909-6929-4d23-bb0d-edcfaaa2d2d1\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date Hourly)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Cost\",\"color\": \"#8C62F5\"}]}"
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Cost\",\"columnProperty\": {}},{\"columnId\": \"7c9e8522-c104-4a3f-9eaa-723faeca66aa\",\"columnProperty\": {}},{\"columnId\": \"1e806f12-5cbd-40bf-af9d-3a0a7b0b6ebb\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"431bf689-d557-4cb6-8232-b50c30a65b50\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Cost\"],\"isOpposite\": false}},{\"id\": \"f6205909-6929-4d23-bb0d-edcfaaa2d2d1\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date Hourly)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Cost\",\"color\": \"#8C62F5\"}]}"
       display_mode: CHART_MODE
     viz_guid: 0b0f0b84-a5f8-4b26-b384-0ec990cd06e0
   - id: Viz_2
@@ -73,7 +73,7 @@ liveboard:
           "y":
           - Total Cost
         client_state: ""
-        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Total Cost\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"5db8e7fd-036c-4e10-8bb6-f15b47ca990d\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date Hourly)\"]}},{\"id\": \"4bb9fe51-f759-4dad-82bb-14080ef43003\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Cost\"],\"format\": {\"category\": \"CURRENCY\",\"currencyFormatConfig\": {\"locale\": \"USD\",\"unit\": \"AUTO\",\"decimals\": 0.0,\"toSeparateThousands\": true},\"isCategoryEditable\": true},\"name\": \"Total Cost\",\"isOpposite\": false,\"dynamicTitle\": \"Total Cost\"}}],\"seriesColors\": [{\"serieName\": \"Total Cost\",\"color\": \"#8C62F5\"}],\"systemSeriesColors\": [{\"serieName\": \"Total Cost\",\"color\": \"#06BF7F\"}]}"
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Total Cost\",\"columnProperty\": {}},{\"columnId\": \"61956b50-1cf3-4f8d-ba47-035d84c0def3\",\"columnProperty\": {}},{\"columnId\": \"c9349e78-cf06-42f5-ba88-4cb73db7deb9\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"5db8e7fd-036c-4e10-8bb6-f15b47ca990d\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date Hourly)\"]}},{\"id\": \"4bb9fe51-f759-4dad-82bb-14080ef43003\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Cost\"],\"format\": {\"category\": \"CURRENCY\",\"currencyFormatConfig\": {\"locale\": \"USD\",\"unit\": \"AUTO\",\"decimals\": 0.0,\"toSeparateThousands\": true},\"isCategoryEditable\": true},\"name\": \"Total Cost\",\"isOpposite\": false,\"dynamicTitle\": \"Total Cost\"}}],\"seriesColors\": [{\"serieName\": \"Total Cost\",\"color\": \"#8C62F5\"}],\"systemSeriesColors\": [{\"serieName\": \"Total Cost\",\"color\": \"#06BF7F\"}]}"
       display_mode: CHART_MODE
     viz_guid: a3f25f92-881c-458f-bfcb-b2a37e652f97
   - id: Viz_3
@@ -118,13 +118,9 @@ liveboard:
           "y":
           - Unique Number of Report Id
         client_state: ""
-        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Week(Create Date)\",\"columnProperty\": {}},{\"columnId\": \"Unique Number of Report Id\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a435f83c-cc88-4eac-b386-33f8f2c88ede\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Report Id\"],\"isOpposite\": false}},{\"id\": \"a21286fc-d1ad-4c7e-b2bf-a3828fac3a07\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Create Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Unique Number of Report Id\",\"color\": \"#06BF7F\"}]}"
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Week(Create Date)\",\"columnProperty\": {}},{\"columnId\": \"Unique Number of Report Id\",\"columnProperty\": {}},{\"columnId\": \"7181f150-ae6d-4ffc-b7f3-1297b3149f00\",\"columnProperty\": {}},{\"columnId\": \"ec3bbef0-b0cb-48ac-a74b-d31934703a3e\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a435f83c-cc88-4eac-b386-33f8f2c88ede\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Report Id\"],\"isOpposite\": false}},{\"id\": \"a21286fc-d1ad-4c7e-b2bf-a3828fac3a07\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Create Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Unique Number of Report Id\",\"color\": \"#06BF7F\"}]}"
       display_mode: CHART_MODE
     viz_guid: e0db8513-f9eb-40f2-95b5-b094ca66c6c0
-  - id: Viz_4
-    viz_guid: d60ffb80-8614-4eed-ba0f-83785a8536ff
-    note_tile:
-      html_parsed_string: "<h2 class=\"theme-module__editor-h2\"><br></h2><p class=\"theme-module__editor-paragraph\"><br></p><div class=\"pinboard-note-tile-module__noteTileBg editor-module__bgNode\" style=\"background-color: rgb(255, 255, 255);\"></div>"
   layout:
     tiles:
     - visualization_id: Viz_1
@@ -134,16 +130,11 @@ liveboard:
       width: 6
     - visualization_id: Viz_3
       x: 0
-      "y": 9
+      "y": 5
       height: 7
       width: 6
     - visualization_id: Viz_2
       x: 0
-      "y": 4
+      "y": 0
       height: 5
       width: 6
-    - visualization_id: Viz_4
-      x: 0
-      "y": 0
-      height: 4
-      width: 3
