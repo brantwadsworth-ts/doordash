@@ -9,18 +9,18 @@ liveboard:
       - id: Mode Cost Exploration
         name: Mode Cost Exploration
         fqn: 7df0fe59-1fe4-4f26-8430-dbdd07734b61
-      search_query: "growth of sum [Total Cost] by [Date Hourly] [Date Hourly].monthly [Date Hourly] != 'this month'"
+      search_query: "growth of sum [Total Cost] by [Date Hourly] [Date Hourly].weekly [Date Hourly] != 'this week'"
       answer_columns:
       - name: Growth of Total Cost
-      - name: Month(Date Hourly)
+      - name: Week(Date Hourly)
       table:
         table_columns:
         - column_id: Growth of Total Cost
           headline_aggregation: MIN
-        - column_id: Month(Date Hourly)
+        - column_id: Week(Date Hourly)
           headline_aggregation: MIN-MAX
         ordered_column_ids:
-        - Month(Date Hourly)
+        - Week(Date Hourly)
         - Growth of Total Cost
         client_state: ""
         client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
@@ -28,14 +28,14 @@ liveboard:
         type: WATERFALL
         chart_columns:
         - column_id: Growth of Total Cost
-        - column_id: Month(Date Hourly)
+        - column_id: Week(Date Hourly)
         axis_configs:
         - x:
-          - Month(Date Hourly)
+          - Week(Date Hourly)
           "y":
           - Growth of Total Cost
         client_state: ""
-        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Cost\",\"columnProperty\": {}},{\"columnId\": \"7c9e8522-c104-4a3f-9eaa-723faeca66aa\",\"columnProperty\": {}},{\"columnId\": \"1e806f12-5cbd-40bf-af9d-3a0a7b0b6ebb\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"431bf689-d557-4cb6-8232-b50c30a65b50\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Cost\"],\"isOpposite\": false}},{\"id\": \"f6205909-6929-4d23-bb0d-edcfaaa2d2d1\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date Hourly)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Cost\",\"color\": \"#8C62F5\"}]}"
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Week(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Cost\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"431bf689-d557-4cb6-8232-b50c30a65b50\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Cost\"],\"isOpposite\": false}},{\"id\": \"f6205909-6929-4d23-bb0d-edcfaaa2d2d1\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Date Hourly)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Cost\",\"color\": \"#8C62F5\"}]}"
       display_mode: CHART_MODE
     viz_guid: 0b0f0b84-a5f8-4b26-b384-0ec990cd06e0
   - id: Viz_2
