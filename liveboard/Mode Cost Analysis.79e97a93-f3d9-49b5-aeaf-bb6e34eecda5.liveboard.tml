@@ -121,6 +121,10 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Week(Create Date)\",\"columnProperty\": {}},{\"columnId\": \"Unique Number of Report Id\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a435f83c-cc88-4eac-b386-33f8f2c88ede\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Report Id\"],\"isOpposite\": false}},{\"id\": \"a21286fc-d1ad-4c7e-b2bf-a3828fac3a07\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Create Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Unique Number of Report Id\",\"color\": \"#06BF7F\"}]}"
       display_mode: CHART_MODE
     viz_guid: e0db8513-f9eb-40f2-95b5-b094ca66c6c0
+  - id: Viz_4
+    viz_guid: d60ffb80-8614-4eed-ba0f-83785a8536ff
+    note_tile:
+      html_parsed_string: "<h2 class=\"theme-module__editor-h2\"><br></h2><p class=\"theme-module__editor-paragraph\"><br></p><div class=\"pinboard-note-tile-module__noteTileBg editor-module__bgNode\" style=\"background-color: rgb(255, 255, 255);\"></div>"
   layout:
     tiles:
     - visualization_id: Viz_1
@@ -130,11 +134,16 @@ liveboard:
       width: 6
     - visualization_id: Viz_3
       x: 0
-      "y": 5
+      "y": 9
       height: 7
       width: 6
     - visualization_id: Viz_2
       x: 0
-      "y": 0
+      "y": 4
       height: 5
       width: 6
+    - visualization_id: Viz_4
+      x: 0
+      "y": 0
+      height: 4
+      width: 3
