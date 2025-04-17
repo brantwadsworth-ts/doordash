@@ -18,12 +18,28 @@ table:
     db_column_name: OBJECT_NAME
     properties:
       column_type: ATTRIBUTE
+      is_hidden: true
     db_column_properties:
       data_type: VARCHAR
   - name: ORG_USERNAME
     db_column_name: ORG_USERNAME
     properties:
       column_type: ATTRIBUTE
+      is_hidden: true
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CADENCE
+    db_column_name: CADENCE
+    properties:
+      column_type: ATTRIBUTE
+      is_hidden: true
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STATE
+    db_column_name: STATE
+    properties:
+      column_type: ATTRIBUTE
+      is_hidden: true
     db_column_properties:
       data_type: VARCHAR
   - name: LAST_RUN_AT
@@ -33,12 +49,6 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: DATE_TIME
-  - name: CADENCE
-    db_column_name: CADENCE
-    properties:
-      column_type: ATTRIBUTE
-    db_column_properties:
-      data_type: VARCHAR
   - name: CRONLINE
     db_column_name: CRONLINE
     properties:
@@ -89,12 +99,6 @@ table:
       data_type: VARCHAR
   - name: CREATOR_ID
     db_column_name: CREATOR_ID
-    properties:
-      column_type: ATTRIBUTE
-    db_column_properties:
-      data_type: VARCHAR
-  - name: STATE
-    db_column_name: STATE
     properties:
       column_type: ATTRIBUTE
     db_column_properties:

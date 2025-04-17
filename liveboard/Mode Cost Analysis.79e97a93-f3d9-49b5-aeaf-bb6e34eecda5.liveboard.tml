@@ -76,6 +76,51 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Month(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Total Cost\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"5db8e7fd-036c-4e10-8bb6-f15b47ca990d\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Month(Date Hourly)\"]}},{\"id\": \"4bb9fe51-f759-4dad-82bb-14080ef43003\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Cost\"],\"format\": {\"category\": \"CURRENCY\",\"currencyFormatConfig\": {\"locale\": \"USD\",\"unit\": \"AUTO\",\"decimals\": 0.0,\"toSeparateThousands\": true},\"isCategoryEditable\": true},\"name\": \"Total Cost\",\"isOpposite\": false,\"dynamicTitle\": \"Total Cost\"}}],\"seriesColors\": [{\"serieName\": \"Total Cost\",\"color\": \"#8C62F5\"}],\"systemSeriesColors\": [{\"serieName\": \"Total Cost\",\"color\": \"#06BF7F\"}]}"
       display_mode: CHART_MODE
     viz_guid: a3f25f92-881c-458f-bfcb-b2a37e652f97
+  - id: Viz_3
+    answer:
+      name: Mode Weekly Report Count
+      description: This shows the number of mode report created on the weekly basis.
+      tables:
+      - id: Mode Cost Exploration
+        name: Mode Cost Exploration
+        fqn: 7df0fe59-1fe4-4f26-8430-dbdd07734b61
+      search_query: "unique count [Report Id] [Create Date].weekly [Create Date] = 'year to date' [Create Date] != 'this week'"
+      answer_columns:
+      - name: Unique Number of Report Id
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: NONE
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: Week(Create Date)
+      table:
+        table_columns:
+        - column_id: Unique Number of Report Id
+          headline_aggregation: AVERAGE
+        - column_id: Week(Create Date)
+          headline_aggregation: MIN-MAX
+        ordered_column_ids:
+        - Week(Create Date)
+        - Unique Number of Report Id
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Unique Number of Report Id
+        - column_id: Week(Create Date)
+        axis_configs:
+        - x:
+          - Week(Create Date)
+          "y":
+          - Unique Number of Report Id
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Week(Create Date)\",\"columnProperty\": {}},{\"columnId\": \"Unique Number of Report Id\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a435f83c-cc88-4eac-b386-33f8f2c88ede\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Report Id\"],\"isOpposite\": false}},{\"id\": \"a21286fc-d1ad-4c7e-b2bf-a3828fac3a07\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Create Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Unique Number of Report Id\",\"color\": \"#06BF7F\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: e0db8513-f9eb-40f2-95b5-b094ca66c6c0
   layout:
     tiles:
     - visualization_id: Viz_1

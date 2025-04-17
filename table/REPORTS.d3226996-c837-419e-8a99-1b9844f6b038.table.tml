@@ -14,10 +14,31 @@ table:
       column_type: ATTRIBUTE
     db_column_properties:
       data_type: VARCHAR
+  - name: DESCRIPTION
+    db_column_name: DESCRIPTION
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CREATOR_ID
+    db_column_name: CREATOR_ID
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: VARCHAR
   - name: OBJECT_NAME
     db_column_name: OBJECT_NAME
     properties:
       column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: URL
+    db_column_name: URL
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
     db_column_properties:
       data_type: VARCHAR
   - name: ID
@@ -28,12 +49,6 @@ table:
       data_type: VARCHAR
   - name: NAME
     db_column_name: NAME
-    properties:
-      column_type: ATTRIBUTE
-    db_column_properties:
-      data_type: VARCHAR
-  - name: DESCRIPTION
-    db_column_name: DESCRIPTION
     properties:
       column_type: ATTRIBUTE
     db_column_properties:
@@ -93,20 +108,8 @@ table:
       index_type: DONT_INDEX
     db_column_properties:
       data_type: DATE_TIME
-  - name: CREATOR_ID
-    db_column_name: CREATOR_ID
-    properties:
-      column_type: ATTRIBUTE
-    db_column_properties:
-      data_type: VARCHAR
   - name: CREATOR_EMAIL
     db_column_name: CREATOR_EMAIL
-    properties:
-      column_type: ATTRIBUTE
-    db_column_properties:
-      data_type: VARCHAR
-  - name: URL
-    db_column_name: URL
     properties:
       column_type: ATTRIBUTE
     db_column_properties:

@@ -23,6 +23,40 @@ model:
     name: Total Cost
     expr: round ( sum ( [TEMP_MODE_COST::CREDITS_USED] * 1.4 ) )
   columns:
+  - name: Warehouse Provisioning Time Min
+    description: Total Snowflake Warehouse Provisioning Time  for the Mode Report
+    column_id: TEMP_MODE_COST::QUEUED_PROVISIONING_TIME_MIN
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      is_hidden: true
+      synonym_type: USER_DEFINED
+  - name: Collection Name
+    description: Name of the collections to which is report is related to.
+    column_id: REPORTS::COLLECTION_NAME
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: GB Scanned
+    description: Total GB Scanned by Report
+    column_id: TEMP_MODE_COST::GB_SCANNED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      is_hidden: true
+  - name: Date
+    description: Calendar Date to use when a user is looking for historical trends
+    column_id: TEMP_MODE_COST::DTE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Query Type
+    column_id: TEMP_MODE_COST::QUERY_TYPE
+    properties:
+      column_type: ATTRIBUTE
+      is_hidden: true
   - name: Total Cost
     description: Total cost for the Mode Report
     formula_id: Total Cost
@@ -30,16 +64,12 @@ model:
       column_type: MEASURE
       aggregation: SUM
       index_type: DONT_INDEX
+      currency_type:
+        iso_code: USD
       synonym_type: USER_DEFINED
-  - name: Created At Date
+  - name: Create Date
     description: Report Created At Date
     column_id: REPORTS::CREATED_AT_UTC
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
-  - name: Date
-    description: Calendar Date to use when a user is looking for historical trends
-    column_id: TEMP_MODE_COST::DTE
     properties:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
@@ -51,26 +81,18 @@ model:
       aggregation: SUM
       index_type: DONT_INDEX
       synonym_type: USER_DEFINED
-  - name: Date Hourly
-    description: Calendar Date at the Hourly Frequency
-    column_id: TEMP_MODE_COST::DTE_HOUR
-    properties:
-      column_type: ATTRIBUTE
-      index_type: DONT_INDEX
   - name: Last Edited Date
     description: Last edited date of the report
     column_id: REPORTS::LAST_EDITED_AT_UTC
     properties:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
-  - name: Queued Provisioning Time Min
-    description: Total Snowflake Warehouse Provisioning Time  for the Mode Report
-    column_id: TEMP_MODE_COST::QUEUED_PROVISIONING_TIME_MIN
+  - name: Date Hourly
+    description: Calendar Date at the Hourly Frequency
+    column_id: TEMP_MODE_COST::DTE_HOUR
     properties:
-      column_type: MEASURE
-      aggregation: SUM
+      column_type: ATTRIBUTE
       index_type: DONT_INDEX
-      synonym_type: USER_DEFINED
   - name: Last Succeeded At Date
     description: Last Succeeded Date of the Schedule
     column_id: REPORT_SCHEDULES::LAST_SUCCEEDED_AT
@@ -95,13 +117,6 @@ model:
     column_id: TEMP_MODE_COST::WAREHOUSE_NAME
     properties:
       column_type: ATTRIBUTE
-  - name: GB Scanned
-    description: Total GB Scanned by Report
-    column_id: TEMP_MODE_COST::GB_SCANNED
-    properties:
-      column_type: MEASURE
-      aggregation: SUM
-      index_type: DONT_INDEX
   - name: Total Elapsed Time Min
     description: Total Execution Time by Report
     column_id: TEMP_MODE_COST::TOTAL_ELAPSED_TIME_MIN
@@ -109,10 +124,6 @@ model:
       column_type: MEASURE
       aggregation: SUM
       index_type: DONT_INDEX
-  - name: Query Type
-    column_id: TEMP_MODE_COST::QUERY_TYPE
-    properties:
-      column_type: ATTRIBUTE
   - name: Report Name
     description: Report Name
     column_id: REPORTS::NAME
@@ -123,6 +134,7 @@ model:
     column_id: REPORTS::URL
     properties:
       column_type: ATTRIBUTE
+      index_type: DONT_INDEX
   - name: Creator Email
     description: Creator email of the mode report
     column_id: REPORTS::CREATOR_EMAIL
@@ -131,11 +143,6 @@ model:
   - name: Report State
     description: Represents Current state of Mode Report, either its active or inactive.
     column_id: REPORTS::STATE
-    properties:
-      column_type: ATTRIBUTE
-  - name: Collection Name
-    description: Name of the collections to which is report is related to.
-    column_id: REPORTS::COLLECTION_NAME
     properties:
       column_type: ATTRIBUTE
   - name: Collection Type
@@ -148,11 +155,13 @@ model:
     column_id: REPORT_SCHEDULES::ID
     properties:
       column_type: ATTRIBUTE
+      index_type: DONT_INDEX
   - name: Schedule Cadence
     description: Cadence in which Schedule is running
     column_id: REPORT_SCHEDULES::CADENCE
     properties:
       column_type: ATTRIBUTE
+      index_type: DONT_INDEX
   - name: Schedule State
     description: Represents Current state of  Report Schedules, either its active or inactive.
     column_id: REPORT_SCHEDULES::STATE
@@ -165,6 +174,11 @@ model:
       column_type: MEASURE
       aggregation: SUM
       index_type: DONT_INDEX
+  - name: Cost Type
+    description: Represents of if the cost is from Scheduled Queries or Adhoc Queries
+    column_id: TEMP_MODE_COST::SCHEDULED
+    properties:
+      column_type: ATTRIBUTE
   properties:
     is_bypass_rls: false
     join_progressive: true
