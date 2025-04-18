@@ -40,7 +40,7 @@ liveboard:
     viz_guid: 0b0f0b84-a5f8-4b26-b384-0ec990cd06e0
   - id: Viz_2
     answer:
-      name: Total Cost MoM
+      name: Weekly Total Cost
       tables:
       - id: Mode Cost Exploration
         name: Mode Cost Exploration
@@ -178,4 +178,9 @@ liveboard:
       x: 0
       "y": 0
       height: 5
+      width: 6
+    - visualization_id: Viz_4
+      x: 6
+      "y": 5
+      height: 8
       width: 6
