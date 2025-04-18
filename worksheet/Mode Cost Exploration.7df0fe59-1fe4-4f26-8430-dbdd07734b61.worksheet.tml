@@ -16,6 +16,9 @@ model:
     - with: REPORTS
       referencing_join: REPORT_SCHEDULES_to_REPORTS
   formulas:
+  - id: Cost Type
+    name: Cost Type
+    expr: if ( [TEMP_MODE_COST::SCHEDULED] = "true" ) then "schedule" else if ( [TEMP_MODE_COST::SCHEDULED] = "false" ) then "adhoc" else "other"
   - id: Schedule Count
     name: Schedule Count
     expr: count ( [REPORT_SCHEDULES::ID] )
@@ -32,6 +35,29 @@ model:
       index_type: DONT_INDEX
       is_hidden: true
       synonym_type: USER_DEFINED
+  - name: Total Cost
+    description: Total cost for the Mode Report
+    formula_id: Total Cost
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      currency_type:
+        iso_code: USD
+      synonym_type: USER_DEFINED
+  - name: Schedule Count
+    description: Total Schedule Count
+    formula_id: Schedule Count
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Cost Type
+    description: Represents if cost category if its schedule or adhoc cost.
+    formula_id: Cost Type
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
   - name: Collection Name
     description: Name of the collections to which is report is related to.
     column_id: REPORTS::COLLECTION_NAME
@@ -57,16 +83,6 @@ model:
     properties:
       column_type: ATTRIBUTE
       is_hidden: true
-  - name: Total Cost
-    description: Total cost for the Mode Report
-    formula_id: Total Cost
-    properties:
-      column_type: MEASURE
-      aggregation: SUM
-      index_type: DONT_INDEX
-      currency_type:
-        iso_code: USD
-      synonym_type: USER_DEFINED
   - name: Create Date
     description: Report Created At Date
     column_id: REPORTS::CREATED_AT_UTC
@@ -165,18 +181,6 @@ model:
   - name: Schedule State
     description: Represents Current state of  Report Schedules, either its active or inactive.
     column_id: REPORT_SCHEDULES::STATE
-    properties:
-      column_type: ATTRIBUTE
-  - name: Schedule Count
-    description: Total Schedule Count
-    formula_id: Schedule Count
-    properties:
-      column_type: MEASURE
-      aggregation: SUM
-      index_type: DONT_INDEX
-  - name: Cost Type
-    description: Represents of if the cost is from Scheduled Queries or Adhoc Queries
-    column_id: TEMP_MODE_COST::SCHEDULED
     properties:
       column_type: ATTRIBUTE
   properties:

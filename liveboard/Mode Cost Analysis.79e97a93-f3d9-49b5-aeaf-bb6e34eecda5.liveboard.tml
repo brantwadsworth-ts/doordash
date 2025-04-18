@@ -119,6 +119,49 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Week(Create Date)\",\"columnProperty\": {}},{\"columnId\": \"Unique Number of Report Id\",\"columnProperty\": {}},{\"columnId\": \"7181f150-ae6d-4ffc-b7f3-1297b3149f00\",\"columnProperty\": {}},{\"columnId\": \"ec3bbef0-b0cb-48ac-a74b-d31934703a3e\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a435f83c-cc88-4eac-b386-33f8f2c88ede\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Report Id\"],\"isOpposite\": false}},{\"id\": \"a21286fc-d1ad-4c7e-b2bf-a3828fac3a07\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Create Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Unique Number of Report Id\",\"color\": \"#06BF7F\"}]}"
       display_mode: CHART_MODE
     viz_guid: e0db8513-f9eb-40f2-95b5-b094ca66c6c0
+  - id: Viz_4
+    answer:
+      name: Weekly Total Cost by Cost Type
+      tables:
+      - id: Mode Cost Exploration
+        name: Mode Cost Exploration
+        fqn: 7df0fe59-1fe4-4f26-8430-dbdd07734b61
+      search_query: "[Date Hourly] [Date Hourly].weekly [Total Cost] [Cost Type]"
+      answer_columns:
+      - name: Cost Type
+      - name: Total Cost
+      - name: Week(Date Hourly)
+      table:
+        table_columns:
+        - column_id: Cost Type
+          show_headline: false
+        - column_id: Total Cost
+          show_headline: false
+        - column_id: Week(Date Hourly)
+          show_headline: false
+        ordered_column_ids:
+        - Week(Date Hourly)
+        - Cost Type
+        - Total Cost
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: STACKED_COLUMN
+        chart_columns:
+        - column_id: Cost Type
+        - column_id: Total Cost
+        - column_id: Week(Date Hourly)
+        axis_configs:
+        - x:
+          - Week(Date Hourly)
+          "y":
+          - Total Cost
+          color:
+          - Cost Type
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"isStackedAsPercent\": true,\"stackedAsPercentFormat\": {\"category\": \"PERCENTAGE\",\"percentageFormatConfig\": {\"decimals\": 2.0},\"isCategoryEditable\": false},\"customProps\": \"{\\\"advancedProperties\\\":{\\\"tooltip\\\":{\\\"enabled\\\":true}}}\",\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}},{\"columnId\": \"Week(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Cost Type\",\"columnProperty\": {}},{\"columnId\": \"Total Cost\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"847b099c-4db1-4f25-91b4-45fe67741b3d\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Cost\"],\"isOpposite\": false}},{\"id\": \"f2cfdbeb-bf85-4229-aa90-4717cd839ec6\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Date Hourly)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"4fe4125d-dd3b-460a-9cf6-03cd52c29b5e\",\"color\": \"#FF8142\"},{\"serieName\": \"3a1de7cd-abd0-442e-8d7a-281bba0fb62a\",\"color\": \"#FCC838\"},{\"serieName\": \"adhoc\",\"color\": \"#FCC838\"},{\"serieName\": \"other\",\"color\": \"#48D1E0\"},{\"serieName\": \"schedule\",\"color\": \"#2E75F0\"},{\"serieName\": \"1ffbdd41-42eb-5886-b73a-9f58ef02a13d\",\"color\": \"#747E8C\"},{\"serieName\": \"Total Cost\",\"color\": \"#FF8142\"}],\"tooltipConfig\": {\"columnIds\": [\"Cost Type\",\"Week(Date Hourly)\",\"Total Cost\"]}}"
+      display_mode: CHART_MODE
+    viz_guid: d39e799b-03dd-4d17-bf9e-ff2fe8d06a0b
   layout:
     tiles:
     - visualization_id: Viz_1
