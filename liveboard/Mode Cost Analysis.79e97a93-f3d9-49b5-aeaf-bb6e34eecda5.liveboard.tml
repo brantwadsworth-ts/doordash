@@ -164,6 +164,11 @@ liveboard:
     viz_guid: d39e799b-03dd-4d17-bf9e-ff2fe8d06a0b
   layout:
     tiles:
+    - visualization_id: Viz_4
+      x: 6
+      "y": 5
+      height: 7
+      width: 6
     - visualization_id: Viz_1
       x: 6
       "y": 0
@@ -178,9 +183,4 @@ liveboard:
       x: 0
       "y": 0
       height: 5
-      width: 6
-    - visualization_id: Viz_4
-      x: 6
-      "y": 5
-      height: 8
       width: 6
