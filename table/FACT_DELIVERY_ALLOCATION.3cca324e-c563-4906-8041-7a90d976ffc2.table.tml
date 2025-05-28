@@ -1,0 +1,4193 @@
+guid: 3cca324e-c563-4906-8041-7a90d976ffc2
+table:
+  name: FACT_DELIVERY_ALLOCATION
+  db: EDW
+  schema: FINANCE
+  db_table: FACT_DELIVERY_ALLOCATION
+  connection:
+    name: dd_snow_test_dd
+    fqn: 49cf2059-2326-45b2-9a18-92bc6af4e79d
+  columns:
+  - name: ACTIVE_DATE
+    description: Delivery completed date
+    db_column_name: ACTIVE_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: DELIVERY_ID
+    description: delivery unique identifier (primary key)
+    db_column_name: DELIVERY_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SUBMARKET
+    description: Submarket name of the store
+    db_column_name: SUBMARKET
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SUBMARKET_ID
+    description: Submarket identifier
+    db_column_name: SUBMARKET_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STORE_STARTING_POINT_ID
+    description: Store starting point ID
+    db_column_name: STORE_STARTING_POINT_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PICKUP_ADDRESS_ID
+    description: Store address ID
+    db_column_name: PICKUP_ADDRESS_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DELIVERY_ADDRESS_ID
+    description: Customer address ID
+    db_column_name: DELIVERY_ADDRESS_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SUBMIT_PLATFORM
+    description: "Platform (iOS, Android, Desktop) where order was submitted"
+    db_column_name: SUBMIT_PLATFORM
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CREATOR_ID
+    description: Customer unique identifier
+    db_column_name: CREATOR_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STORE_ID
+    description: Store identifier for the physical location
+    db_column_name: STORE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DASHER_ID
+    description: Dasher who completed the delivery
+    db_column_name: DASHER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: BUSINESS_UNIT
+    description: Line of Business. Each delivery belongs to one of the business unit
+    db_column_name: BUSINESS_UNIT
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: IS_FILTERED
+    description: cancelled_at IS NULL AND parent_delivery_id IS NULL AND actual_delivery_time IS NOT NULL AND is_test is FALSE
+    db_column_name: IS_FILTERED
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: IS_FILTERED_INCL_REDELIV
+    description: cancelled_at IS NULL AND actual_delivery_time IS NOT NULL AND is_test is FALSE
+    db_column_name: IS_FILTERED_INCL_REDELIV
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: IS_CAVIAR
+    description: Flag for catering deliveries
+    db_column_name: IS_CAVIAR
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: SUBTOTAL
+    description: Subtotal of order
+    db_column_name: SUBTOTAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GMV_DRIVE_ADJUSTMENT
+    description: "For Drive – Subtotal, Tax are not part of GMV/GOV"
+    db_column_name: GMV_DRIVE_ADJUSTMENT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DELIVERY_FEE
+    description: "Delivery fee column which also includes expand range fee, priority fee, and accounting difference. This is included in consumer_revenue, gross_fee, gov, and storefront_gov"
+    db_column_name: DELIVERY_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DELIVERY_FEE_TT
+    description: Delivery Fee for the delivery - DashPass Delivery Fee discount excluding any allocation
+    db_column_name: DELIVERY_FEE_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DELIVERY_FEE_AD
+    description: Delivery Fee Accounting Difference
+    db_column_name: DELIVERY_FEE_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DELIVERY_FEE_NO_DSCNT
+    description: Delivery Fee with subscription discount not being applied to. Also includes SOS fee
+    db_column_name: DELIVERY_FEE_NO_DSCNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SOS_FEE
+    description: Surge cost
+    db_column_name: SOS_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SERVICE_FEE
+    description: Service Fee with subscription discount applied. This service fee is net of Marqeta overcharge reduction
+    db_column_name: SERVICE_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SERVICE_FEE_TT
+    description: Service Fee for the delivery - DashPass Delivery Fee discount excluding any allocation
+    db_column_name: SERVICE_FEE_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SERVICE_FEE_AD
+    description: Service Fee Accounting Difference
+    db_column_name: SERVICE_FEE_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SERVICE_FEE_NO_DSCNT
+    description: Service Fee with subscription discount not being applied to. This service fee is net of Marqeta overcharge reduction
+    db_column_name: SERVICE_FEE_NO_DSCNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SMALL_ORDER_FEE
+    description: "Small order fee, if it exists"
+    db_column_name: SMALL_ORDER_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_MARKETING_FEE
+    description: Flat commission from Store Order Cart table
+    db_column_name: MERCHANT_MARKETING_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_MARKETING_FEE_ALLOC
+    description: Merchant Marketing Fees which comes from transactions + Store Payment Advertising Fee + Merchant Funded Promo + Storefront Loyalty Discount + Storefront External Mx Gift Card Credit
+    db_column_name: MERCHANT_MARKETING_FEE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TAX
+    description: Tax amount
+    db_column_name: TAX
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FEES_TAX_AMOUNT
+    description: This is for Canada. Tax amount is charged on the top of the fee and it is part of GOV
+    db_column_name: FEES_TAX_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TIP
+    description: Tip amount
+    db_column_name: TIP
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_FEE
+    description: "For drive orders, this is the fee that merchants pay us to do the delivery"
+    db_column_name: DRIVE_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_FEE_ALLOC
+    description: "drive_fee + dasher_regulatory_fee (this is fee charged to drive mx) + adjustment to drive fee, to match the accounting numbers"
+    db_column_name: DRIVE_FEE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COMMISSION
+    description: Commission charged for the order
+    db_column_name: COMMISSION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COMMISSION_ALLOC
+    description: Commission which came from transactions
+    db_column_name: COMMISSION_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REDELIVERIES
+    description: Redeliveries cost in USD
+    db_column_name: REDELIVERIES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REDELIVERIES_ALLOC
+    description: Redeliveries cost available from Transactions + Manual Change made from Netsuite / Accounting for Chipotle Drive orders
+    db_column_name: REDELIVERIES_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_ACTUAL
+    description: Support actual number
+    db_column_name: SUPPORT_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_FORECAST
+    description: support forecasted number
+    db_column_name: SUPPORT_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT
+    description: Support cost in USD
+    db_column_name: SUPPORT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_BASE_PAY
+    description: Dasher base pay in USD (including express pay)
+    db_column_name: DASHER_BASE_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_PAY_OTHER
+    description: Dasher Incentive Pay which is at delivery level
+    db_column_name: DASHER_PAY_OTHER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REDELIV_DASHER_BASE_PAY
+    description: Base pay for dasher for redelivery orders
+    db_column_name: REDELIV_DASHER_BASE_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REDELIV_DASHER_OTHER
+    description: Dasher other pay for redelivery orders
+    db_column_name: REDELIV_DASHER_OTHER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_CATCH_ALL
+    description: "Any other dasher pay which does not fall in the Dasher Base Pay and Dasher Pay Other. In general, this is dasher pay which is not at delivery level. Dasher Min Wage Pay is included"
+    db_column_name: DASHER_CATCH_ALL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVER_PAY_ALLOC_ACTUAL
+    description: Driver Pay actual number
+    db_column_name: DRIVER_PAY_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVER_PAY_ALLOC_FORECAST
+    description: Driver Pay forecasted number
+    db_column_name: DRIVER_PAY_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVER_PAY_ALLOC
+    description: Driver_Pay_Alloc = Dasher_Base_Pay + Dasher_Pay_Other + Dasher_Catch_All + Driver_Pay_AD
+    db_column_name: DRIVER_PAY_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFUND
+    description: Refund provided back to the consumer for any delivery errors
+    db_column_name: CONSUMER_REFUND
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUBSCRIPTION_REFUND
+    description: All of the DashPass subscription monthly fee ($9.99) - if refunded then it will be logged here. This is allocated column as well
+    db_column_name: SUBSCRIPTION_REFUND
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHPASS_MARKETING_FEE
+    description: "Subscription flat fee from the merchants, on P&L, DashPass marketing fee rolls up to commission (included in Commission_Alloc)"
+    db_column_name: DASHPASS_MARKETING_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_CHARGE
+    description: Charged to the store for any delivery errors made by the store
+    db_column_name: STORE_CHARGE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_REFUND
+    description: Refund provided back to the store for any delivery errors
+    db_column_name: STORE_REFUND
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_PAYMENT_REFUND_TRUE_TO_STORE
+    description: "All the adhoc refunds are logged in store payment, we are allocating them based on the store delivery within the week we see the refund"
+    db_column_name: STORE_PAYMENT_REFUND_TRUE_TO_STORE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_PAYMENT_REFUND_ALLOCATED
+    description: All the adhoc refund
+    db_column_name: STORE_PAYMENT_REFUND_ALLOCATED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REFUNDS
+    description: Refunds = Consumer_Refund + Store_Refund - Store_Charge + Subscription_Refund + Store_Payment_Refund_True_To_Store + Store_Payment_Refund_Allocated + (Extra Accounting Entries)
+    db_column_name: REFUNDS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FIRST_DELIVERY_DISCOUNT
+    description: first_delivery_discount
+    db_column_name: FIRST_DELIVERY_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_CREDIT
+    description: Support credit being redeemed
+    db_column_name: SUPPORT_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_CREDIT_TT
+    description: Support credit being redeemed (excluding any allocation)
+    db_column_name: SUPPORT_CREDIT_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_CREDIT_AD
+    description: Support credit accounting difference
+    db_column_name: SUPPORT_CREDIT_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_PROMOTIONS_ACTUAL
+    description: Consumer promotions actual number
+    db_column_name: CONSUMER_PROMOTIONS_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_PROMOTIONS_FORECAST
+    description: Consumer promotions forecasted number
+    db_column_name: CONSUMER_PROMOTIONS_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_PROMOTIONS
+    description: FIRST_TIME_PROMO_CODE_CREDIT + Accounting feed of promotions
+    db_column_name: CONSUMER_PROMOTIONS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_PROMOTIONS
+    description: "Merchant promotions such as Try me Free, Featured Partner etc."
+    db_column_name: MERCHANT_PROMOTIONS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OTHER_PROMOTIONS
+    description: (PROMO_CODE_CREDIT - fmx) + CONSUMER_RETENTION + FMX + FMX_OTHER_PROMOTIONS + PROMOTION_CATCH_ALL + PROMOTION_CREDIT + DRIVE_PROMO + MARQETA_OPERATIONAL_ERROR
+    db_column_name: OTHER_PROMOTIONS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OTHER_PROMOTIONS_ALLOC
+    description: "other promotions + chase_statement_credit + payment_to_customer + drive_payment_to_customer + accounting adjustments, to match the numbers from accounting"
+    db_column_name: OTHER_PROMOTIONS_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PAYMENT_TO_CUSTOMERS
+    description: "Accounting Adjustment, This includes any type of adhoc payments to consumer or merchant. Payment to Customer is part of Other_Promotion_Alloc"
+    db_column_name: PAYMENT_TO_CUSTOMERS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CHASE_STATEMENT_CREDIT
+    description: Chase Statement Credit is part of Other_Promotion_Alloc
+    db_column_name: CHASE_STATEMENT_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FMX
+    description: total_promo_credits_used by %
+    db_column_name: FMX
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_RETENTION
+    description: These are all credit redemptions which are classified under consumer retention program. GIFT_CODE_CREDIT + DELIVERY_GIFT_CREDIT + ACCOUNTING_CONSISTENCY_CREDIT + UPSELL_DELIVERY_DISCOUNT + MANUAL_CREDIT + OTHER_CREDIT
+    db_column_name: CONSUMER_RETENTION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OTHER_PROMOTIONS_BASE
+    description: PROMO_CODE_CREDIT - FMX
+    db_column_name: OTHER_PROMOTIONS_BASE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GIFT_CODE_CREDIT
+    description: the one consumers get by applying the gift codes we sent them
+    db_column_name: GIFT_CODE_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DELIVERY_GIFT_CREDIT
+    description: Delivery gift credit applied to order
+    db_column_name: DELIVERY_GIFT_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ACCOUNTING_CONSISTENCY_CREDIT
+    description: Accounting consistency credit applied to order
+    db_column_name: ACCOUNTING_CONSISTENCY_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: UPSELL_DELIVERY_DISCOUNT
+    description: Upsell Delivery Discount applied to order
+    db_column_name: UPSELL_DELIVERY_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MANUAL_CREDIT
+    description: "the one-time credit we add for various reasons like - new merchant, trial, etc"
+    db_column_name: MANUAL_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OTHER_CREDIT
+    description: the one consumers get when engineers run the script to add credits
+    db_column_name: OTHER_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRALS_REFEREE_ACTUAL
+    description: Referee portion of the referral cost. Source of information is Accounting
+    db_column_name: CONSUMER_REFERRALS_REFEREE_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRALS_REFEREE_FORECAST
+    description: Referee Portion of the Referral cost. Source of information is Finance Forecasting
+    db_column_name: CONSUMER_REFERRALS_REFEREE_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRALS_REFEREE
+    description: Referee portion of the referral cost. Referee is defined as a person who is being introduced to the platform
+    db_column_name: CONSUMER_REFERRALS_REFEREE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUBSCRIPTION_ALLOC
+    description: DashPass subscription fee is being allocated to the subscribers deliveries
+    db_column_name: SUBSCRIPTION_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_SERVICE_FEES_ALLOC_ACTUAL
+    description: See merchant_service_fees_alloc - actual numbers
+    db_column_name: MERCHANT_SERVICE_FEES_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_SERVICE_FEES_ALLOC_FORECAST
+    description: See merchant_service_fees_alloc - forecasted numbers
+    db_column_name: MERCHANT_SERVICE_FEES_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_SERVICE_FEES_ALLOC
+    description: Actuals of merchant tablet fees and other related fees + Accounting adjustment after hard close
+    db_column_name: MERCHANT_SERVICE_FEES_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GRAB_REVENUE_ALLOC
+    description: Allocated to all the deliveries. Source of information is Accounting
+    db_column_name: GRAB_REVENUE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FAST_PAY_FEES_ALLOC_ACTUAL
+    description: This is a component of Stripe fee being charged to DoorDash by Stripe whenever Dasher uses Fast Pay. Source of information is Accounting
+    db_column_name: FAST_PAY_FEES_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FAST_PAY_FEES_ALLOC_FORECAST
+    description: This is a component of Stripe fee being charged to DoorDash by Stripe whenever Dasher uses Fast Pay. Source of information is Finance Forecasting
+    db_column_name: FAST_PAY_FEES_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FAST_PAY_FEES_ALLOC
+    description: This is a component of Stripe fee being charged to DoorDash by Stripe whenever Dasher uses Fast Pay. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: FAST_PAY_FEES_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FAST_PAY_REVENUE_ALLOC_ACTUAL
+    description: $1.99 fast pay fee being charged to dasher for immediate money transfer. Source of information is Accounting
+    db_column_name: FAST_PAY_REVENUE_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FAST_PAY_REVENUE_ALLOC_FORECAST
+    description: $1.99 fast pay fee being charged to dasher for immediate money transfer. Source of information is Finance Forecasting
+    db_column_name: FAST_PAY_REVENUE_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FAST_PAY_REVENUE_ALLOC
+    description: $1.99 fast pay fee being charged to dasher for immediate money transfer. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: FAST_PAY_REVENUE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: AUTO_INSURANCE_ALLOC_ACTUAL
+    description: Auto insurance and occupational hazard insurance premium charged to DoorDash being allocated to non-pickup orders. Source of information is Accounting
+    db_column_name: AUTO_INSURANCE_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: AUTO_INSURANCE_ALLOC_FORECAST
+    description: Auto insurance and occupational hazard insurance premium charged to DoorDash being allocated to non-pickup orders. Source of information is Finance Forecasting
+    db_column_name: AUTO_INSURANCE_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: AUTO_INSURANCE_ALLOC
+    description: Auto insurance and occupational hazard insurance premium charged to DoorDash being allocated to non-pickup orders. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: AUTO_INSURANCE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ORDER_PLACEMENT_ALLOC_ACTUAL
+    description: For Non Partner orders an order placer will submit the order to the Merchant. Source of information is Accounting
+    db_column_name: ORDER_PLACEMENT_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ORDER_PLACEMENT_ALLOC_FORECAST
+    description: For Non Partner orders an order placer will submit the order to the Merchant. Source of information is Finance Forecasting
+    db_column_name: ORDER_PLACEMENT_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ORDER_PLACEMENT_ALLOC
+    description: For Non Partner orders an order placer will submit the order to the Merchant. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: ORDER_PLACEMENT_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CREDIT_ISSUANCE_ALLOC_ACTUAL
+    description: Credit issuance expense - would be net of credits being issued vs redemption. Source of information is Accounting
+    db_column_name: CREDIT_ISSUANCE_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CREDIT_ISSUANCE_ALLOC_FORECAST
+    description: Credit issuance expense - would be net of credits being issued vs redemption. Source of information is Finance Forecasting
+    db_column_name: CREDIT_ISSUANCE_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CREDIT_ISSUANCE_ALLOC
+    description: Credit issuance expense - would be net of credits being issued vs redemption. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: CREDIT_ISSUANCE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: UMBRELLA_INSURANCE_ALLOC_ACTUAL
+    description: Umbrella insurance premium charged to the DoorDash being allocated to orders. Source of information is Accounting
+    db_column_name: UMBRELLA_INSURANCE_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: UMBRELLA_INSURANCE_ALLOC_FORECAST
+    description: Umbrella insurance premium charged to the DoorDash being allocated to orders. Source of information is Finance Forecasting
+    db_column_name: UMBRELLA_INSURANCE_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: UMBRELLA_INSURANCE_ALLOC
+    description: Umbrella insurance premium charged to the DoorDash being allocated to orders. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: UMBRELLA_INSURANCE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: INTERNET_SERVERS_ALLOC_ACTUAL
+    description: All server cost (AWS etc.) are being allocated to orders. Source of information is Accounting
+    db_column_name: INTERNET_SERVERS_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: INTERNET_SERVERS_ALLOC_FORECAST
+    description: All server cost (AWS etc.) are being allocated to orders. Source of information is Finance Forecasting
+    db_column_name: INTERNET_SERVERS_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: INTERNET_SERVERS_ALLOC
+    description: All server cost (AWS etc.) are being allocated to orders. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: INTERNET_SERVERS_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_ONBOARDING_ALLOC_ACTUAL
+    description: Onboarding cost of the dasher. Source of information is Accounting
+    db_column_name: DASHER_ONBOARDING_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_ONBOARDING_ALLOC_FORECAST
+    description: Onboarding cost of the dasher. Source of information is Finance Forecasting
+    db_column_name: DASHER_ONBOARDING_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_ONBOARDING_ALLOC
+    description: Onboarding cost of the dasher. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: DASHER_ONBOARDING_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_PHOTOGRAPHY_ALLOC_ACTUAL
+    description: Merchant photography cost. Source of information is Accounting
+    db_column_name: MERCHANT_PHOTOGRAPHY_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_PHOTOGRAPHY_ALLOC_FORECAST
+    description: Merchant photography cost. Source of information is Finance Forecasting
+    db_column_name: MERCHANT_PHOTOGRAPHY_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_PHOTOGRAPHY_ALLOC
+    description: Merchant photography cost. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: MERCHANT_PHOTOGRAPHY_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_MENU_COST_ALLOC_ACTUAL
+    description: Merchant menu related expenses. Source of information is Accounting minus the photo incentive payment
+    db_column_name: MERCHANT_MENU_COST_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_MENU_COST_ALLOC_FORECAST
+    description: Merchant menu related expenses. Source of information is Finance Forecasting
+    db_column_name: MERCHANT_MENU_COST_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_MENU_COST_ALLOC
+    description: Merchant menu related expenses. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: MERCHANT_MENU_COST_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_TECHNOLOGY_ALLOC_ACTUAL
+    description: Merchant technology related expenses. Source of information is Accounting
+    db_column_name: MERCHANT_TECHNOLOGY_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_TECHNOLOGY_ALLOC_FORECAST
+    description: Merchant technology related expenses. Source of information is Finance Forecasting
+    db_column_name: MERCHANT_TECHNOLOGY_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_TECHNOLOGY_ALLOC
+    description: Merchant technology related expenses. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: MERCHANT_TECHNOLOGY_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_ADVERTISING_ALLOC_ACTUAL
+    description: Advertising cost for merchant. Source of information is Accounting
+    db_column_name: MERCHANT_ADVERTISING_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_ADVERTISING_ALLOC_FORECAST
+    description: Advertising cost for merchant. Source of information is Finance Forecasting
+    db_column_name: MERCHANT_ADVERTISING_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_ADVERTISING_ALLOC
+    description: Advertising cost for merchant. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: MERCHANT_ADVERTISING_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_ADVERTISING_ALLOC_ACTUAL
+    description: Part of CAC. Consumer advertising expense. Source of information is Accounting
+    db_column_name: CONSUMER_ADVERTISING_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_ADVERTISING_ALLOC_FORECAST
+    description: Part of CAC. Consumer advertising expense. Source of information is Finance Forecasting
+    db_column_name: CONSUMER_ADVERTISING_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_ADVERTISING_ALLOC
+    description: Part of CAC. Consumer advertising expense. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: CONSUMER_ADVERTISING_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_AGENCY_FEES_ALLOC_ACTUAL
+    description: Part of CAC. Agency related cost for acquiring consumers. Source of information is Accounting
+    db_column_name: CONSUMER_AGENCY_FEES_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_AGENCY_FEES_ALLOC_FORECAST
+    description: Part of CAC. Agency related cost for acquiring consumers. Source of information is Finance Forecasting
+    db_column_name: CONSUMER_AGENCY_FEES_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_AGENCY_FEES_ALLOC
+    description: Part of CAC. Agency related cost for acquiring consumers. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: CONSUMER_AGENCY_FEES_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRER_ALLOC_ACTUAL
+    description: consumer_referrer_alloc_actual
+    db_column_name: CONSUMER_REFERRER_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRER_ALLOC_FORECAST
+    description: "Forecast. No longer needed, as redemption numbers are available on daily basis from order_cart_discount"
+    db_column_name: CONSUMER_REFERRER_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRER_ALLOC
+    description: Part of CAC. Referrer portion of consumer referral is part of CAC (referee cost is captured in Contra Revenue)
+    db_column_name: CONSUMER_REFERRER_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRINTING_ALLOC_ACTUAL
+    description: Part of CAC. Consumer printing related cost. Source of information is Accounting
+    db_column_name: PRINTING_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRINTING_ALLOC_FORECAST
+    description: Part of CAC. Consumer printing related cost. Source of information is Finance Forecasting
+    db_column_name: PRINTING_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRINTING_ALLOC
+    description: Part of CAC. Consumer printing related cost. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: PRINTING_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_ADVERTISING_ALLOC_ACTUAL
+    description: Part of DAC. Advertising cost for dasher. Source of information is Accounting
+    db_column_name: DASHER_ADVERTISING_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_ADVERTISING_ALLOC_FORECAST
+    description: Part of DAC. Advertising cost for dasher. Source of information is Finance Forecasting
+    db_column_name: DASHER_ADVERTISING_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_ADVERTISING_ALLOC
+    description: Part of DAC. Advertising cost for dasher. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: DASHER_ADVERTISING_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_AGENCY_FEES_ALLOC_ACTUAL
+    description: Part of DAC. Agency related cost of dasher acquisition. Source of information is Accounting
+    db_column_name: DASHER_AGENCY_FEES_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_AGENCY_FEES_ALLOC_FORECAST
+    description: Part of DAC. Agency related cost of dasher acquisition. Source of information is Finance Forecasting
+    db_column_name: DASHER_AGENCY_FEES_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_AGENCY_FEES_ALLOC
+    description: Part of DAC. Agency related cost of dasher acquisition. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: DASHER_AGENCY_FEES_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPLIES_TECHNOLOGY_ALLOC_ACTUAL
+    description: Dasher supplies and technology. Source of information is Accounting
+    db_column_name: SUPPLIES_TECHNOLOGY_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPLIES_TECHNOLOGY_ALLOC_FORECAST
+    description: Dasher supplies and technology. Source of information is Finance Forecasting
+    db_column_name: SUPPLIES_TECHNOLOGY_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPLIES_TECHNOLOGY_ALLOC
+    description: Dasher supplies and technology. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: SUPPLIES_TECHNOLOGY_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_MILESTONE_ALLOC_ACTUAL
+    description: Deprecated
+    db_column_name: DASHER_MILESTONE_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_MILESTONE_ALLOC_FORECAST
+    description: Deprecated
+    db_column_name: DASHER_MILESTONE_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_MILESTONE_ALLOC
+    description: "Only prior to Sept 2017 is dasher milestone is part of DAC. Currently, dasher milestone is under dasher incentive pay"
+    db_column_name: DASHER_MILESTONE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_REFERRALS_ALLOC_ACTUAL
+    description: "This is only the referee portion of the dasher referral, referrer portion of the dasher referral goes to DAC now. Source of information is Accounting"
+    db_column_name: DASHER_REFERRALS_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_REFERRALS_ALLOC_FORECAST
+    description: "This is only the referee portion of the dasher referral, referrer portion of the dasher referral goes to DAC now. Source of information is Finance Forecasting"
+    db_column_name: DASHER_REFERRALS_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_REFERRALS_ALLOC
+    description: "This is only the referee portion of the dasher referral, referrer portion of the dasher referral goes to DAC now. Source of information is Accounting when not available then Finance Forecasting"
+    db_column_name: DASHER_REFERRALS_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_REFERRALS_REFERRER_ALLOC_ACTUAL
+    description: "Part of DAC. Referrer portion goes to DAC, Referee portion goes to dasher cost (Contra Revenue). Source of information is Accounting"
+    db_column_name: DASHER_REFERRALS_REFERRER_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_REFERRALS_REFERRER_ALLOC_FORECAST
+    description: "Part of DAC. Referrer portion goes to DAC, Referee portion goes to dasher cost (Contra Revenue). Source of information is Finance Forecasting"
+    db_column_name: DASHER_REFERRALS_REFERRER_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_REFERRALS_REFERRER_ALLOC
+    description: "Part of DAC. Referrer portion goes to DAC, Referee portion goes to dasher cost (Contra Revenue). Source of information is Accounting when not available then Finance Forecasting"
+    db_column_name: DASHER_REFERRALS_REFERRER_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MAC_PAYROLL_ALLOC_ACTUAL
+    description: Merchant acquisition-related payroll expense. Source of information is Accounting
+    db_column_name: MAC_PAYROLL_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MAC_PAYROLL_ALLOC_FORECAST
+    description: Merchant acquisition-related payroll expense. Source of information is Finance Forecasting
+    db_column_name: MAC_PAYROLL_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MAC_PAYROLL_ALLOC
+    description: Merchant acquisition-related payroll expense. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: MAC_PAYROLL_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OTHER_EMPLOYEE_COSTS_ALLOC_ACTUAL
+    description: Merchant acquisition-related travel expenses. Source of information is Accounting
+    db_column_name: OTHER_EMPLOYEE_COSTS_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OTHER_EMPLOYEE_COSTS_ALLOC_FORECAST
+    description: Merchant acquisition-related travel expenses. Source of information is Finance Forecasting
+    db_column_name: OTHER_EMPLOYEE_COSTS_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OTHER_EMPLOYEE_COSTS_ALLOC
+    description: Merchant acquisition-related travel expenses. Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: OTHER_EMPLOYEE_COSTS_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_ROYALTIES_ALLOC_ACTUAL
+    description: Royalties for using the marqeta card (consider this as rewards of using credit card). Source of information is Accounting
+    db_column_name: MARQETA_ROYALTIES_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_ROYALTIES_ALLOC_FORECAST
+    description: Royalties for using the marqeta card (consider this as rewards of using credit card). Source of information is Finance Forecasting
+    db_column_name: MARQETA_ROYALTIES_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_ROYALTIES_ALLOC
+    description: Royalties for using the marqeta card (consider this as rewards of using credit card). Source of information is Accounting when not available then Finance Forecasting
+    db_column_name: MARQETA_ROYALTIES_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PAYMENT_PROCESSING_FEES_TT
+    description: Amount charged by the payment processor actual (Excluding accounting difference)
+    db_column_name: PAYMENT_PROCESSING_FEES_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PAYMENT_PROCESSING_FEES_AD
+    description: Amount charged by the payment processor accounting difference
+    db_column_name: PAYMENT_PROCESSING_FEES_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PAYMENT_PROCESSING_FEES_ALLOC_ACTUAL
+    description: Amount charged by the payment processor
+    db_column_name: PAYMENT_PROCESSING_FEES_ALLOC_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PAYMENT_PROCESSING_FEES_ALLOC_FORECAST
+    description: Amount charged by the payment processor forecasted
+    db_column_name: PAYMENT_PROCESSING_FEES_ALLOC_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PAYMENT_PROCESSING_FEES_ALLOC
+    description: Amount charged by the payment processor (Stripe). This occurs when a consumer places an order as well as when money is transferred to merchant or dasher
+    db_column_name: PAYMENT_PROCESSING_FEES_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_PAYROLL_TE_ALLOC
+    description: Support related payroll and travel expenses
+    db_column_name: SUPPORT_PAYROLL_TE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: KITCHEN_FEE_ACTUAL
+    description: DoorDash Kitchen Fee - applied to only DoorDash Kitchen orders
+    db_column_name: KITCHEN_FEE_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: KITCHEN_FEE_FORECAST
+    description: DoorDash Kitchen Fee forecasted amount
+    db_column_name: KITCHEN_FEE_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: KITCHEN_FEE
+    description: DoorDash Kitchen Fee - applied to only DoorDash Kitchen orders
+    db_column_name: KITCHEN_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_LEASE_ACTUAL
+    description: Cost of lease for DoorDash Kitchen - Actual
+    db_column_name: COST_OF_LEASE_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_LEASE_FORECAST
+    description: Cost of lease for DoorDash Kitchen - Forecast
+    db_column_name: COST_OF_LEASE_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_LEASE
+    description: Cost of lease for DoorDash Kitchen
+    db_column_name: COST_OF_LEASE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONTRACTOR_COST_ACTUAL
+    description: "Contractor wages, benefits & taxes for DD Kitchen and DD Essentials. Source of information is Accounting"
+    db_column_name: CONTRACTOR_COST_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONTRACTOR_COST_FORECAST
+    description: "Contractor wages, benefits & taxes for DD Kitchen and DD Essentials. Source of information is Finance Forecast"
+    db_column_name: CONTRACTOR_COST_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONTRACTOR_COST
+    description: "Contractor wages, benefits & taxes for DD Kitchen and DD Essentials. Source of information is Accounting when not available then Finance Forecasting."
+    db_column_name: CONTRACTOR_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_INVENTORY_ACTUAL
+    description: Cost of inventory for DoorDash Essentials - Actual
+    db_column_name: COST_OF_INVENTORY_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_INVENTORY_FORECAST
+    description: Cost of inventory for DoorDash Essentials - Forcast
+    db_column_name: COST_OF_INVENTORY_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_INVENTORY
+    description: Cost of inventory for DoorDash Essentials
+    db_column_name: COST_OF_INVENTORY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_GIFT_CARDS_ACTUAL
+    description: Cost of operating gift card - Actual
+    db_column_name: COST_OF_GIFT_CARDS_ACTUAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_GIFT_CARDS_FORECAST
+    description: Cost of operating gift card - Forecast
+    db_column_name: COST_OF_GIFT_CARDS_FORECAST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_GIFT_CARDS
+    description: Cost of operating gift card
+    db_column_name: COST_OF_GIFT_CARDS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DES_ALLOC
+    description: Dasher experience expense
+    db_column_name: DES_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_SUBSIDIES_ALLOC
+    description: Cost related to telehealth initiative for Dashers
+    db_column_name: DASHER_SUBSIDIES_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_MGMT_P_TE_ALLOC
+    description: Support management payroll and travel expense
+    db_column_name: SUPPORT_MGMT_P_TE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STRATEGY_OPS_P_TE_ALLOC
+    description: Strategy ops payroll and travel expense
+    db_column_name: STRATEGY_OPS_P_TE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_OPS_P_TE_ALLOC
+    description: Merchant ops payroll and travel expense
+    db_column_name: MERCHANT_OPS_P_TE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: LAUNCH_P_TE_ALLOC
+    description: deprecated
+    db_column_name: LAUNCH_P_TE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OPS_CONTRACTORS
+    description: ops_contractors
+    db_column_name: OPS_CONTRACTORS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OPS_PRINTING
+    description: ops_printing
+    db_column_name: OPS_PRINTING
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OPS_BUSINESS_EXPENSE
+    description: ops_business_expense
+    db_column_name: OPS_BUSINESS_EXPENSE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OPS_COMPUTER_SOFTWARE
+    description: Operation technology includes dasher related technology costs and other operation technology cost. Source of information is Accounting
+    db_column_name: OPS_COMPUTER_SOFTWARE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BRAND_MKT_P_TE_ALLOC
+    description: Brand marketing payroll and travel expense
+    db_column_name: BRAND_MKT_P_TE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GROWTH_MKT_P_TE_ALLOC
+    description: Growth marketing payroll and travel expense
+    db_column_name: GROWTH_MKT_P_TE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: AUTONOMY_OPS_P_TE
+    description: Autonomy ops payroll and travel expense
+    db_column_name: AUTONOMY_OPS_P_TE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: NEWVERTICALS_OPS_P_TE
+    description: New business payroll and travel expense
+    db_column_name: NEWVERTICALS_OPS_P_TE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BRAND_MARKETING_EXPENSE_ALLOC
+    description: Brand marketing expense
+    db_column_name: BRAND_MARKETING_EXPENSE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DDE_SUBTOTAL
+    description: DoorDash Essentials subtotal true to the transaction. Business IDs in restricted_static.dd_essentials
+    db_column_name: DDE_SUBTOTAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: EMPLOYEE_PERKS
+    description: employee_perks
+    db_column_name: EMPLOYEE_PERKS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OFFICE_EXPENSES
+    description: office_expenses
+    db_column_name: OFFICE_EXPENSES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARKETING_EMPLOYEE_PERKS
+    description: marketing_employee_perks
+    db_column_name: MARKETING_EMPLOYEE_PERKS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARKETING_LEGAL_EXPENSES
+    description: marketing_legal_expenses
+    db_column_name: MARKETING_LEGAL_EXPENSES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ALLOCATION_SM
+    description: allocation_sm
+    db_column_name: ALLOCATION_SM
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ALLOCATION_OPS
+    description: allocation_ops
+    db_column_name: ALLOCATION_OPS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SM_CONTRACTORS
+    description: sm_contractors
+    db_column_name: SM_CONTRACTORS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARKETING_BUSINESS_EXPENSE
+    description: marketing_business_expense
+    db_column_name: MARKETING_BUSINESS_EXPENSE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OTHER_MARKETING_TE
+    description: other_marketing_te
+    db_column_name: OTHER_MARKETING_TE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARKETING_PAYROLL_COMMISSION
+    description: marketing_payroll_commission
+    db_column_name: MARKETING_PAYROLL_COMMISSION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COMPUTER_SOFTWARE
+    description: computer_software
+    db_column_name: COMPUTER_SOFTWARE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PLATFORM_OPS_P_TE
+    description: Product ops payroll and travel expense
+    db_column_name: PLATFORM_OPS_P_TE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARKETING_OFFICE_EXPENSES
+    description: marketing_office_expenses
+    db_column_name: MARKETING_OFFICE_EXPENSES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_PROMO
+    description: This column logs DMF promotions
+    db_column_name: DRIVE_PROMO
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: INFLATION_AMOUNT
+    description: Populated only for active_date < 2017-01-01
+    db_column_name: INFLATION_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRALS_REFEREE_TT
+    description: True to transaction
+    db_column_name: CONSUMER_REFERRALS_REFEREE_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRALS_REFEREE_AD
+    description: Accounting difference
+    db_column_name: CONSUMER_REFERRALS_REFEREE_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRER_TT
+    description: True to transaction
+    db_column_name: CONSUMER_REFERRER_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REFERRER_AD
+    description: Accounting difference
+    db_column_name: CONSUMER_REFERRER_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_CANCELED_PAY_TT
+    description: "For the dasher jobs in (dasher-restocking-alcohol, dasher-store-closed, dasher-canceled-pay) the amount is account for the dasher cancelled pay. True to transaction"
+    db_column_name: DASHER_CANCELED_PAY_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_PAY_REDELIVERIES_TT
+    description: Dasher Base Pay and Dasher Pay Other for the dasher for the redelivery orders. True to transaction
+    db_column_name: DASHER_PAY_REDELIVERIES_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_CANCELED_PAY_AD
+    description: Accounting number for cancellation cost - (Dasher_Pay_redeliveries_TT + DASHER_CANCELED_PAY_TT). Accounting difference
+    db_column_name: DASHER_CANCELED_PAY_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_CANCELLATION_COST
+    description: DASHER_CANCELED_PAY_TT + DASHER_CANCELED_PAY_AD
+    db_column_name: DASHER_CANCELLATION_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_CANCELLATION_COST
+    description: Merchant_Cancellation_Cost_TT + Merchant_Cancellation_Cost_AD
+    db_column_name: MERCHANT_CANCELLATION_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_CANCELLATION_COST_AD
+    description: This number primarily includes - consumer cash in offset to Mx cancellation cost. Accounting numbers for merchant refund for cancellation - (Merchant_Cancellation_Cost_TT). Accounting difference
+    db_column_name: MERCHANT_CANCELLATION_COST_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_CANCELLATION_COST_TT
+    description: This includes - net amount that was refunded to merchant (CANCELLED_STORE_REFUND) due to cancellation & penalty that Cx pays for cancellation (CANCELLED_CX_CASH_IN)
+    db_column_name: MERCHANT_CANCELLATION_COST_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: LEGISLATIVE_FEE
+    description: "Legislative Fee line item. Hazard pay to dashers in Seattle, New Mexico Regulatory Response Fee"
+    db_column_name: LEGISLATIVE_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: IS_DDK
+    description: Deliveries with specific stores which are enrolled in DoorDash Kitchen
+    db_column_name: IS_DDK
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: IS_DDE
+    description: Deliveries with specific business which are enrolled in DoorDash Essentials
+    db_column_name: IS_DDE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: IS_COMPANIES
+    description: Deliveries with either DDFB or with corporate DashPass plan.
+    db_column_name: IS_COMPANIES
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: GOV
+    description: Total GOV of order
+    db_column_name: GOV
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONSUMER_REVENUE
+    description: Calculations in wiki
+    db_column_name: CONSUMER_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_REVENUE
+    description: Calculations in wiki
+    db_column_name: MERCHANT_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_REVENUE
+    description: Calculations in wiki
+    db_column_name: DRIVE_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OTHER_REVENUE
+    description: Calculations in wiki
+    db_column_name: OTHER_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GROSS_FEE
+    description: Cx Revenue + Mx Revenue + Drive Revenue + Other Revenue
+    db_column_name: GROSS_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_COST
+    description: Driver Pay (Base Pay + Incentive Pay + Other Pay) - Fast Pay Revenue + Dasher Referral
+    db_column_name: DASHER_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PLATFORM_FEE
+    description: Gross fees - Dasher Cost
+    db_column_name: PLATFORM_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REFUNDS_CREDITS
+    description: Gross Refund and Credits
+    db_column_name: REFUNDS_CREDITS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PROMOTIONS
+    description: Total Promotions
+    db_column_name: PROMOTIONS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: NET_REVENUE
+    description: Calculations in wiki
+    db_column_name: NET_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONTRA_REVENUE
+    description: Calculations in wiki
+    db_column_name: CONTRA_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TOTAL_PAYMENT_PROCESSING
+    description: Gross payment processing fees
+    db_column_name: TOTAL_PAYMENT_PROCESSING
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: INSURANCE
+    description: insurance cost
+    db_column_name: INSURANCE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COST_OF_SALES
+    description: Calculations in wiki
+    db_column_name: COST_OF_SALES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: VARIABLE_PROFIT
+    description: Calculations in wiki
+    db_column_name: VARIABLE_PROFIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ADJUSTED_OPS_COST
+    description: Calculations in wiki
+    db_column_name: ADJUSTED_OPS_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CAC
+    description: Customer acquisition cost
+    db_column_name: CAC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DAC
+    description: Dasher acquisition cost
+    db_column_name: DAC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MAC
+    description: Merchant acquisition cost
+    db_column_name: MAC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ADJUSTED_OTHER_SM
+    description: Adjusted other sales and marketing
+    db_column_name: ADJUSTED_OTHER_SM
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ADJUSTED_SM
+    description: Calculations in wiki
+    db_column_name: ADJUSTED_SM
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CONTRIBUTION_PROFIT
+    description: Calculations in wiki
+    db_column_name: CONTRIBUTION_PROFIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_OPERATIONAL_ERROR
+    description: Overcharge is booked as reduction to operational error and promotion cost
+    db_column_name: MARQETA_OPERATIONAL_ERROR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MP_POST_DELIVERY_TIP_AMOUNT
+    description: Marketplace post delivery tip amount
+    db_column_name: MP_POST_DELIVERY_TIP_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_PAYMENT_REFUND_CATCHALL
+    description: Store Bulk Payment for Refunds - Catch all
+    db_column_name: STORE_PAYMENT_REFUND_CATCHALL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUBTOTAL_ADJUSTED
+    description: "Reduction of Marqeta overcharge (MARQETA_OVERCHARGE_SUBTOTAL_REDUCTION), reduction of DoorDash dssential subtotal (as they are counted as revenue), addition of delivery fee and small order fee for DemandGen (as DoorDash passes through this to merchant)"
+    db_column_name: SUBTOTAL_ADJUSTED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TAX_AMOUNT_ADJUSTED
+    description: "Reduction of Marqeta overcharge (MARQETA_OVERCHARGE_TAX_REDUCTION), adding fees tax, pass-through fees"
+    db_column_name: TAX_AMOUNT_ADJUSTED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SERVICE_AMOUNT_ADJUSTED
+    description: "Service fee amount for the delivery minus refund, when a store is on auto refund, if an item cost less than displayed on the app we will refund the customer which means service fee, a percentage of subtotal, will change"
+    db_column_name: SERVICE_AMOUNT_ADJUSTED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_COMMISSION_WRITE_OFF
+    description: In the event of non partner Mx which are on the redcard. If they have commission showing up then that would be write off and is currently being reduced from commission column already
+    db_column_name: MARQETA_COMMISSION_WRITE_OFF
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_OVERCHARGE_SUBTOTAL_REDUCTION
+    description: "Marqeta overcharge reduction is applied in the event of consumer refund issued due to non partner merchant menu pricing error. Reduction reflects proportional change to subtotal, tax and service fee from the Cx refund"
+    db_column_name: MARQETA_OVERCHARGE_SUBTOTAL_REDUCTION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_OVERCHARGE_TAX_REDUCTION
+    description: "Marqeta overcharge reduction is applied in the event of consumer refund issued due to non partner merchant menu pricing error. Reduction reflects proportional change to subtotal, tax and service fee from the Cx refund"
+    db_column_name: MARQETA_OVERCHARGE_TAX_REDUCTION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_OVERCHARGE_SERVICE_FEE_REDUCTION
+    description: "Marqeta overcharge reduction is applied in the event of consumer refund issued due to non partner merchant menu pricing error. Reduction reflects proportional change to subtotal, tax and service fee from the Cx refund"
+    db_column_name: MARQETA_OVERCHARGE_SERVICE_FEE_REDUCTION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_CX_UNDER_CHARGED
+    description: Amount the Cx was undercharged due to to operational error and promotion cost
+    db_column_name: MARQETA_CX_UNDER_CHARGED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_CX_OVER_CHARGED
+    description: Amount the Cx was overcharged due to to operational error and promotion cost
+    db_column_name: MARQETA_CX_OVER_CHARGED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARKETPLACE_TIP_AMOUNT
+    description: Tip for orders placed through the marketplace
+    db_column_name: MARKETPLACE_TIP_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARKETPLACE_TAX_AMOUNT_ADJUSTED
+    description: Tax amount for orders placed through the marketplace
+    db_column_name: MARKETPLACE_TAX_AMOUNT_ADJUSTED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CANCELLED_CX_CASH_IN
+    description: "For cancelled order, if consumer was not refunded back the full amount, that residual amount/penalty to Cx for cancellation will show up here"
+    db_column_name: CANCELLED_CX_CASH_IN
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REVENUE_RESERVE
+    description: Unpaid revenue from Mx for drive invoices reserved it in revenue reserve
+    db_column_name: REVENUE_RESERVE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MIDDLEWARE_PROVIDER_FEE
+    description: Part of merchant technology moved it up to this column
+    db_column_name: MIDDLEWARE_PROVIDER_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_FEE_TT
+    description: Drive Fee True to Transaction
+    db_column_name: DRIVE_FEE_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_PROMO_TT
+    description: Drive Promo True to Transaction
+    db_column_name: DRIVE_PROMO_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_STORE_CHARGE_DT
+    description: Drive Store Charge for delivery for invocing drive transaction
+    db_column_name: DRIVE_STORE_CHARGE_DT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_STORE_REFUND_DT
+    description: Drive Store Refund for delivery for invocing drive transaction
+    db_column_name: DRIVE_STORE_REFUND_DT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_PROVIDER_FEE_DT
+    description: Drive Provider Fee for delivery for invocing drive transaction
+    db_column_name: DRIVE_PROVIDER_FEE_DT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_PAYMENT_TO_CUSTOMERS_DT
+    description: Drive Payment to Customers for delivery for invocing drive transaction
+    db_column_name: DRIVE_PAYMENT_TO_CUSTOMERS_DT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STOREFRONT_MERCHANT_FEE
+    description: Merchant fee for Storefront orders. This is equal to STOREFRONT_PAYMENT_FEE + STOREFRONT_MERCHANT_DELIVERY_FEE
+    db_column_name: STOREFRONT_MERCHANT_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ADS_STRATEGY_OPS_P_TE
+    description: Payroll and Travel Expense for Ads & Promotions Strategy Cost Center
+    db_column_name: ADS_STRATEGY_OPS_P_TE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DEMANDGEN_SUBSCRIPTION_DELIVERY_FEE_DISCOUNT
+    description: Subscription discount that we pay to merchant for Demandgen deliveries
+    db_column_name: DEMANDGEN_SUBSCRIPTION_DELIVERY_FEE_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STOREFRONT_PAYMENT_FEE
+    description: Total payment processing fee for Storefront orders
+    db_column_name: STOREFRONT_PAYMENT_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STOREFRONT_MERCHANT_DELIVERY_FEE
+    description: Total merchant delivery fee for Storefront orders
+    db_column_name: STOREFRONT_MERCHANT_DELIVERY_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STOREFRONT_PAYMENT_VARIABLE_RATE
+    description: Payment processing fee rate for Storefront orders
+    db_column_name: STOREFRONT_PAYMENT_VARIABLE_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STOREFRONT_PAYMENT_FIXED_FEE
+    description: Payment processing fixed fee for Storefront orders
+    db_column_name: STOREFRONT_PAYMENT_FIXED_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_COST_MTO
+    description: Maunal adjustment to support cost
+    db_column_name: SUPPORT_COST_MTO
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_COST_MTO_AD
+    description: Manual adjustment to support cost accounting difference
+    db_column_name: SUPPORT_COST_MTO_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUBSIDIARY
+    description: subsidiary Name
+    db_column_name: SUBSIDIARY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PROMOTION_CATCH_ALL
+    description: Promotions not falling in any bucket through order_cart_discount table is categorized as catch_all
+    db_column_name: PROMOTION_CATCH_ALL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ORDER_CART_ID
+    description: Even if an order does not go through it will have an order cart ID in the order cart table. Group orders will have the same order cart ID
+    db_column_name: ORDER_CART_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STORE_ORDER_CART_ID
+    description: store_order_cart_id
+    db_column_name: STORE_ORDER_CART_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_FROM_STORE_TO_US
+    description: This marks a DoorDash drive delivery and also online ordering
+    db_column_name: IS_FROM_STORE_TO_US
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: COUNTRY_ID
+    description: Country ID. country_id = 1 gives the US
+    db_column_name: COUNTRY_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DRIVE_MAAS_ADVERTISING
+    description: Advertising cost for Drive Support as a Service
+    db_column_name: DRIVE_MAAS_ADVERTISING
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_MAAS_MANAGEMENT_FEES
+    description: Management fee that DoorDash pays for Drive MaaS Advertising
+    db_column_name: DRIVE_MAAS_MANAGEMENT_FEES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MX_UNPAID_LIABLITY
+    description: Merchant liability cost
+    db_column_name: MX_UNPAID_LIABLITY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OPS_SEVERANCE
+    description: Severance cost for Ops & Support Cost Centers
+    db_column_name: OPS_SEVERANCE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARKETING_SEVERANCE
+    description: Severance cost for Sales & Marketing Cost Centers
+    db_column_name: MARKETING_SEVERANCE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STOREFRONT_GOV
+    description: "GOV of Storefront orders. This includes SUBTOTAL_ADJUSTED, TAX_AMOUNT_ADJUSTED, DELIVERY_FEE, SERVICE_FEE, SMALL_ORDER_FEE, TIP, STOREFRONT_PRE_ORDER_MERCHANT_TIP"
+    db_column_name: STOREFRONT_GOV
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REFUND_AD
+    description: Refund difference with Netsuite refund and database refund columns
+    db_column_name: REFUND_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CANCELLED_STORE_REFUND_AD
+    description: payout to the store for cancelled orders accounting difference
+    db_column_name: CANCELLED_STORE_REFUND_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: RESURRECTED_FMX
+    description: fmx from after 40 days from first order
+    db_column_name: RESURRECTED_FMX
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_SAAS_FEE_TT
+    description: Drive support fee allocated to merchants based on the business ID
+    db_column_name: DRIVE_SAAS_FEE_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_SAAS_FEE_AD
+    description: Support fee difference from accounting and database allocated to drive deliveries
+    db_column_name: DRIVE_SAAS_FEE_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_SAAS_FEE_ALLOC
+    description: Support fee includes both true to transaction and difference allocation. DRIVE_SAAS_FEE_TT + DRIVE_SAAS_FEE_AD
+    db_column_name: DRIVE_SAAS_FEE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUBSCRIPTION_AD
+    description: Subscription fee accounting difference
+    db_column_name: SUBSCRIPTION_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_TIP
+    description: Merchant tip made for pre orders
+    db_column_name: MERCHANT_TIP
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_REGULATORY_FEE
+    description: PROP 22 Drive order regulatory fee
+    db_column_name: DASHER_REGULATORY_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_MIN_WAGE_PAY
+    description: "PROP 22 Minimum wage pay for California dashers, which is included in DASHER_CATCH_ALL"
+    db_column_name: DASHER_MIN_WAGE_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BUNDLES_PRICING_DISCOUNT
+    description: Delivery fee and small order fee discount for Bundles orders
+    db_column_name: BUNDLES_PRICING_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVER_PAY_AD
+    description: Dasher cost adjustment
+    db_column_name: DRIVER_PAY_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_AD
+    description: Support cost accounting adjustment
+    db_column_name: SUPPORT_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRE_ORDER_MERCHANT_TIP_AMOUNT
+    description: Merchant tips from Pickup orders
+    db_column_name: PRE_ORDER_MERCHANT_TIP_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DDE_SUBTOTAL_AD
+    description: DDE_Subtotal difference with accounting and database
+    db_column_name: DDE_SUBTOTAL_AD
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DDE_SUBTOTAL_ALLOC
+    description: Includes both DDE_Subtotal and DDK_Subtotal (Licensing Stores) true to transaction and difference with NetSuite
+    db_column_name: DDE_SUBTOTAL_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MACHINE_REVENUE_ALLOC
+    description: Chowbotics Machine revenue allocated to the marketplace
+    db_column_name: MACHINE_REVENUE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: IS_PRE_FUSION_ORDERS
+    description: Flag to identify order from caviar before the acquisition/data migration
+    db_column_name: IS_PRE_FUSION_ORDERS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: DD_PRE_TIP_CONTRIBUTION
+    description: DoorDash pre tip contribution for Walmart orders
+    db_column_name: DD_PRE_TIP_CONTRIBUTION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OCCUPATIONAL_HAZARD_INSURANCE
+    description: Hazard insurance for DD non-pickup deliveries
+    db_column_name: OCCUPATIONAL_HAZARD_INSURANCE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_SAAS_SUPPORT
+    description: Support cost from the Drive Mx
+    db_column_name: DRIVE_SAAS_SUPPORT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STOREFRONT_PRE_ORDER_MERCHANT_TIP_AMOUNT
+    description: Storefront pre order merchant tip amount
+    db_column_name: STOREFRONT_PRE_ORDER_MERCHANT_TIP_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: INTERCHANGE_REBATE
+    description: interchange fee rebate
+    db_column_name: INTERCHANGE_REBATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHPASS_MARKETING_FUND_COMMISSION
+    description: 2% DashPass marketing fund commission for KFC/Taco Bell
+    db_column_name: DASHPASS_MARKETING_FUND_COMMISSION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ACTIVE_DATE_UTC
+    description: Active date utc of the delivery
+    db_column_name: ACTIVE_DATE_UTC
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: AUTO_INV_CNG_COMMISSION
+    description: Convenience & grocery auto invoicing commission
+    db_column_name: AUTO_INV_CNG_COMMISSION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DDE_CONTRACTOR_ORDER_FULFILLMENT_COST
+    description: DDE order fulfillment contractors cost
+    db_column_name: DDE_CONTRACTOR_ORDER_FULFILLMENT_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DDE_CONTRACTOR_ORDER_LABOR_COST
+    description: DDE order fulfillment labor cost
+    db_column_name: DDE_CONTRACTOR_ORDER_LABOR_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BUNDLE_FEE
+    description: Flat fee for bundle orders
+    db_column_name: BUNDLE_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MANUAL_CNG_COMMISSION
+    description: manual commission amount when normal channels not available
+    db_column_name: MANUAL_CNG_COMMISSION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: IS_EMPLOYEE_MEAL
+    description: DoorDash DDfB Order
+    db_column_name: IS_EMPLOYEE_MEAL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: BRAND_LICENSING_FEE
+    description: Licensing fee
+    db_column_name: BRAND_LICENSING_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COURIER_HOURLY_PAY
+    description: Courier pay from the Dasher jobs
+    db_column_name: COURIER_HOURLY_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GIFT_CARD_REVENUE
+    description: Unused gift card value not utilized over the period
+    db_column_name: GIFT_CARD_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DDFW_INTERNAL_BENEFITS
+    description: Employee meals benefits
+    db_column_name: DDFW_INTERNAL_BENEFITS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: RETAILER_INFLATION
+    description: Inflation amount for Tax Retailer GL 4125
+    db_column_name: RETAILER_INFLATION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TOTAL_CPA_FEE
+    description: Total cost per acquisition
+    db_column_name: TOTAL_CPA_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SUPPORT_TT
+    description: Support cost true to transaction
+    db_column_name: SUPPORT_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_HEALTHCARE
+    description: Dasher healthcare cost
+    db_column_name: DASHER_HEALTHCARE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SELF_DELIVERY_FULLFILLMENT_FEE
+    description: flexible fulfillment flat fee
+    db_column_name: SELF_DELIVERY_FULLFILLMENT_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_DASHFORCE_PAY
+    description: Dasher Dashforce pay
+    db_column_name: DASHER_DASHFORCE_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TOTAL_COURIER_PAY
+    description: Germany Courier pay + JNT Fees. This also includes task pay.
+    db_column_name: TOTAL_COURIER_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GENERIC_FEE_TOTAL
+    description: Generic Fee Total (included bag and cup fees)
+    db_column_name: GENERIC_FEE_TOTAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GENERIC_FEE_BAG
+    description: Bag fee
+    db_column_name: GENERIC_FEE_BAG
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GENERIC_FEE_CUP
+    description: Cup fee
+    db_column_name: GENERIC_FEE_CUP
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: INKIND_DONATION_DASHER_PAY
+    description: Inkind donation dasher pay
+    db_column_name: INKIND_DONATION_DASHER_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PAYMENT_REVENUE
+    description: "VISA incentives, revenue share on Dasher Cards and credit card rewards cost"
+    db_column_name: PAYMENT_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_AD_FEE
+    description: Store Advertising Fee
+    db_column_name: STORE_AD_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: USER_ID
+    description: User Identifer
+    db_column_name: USER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SUBTOTAL_ORDER_RECEIVED
+    description: Subtotal at the time when customer ordered on the platform. Often referred to Original Subtotal as well
+    db_column_name: SUBTOTAL_ORDER_RECEIVED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_AD_FREE_TRIAL_FEE
+    description: store_ad_free_trial_fee
+    db_column_name: STORE_AD_FREE_TRIAL_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OPS_COMPUTER_SOFTWARE_BASE_NEW_VERTICALS_ALLOC
+    description: ops_computer_software_base_new_verticals_alloc
+    db_column_name: OPS_COMPUTER_SOFTWARE_BASE_NEW_VERTICALS_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: NEWVERTICALS_OPS_P_TE_NEW_VERTICALS_ALLOC
+    description: newverticals_ops_p_te_new_verticals_alloc
+    db_column_name: NEWVERTICALS_OPS_P_TE_NEW_VERTICALS_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OPS_CONTRACTORS_NEW_VERTICALS_ALLOC
+    description: ops_contractors_new_verticals_alloc
+    db_column_name: OPS_CONTRACTORS_NEW_VERTICALS_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OPS_BUSINESS_EXPENSE_NEW_VERTICALS_ALLOC
+    description: ops_business_expense_new_verticals_alloc
+    db_column_name: OPS_BUSINESS_EXPENSE_NEW_VERTICALS_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_MENU_COST_NEW_VERTICALS_ALLOC
+    description: merchant_menu_cost_new_verticals_alloc
+    db_column_name: MERCHANT_MENU_COST_NEW_VERTICALS_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OPS_TECH
+    description: ops_tech
+    db_column_name: OPS_TECH
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_PPE
+    description: Dasher PPE
+    db_column_name: DASHER_PPE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DDK_SUBTOTAL
+    description: DoorDash Kitchen Subtotal
+    db_column_name: DDK_SUBTOTAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRIORITY_FEE
+    description: Fee being charged to consumer for expedited delivery. Already included in delivery fee
+    db_column_name: PRIORITY_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BUSINESS_VERTICAL_ID
+    description: Business Vertical ID associatd with the delivery
+    db_column_name: BUSINESS_VERTICAL_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SALES_OPEX
+    description: "Employee perks, contractor cost, office expenses, computer software, legal expense, and business expenses for Sales (MAC) cost centers"
+    db_column_name: SALES_OPEX
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARKETING_OPEX
+    description: "Employee perks, contractor cost, office expenses, computer software, legal expense, and business expenses for Marketing cost centers"
+    db_column_name: MARKETING_OPEX
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ALLOCATION_SALES
+    description: "MAC cost-center payroll, emp perks, and office expenses allocation for GL 7699, 7599, 7399"
+    db_column_name: ALLOCATION_SALES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ALLOCATION_MARKETING
+    description: "Marketing cost-center payroll, emp perks, and office expenses allocation for GL 7699, 7599, 7399"
+    db_column_name: ALLOCATION_MARKETING
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SHIPPING_COSTS
+    description: Shipping costs GL 5072
+    db_column_name: SHIPPING_COSTS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PROMOTION_CREDIT
+    description: Credit applied to the order from a promotion
+    db_column_name: PROMOTION_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PROMOTION_FEE_MANUAL_INVOICE
+    description: Promotion fee for manual invoice
+    db_column_name: PROMOTION_FEE_MANUAL_INVOICE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BAG_FEE_TAX_AMOUNT
+    description: Tax of bag fee
+    db_column_name: BAG_FEE_TAX_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CUP_FEE_TAX_AMOUNT
+    description: Tax of cup fee
+    db_column_name: CUP_FEE_TAX_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_PAYMENT_CANCEL
+    description: Store Bulk Payment for Cancellations
+    db_column_name: STORE_PAYMENT_CANCEL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ALLOCATED_STORE_CANCEL
+    description: Allocated Store Bulk Payment for Cancellations for the store
+    db_column_name: ALLOCATED_STORE_CANCEL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BOTTLE_DEPOSIT_FEE_TAX_AMOUNT
+    description: Tax of bottle deposit fee
+    db_column_name: BOTTLE_DEPOSIT_FEE_TAX_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: RETAIL_DELIVERY_FEE_TAX_AMOUNT
+    description: Tax of retail delivery fee
+    db_column_name: RETAIL_DELIVERY_FEE_TAX_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BOTTLE_DEPOSIT_FEE
+    description: "Canada bottle deposit fee. Collecting from Cx, Remitting to Mx. Net zero impact to DD"
+    db_column_name: BOTTLE_DEPOSIT_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: RETAIL_DELIVERY_FEE
+    description: Colorado retail delivery fee for all deliveries by motor vehicle
+    db_column_name: RETAIL_DELIVERY_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TOTAL_ADS_PROMO_FEE
+    description: Total ads + promo fees
+    db_column_name: TOTAL_ADS_PROMO_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CPG_TOTAL_ADS_PROMO_FEE
+    description: CPG portion of the total ads + promo fees
+    db_column_name: CPG_TOTAL_ADS_PROMO_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BUSINESS_UNIT_FINANCE
+    description: Finance Business Unit Classification
+    db_column_name: BUSINESS_UNIT_FINANCE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: COMMISSION_LOCAL
+    description: Commission in Local currency
+    db_column_name: COMMISSION_LOCAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DELIVERY_FEE_NO_DSCNT_LOCAL
+    description: Gross delivery fee in Local currency
+    db_column_name: DELIVERY_FEE_NO_DSCNT_LOCAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: FEES_TAX_AMOUNT_LOCAL
+    description: Fee Tax amount in Local currency
+    db_column_name: FEES_TAX_AMOUNT_LOCAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_MARKETING_FEE_LOCAL
+    description: Merchant Marketing Fee in Local currency
+    db_column_name: MERCHANT_MARKETING_FEE_LOCAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GMV_DRIVE_ADJUSTMENT_LOCAL
+    description: GMV Drive Adjustment in Local currency
+    db_column_name: GMV_DRIVE_ADJUSTMENT_LOCAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SMALL_ORDER_FEE_LOCAL
+    description: Small Order Fee in Local currency
+    db_column_name: SMALL_ORDER_FEE_LOCAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DRIVE_FEE_LOCAL
+    description: Drive Fee in Local currency
+    db_column_name: DRIVE_FEE_LOCAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: RETURN_DASHER_BASE_PAY
+    description: Dasher base pay for return deliveries
+    db_column_name: RETURN_DASHER_BASE_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: RETURN_DASHER_OTHER
+    description: Dasher Other Pay for return deliveries
+    db_column_name: RETURN_DASHER_OTHER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: IS_RX
+    description: A flag to identify order from Rx or Non-Rx merchant
+    db_column_name: IS_RX
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: EXPAND_RANGE_FEE
+    description: Extra fee for a delivery with long distance
+    db_column_name: EXPAND_RANGE_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: EXPAND_RANGE_FEE_TAX_AMOUNT
+    description: Tax amount of expand range fee
+    db_column_name: EXPAND_RANGE_FEE_TAX_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: VOICE_FEE
+    description: Voice orders fee
+    db_column_name: VOICE_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: VOICE_PAYMENT_PROCESSING_FEE
+    description: Voice orders payment processing fee
+    db_column_name: VOICE_PAYMENT_PROCESSING_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: EXPRESS_PAY
+    description: Express pay amount (for express delivery orders)
+    db_column_name: EXPRESS_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_OPERATIONAL_ERROR_ALLOC
+    description: Marqeta Operational Error allocated field (Walgreens MOE payment allocated to only Walgreens deliveries)
+    db_column_name: MARQETA_OPERATIONAL_ERROR_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GROSS_DELIVERY_FEE_ALLOC
+    description: "Gross Delivery fee column (before subscription discount) which also includes expand range fee, priority fee and dasher equity fee"
+    db_column_name: GROSS_DELIVERY_FEE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STREAK_PAY
+    description: Streak Bonus Pay in USD
+    db_column_name: STREAK_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: LOYALTY_DISCOUNT
+    description: Storefront Mx Loyalty Discount which is added to Merchant Marketing Fee and Merchant Promotion
+    db_column_name: LOYALTY_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: EXTERNAL_GIFT_CARD_CREDIT
+    description: Storefront Mx Gift Card Credit which is added to Merchant Marketing Fee and Merchant Promotion
+    db_column_name: EXTERNAL_GIFT_CARD_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: VOICE_CASH_FEE
+    description: A charge to the Mx for each cash on voice delivery placed
+    db_column_name: VOICE_CASH_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: NEARBY_SERVICE_FEE_DISCOUNT
+    description: Service fee discount from Nearby product
+    db_column_name: NEARBY_SERVICE_FEE_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: NEARBY_DELIVERY_FEE_DISCOUNT
+    description: Delivery fee discount from Nearby product
+    db_column_name: NEARBY_DELIVERY_FEE_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_EQUITY_FEE
+    description: Dasher equity fee. Included in Delivery fee
+    db_column_name: DASHER_EQUITY_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SERVICE_FEE_RANGE_CAPPED_DISCOUNT
+    description: Service Fee Range Capped Discount
+    db_column_name: SERVICE_FEE_RANGE_CAPPED_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: VOICE_REVENUE_ALLOC
+    description: voice revenue allocated for voice deliveries
+    db_column_name: VOICE_REVENUE_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPER_SAVE_SERVICE_FEE_DISCOUNT
+    description: Super Save Service
+    db_column_name: SUPER_SAVE_SERVICE_FEE_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SUPER_SAVE_DELIVERY_FEE_DISCOUNT
+    description: Delivery Fee Discounts
+    db_column_name: SUPER_SAVE_DELIVERY_FEE_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: POST_CANCEL_PRIORITY_FEE_PROMOTION
+    description: post cancellation priority fee promotion
+    db_column_name: POST_CANCEL_PRIORITY_FEE_PROMOTION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: WELCOME_BACK_DISCOUNT
+    description: Welcome Back Discount
+    db_column_name: WELCOME_BACK_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CLAIMED_ALCOHOL_REVENUE
+    description: claimed alcohol revenue for return deliveries
+    db_column_name: CLAIMED_ALCOHOL_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: VOICE_DELIVERY_ORDER_FEE
+    description: Voice Product MX Delivery Order Fee
+    db_column_name: VOICE_DELIVERY_ORDER_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CROSS_SHOPPING_DELIVERY_FEE_DISCOUNT
+    description: Cross Shopping Delivery Fee Discount
+    db_column_name: CROSS_SHOPPING_DELIVERY_FEE_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FULFILLMENT_TYPE
+    description: Dasher or consumer_pickup or merchant_fleet
+    db_column_name: FULFILLMENT_TYPE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CANCELLED_AT
+    description: When the order was cancelled
+    db_column_name: CANCELLED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: WAG_MMF
+    description: Walgreens merchant marketing fee for the reduced delivery fee
+    db_column_name: WAG_MMF
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRIORITY_FEE_SUBSCRIPTION_DISCOUNT
+    description: Priority Fee Subscription Discount
+    db_column_name: PRIORITY_FEE_SUBSCRIPTION_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: NON_WORKING_MEDIA
+    description: Brand Marketing expense for non_working_media
+    db_column_name: NON_WORKING_MEDIA
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PGP_COST
+    description: "Payment Gateway payment fee for stripe, braintree, paypal, jpm etc."
+    db_column_name: PGP_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: BAG_AND_CUP_FEE_REVENUE
+    description: Bag and cup revenue for DashMart
+    db_column_name: BAG_AND_CUP_FEE_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MISSING_TIP
+    description: Missing tip from fact dasher delivery pay
+    db_column_name: MISSING_TIP
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: AD_FEES_CREDIT
+    description: Ad Fee Credits issued to merchants in International Markets participating in Free Trial ad campaigns
+    db_column_name: AD_FEES_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ADS_CPM_AMOUNT
+    description: Ad Fee Credits issued to merchants in International Markets participating in Free Trial ad campaigns
+    db_column_name: ADS_CPM_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ADS_CPC_AMOUNT
+    description: Ad Fee Credits issued to merchants in International Markets participating in Free Trial ad campaigns
+    db_column_name: ADS_CPC_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ADS_FLAT_FEE_AMOUNT
+    description: Ad Fee Credits issued to merchants in International Markets participating in Free Trial ad campaigns
+    db_column_name: ADS_FLAT_FEE_AMOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: ADVERTISING_REVENUE
+    description: Ad Fee Credits issued to merchants in International Markets participating in Free Trial ad campaigns
+    db_column_name: ADVERTISING_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MX_SELECTION_INVESTMENT
+    description: Grocery Mx revenue guarantees and sign-on bonuses
+    db_column_name: MX_SELECTION_INVESTMENT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: VARIABLE_PROFIT_EX_MX_SELECTION_INVESTMENT
+    description: Variable profit excluding grocery Mx revenue guarantees and sign-on bonuses
+    db_column_name: VARIABLE_PROFIT_EX_MX_SELECTION_INVESTMENT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: NET_REVENUE_EX_MX_SELECTION_INVESTMENT
+    description: Net revenue excluding grocery Mx revenue guarantees and sign-on bonuses
+    db_column_name: NET_REVENUE_EX_MX_SELECTION_INVESTMENT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_COMPLIANCE_PAY
+    description: Dasher compliance pay for deliveries in USD
+    db_column_name: DASHER_COMPLIANCE_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CPG_PROMO_DISCOUNT
+    description: CPG promotion discount
+    db_column_name: CPG_PROMO_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DDFW_EXPENSED_MEAL_PROMO
+    description: Doordash for Work Expensed Meal Promo
+    db_column_name: DDFW_EXPENSED_MEAL_PROMO
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DDFC_EXPENSED_MEAL_PROMO
+    description: Doordash for College Expensed Meal Promo
+    db_column_name: DDFC_EXPENSED_MEAL_PROMO
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PAYMENT_TO_MX
+    description: "Accounting Adjustment, This includes any type of adhoc payments to consumer or merchant (Non-mx excluded). This is a part of Payment to Customer"
+    db_column_name: PAYMENT_TO_MX
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PAYMENT_TO_NONMX
+    description: "Accounting Adjustment, This includes any type of adhoc payments to Non-mx only. This is a part of Payment to Customer"
+    db_column_name: PAYMENT_TO_NONMX
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUPPORT_CREDIT_REDEEMED
+    description: Support credits redeemed for a delivery
+    db_column_name: SUPPORT_CREDIT_REDEEMED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUBTOTAL_ADJUSTED_ALLOC
+    description: Subtotal adjusted includes both true to transaction and difference allocation
+    db_column_name: SUBTOTAL_ADJUSTED_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TAX_AMOUNT_ADJUSTED_ALLOC
+    description: Tax adjusted includes both true to transaction and difference allocation
+    db_column_name: TAX_AMOUNT_ADJUSTED_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TIP_ALLOC
+    description: Tip alloc includes both true to transaction and difference allocation
+    db_column_name: TIP_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GOV_ALLOC
+    description: GOV alloc includes both true to transaction and difference allocation for subtotal tax and tip
+    db_column_name: GOV_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: GMV_DRIVE_ADJUSTMENT_ALLOC
+    description: GMV Drive Adjustment alloc includes both true to transaction and difference allocation for the GMV drive adjustment
+    db_column_name: GMV_DRIVE_ADJUSTMENT_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SORTATION_COST
+    description: Parcel sortation cost
+    db_column_name: SORTATION_COST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: LINE_OF_BUSINESS_SEGMENT
+    description: Line of Business category used for Quantative and Segment reporting
+    db_column_name: LINE_OF_BUSINESS_SEGMENT
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NV_ORG
+    description: "Highest level of classification of a non-rx businesses based on models, products, and operations"
+    db_column_name: NV_ORG
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NV_VERTICAL_NAME
+    description: Sub  group of  similar business entities managed by the GMs
+    db_column_name: NV_VERTICAL_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NV_BUSINESS_LINE
+    description: New Vertical Line of Business specific to certain domain ( Not the Doordash company wide)
+    db_column_name: NV_BUSINESS_LINE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NV_BUSINESS_SUB_TYPE
+    description: Sub Line of Business
+    db_column_name: NV_BUSINESS_SUB_TYPE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NET_REVENUE_EX_ALLOC
+    description: Smoothed version of Net Revenue for Ax
+    db_column_name: NET_REVENUE_EX_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: VARIABLE_PROFIT_EX_ALLOC
+    description: Smoothed version of Variable Profit for Ax
+    db_column_name: VARIABLE_PROFIT_EX_ALLOC
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MIC_SERVICE_FEE_DISCOUNT
+    description: Service fee discount from Make it cheaper campaign
+    db_column_name: MIC_SERVICE_FEE_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MIC_DELIVERY_FEE_DISCOUNT
+    description: Delivery fee discount from Make it cheaper campaign
+    db_column_name: MIC_DELIVERY_FEE_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COFUNDED_PROMO_CREDIT
+    description: Cofunded portion (25%) of the Chase Reserve Monthly $5 Credit Promotion
+    db_column_name: COFUNDED_PROMO_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MARQETA_RETURNS_REFUNDS
+    description: Marqeta returns refunds
+    db_column_name: MARQETA_RETURNS_REFUNDS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: AUTONOMOUS_DELIVERY_PAY
+    description: autonomous delivery pay (cost)
+    db_column_name: AUTONOMOUS_DELIVERY_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_CARD_FEES
+    description: fees for dasher debit card (crimson) to access their earnings
+    db_column_name: DASHER_CARD_FEES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: AUTO_REORDER_DELIVERY_FEE
+    description: automatic reorder delivery fee discount
+    db_column_name: AUTO_REORDER_DELIVERY_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: AUTO_REORDER_SERVICE_FEE
+    description: automatic reorder service fee discount
+    db_column_name: AUTO_REORDER_SERVICE_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TAX_RECOUP_INVOICED
+    description: Tax recoup invoiced when double paying the tax (at pos + directly to the government)
+    db_column_name: TAX_RECOUP_INVOICED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MERCHANT_MENU_COST_TT
+    description: Mx Incentive for Photo Uploads
+    db_column_name: MERCHANT_MENU_COST_TT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: IS_MFF
+    description: Identicates that the delivery is a micro fulfillment order - Orders place by DashMart on Marketplace to refill stock
+    db_column_name: IS_MFF
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: IS_VOLUME
+    description: Identifies the deliveries to be included in order volume metric - Total DoorDash (Ex Wolt)
+    db_column_name: IS_VOLUME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: IS_VOLUME_CORE
+    description: Identifies the deliveries to be included in order volume metric - DoorDash Marketplace (Ex Wolt)
+    db_column_name: IS_VOLUME_CORE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: CPA_FEES
+    description: Marketing Fund Spend - ad_sponsored_listing
+    db_column_name: CPA_FEES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: CPM_FEES
+    description: Marketing Fund Spend - ad_banner
+    db_column_name: CPM_FEES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: MX_MARKETING_FEES
+    description: Marketing Fund Spend - promotion
+    db_column_name: MX_MARKETING_FEES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PARTNERSHIP_FEES
+    description: Regulartory fee for drive orders
+    db_column_name: PARTNERSHIP_FEES
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: OFFSITE_ADS_DD_FUNDED
+    description: Offsite Ads funded by DoorDash
+    db_column_name: OFFSITE_ADS_DD_FUNDED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PARCEL_INSURANCE
+    description: Parcel insurance premium to cover loss of parcels
+    db_column_name: PARCEL_INSURANCE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUBTOTAL_PRICING_DISCOUNT
+    description: Discounts on subtotal to reduce GOV with launch of new programs (Auto Reorder & Fulfillment Planner)
+    db_column_name: SUBTOTAL_PRICING_DISCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: TIP_AMOUNT_W2
+    description: tip amount for LCSP(Local Commerce Service Partner) deliveries
+    db_column_name: TIP_AMOUNT_W2
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_SEA_CLAWBACKS_REVERSAL_PAY
+    description: Dasher Fraud payout reversal
+    db_column_name: DASHER_SEA_CLAWBACKS_REVERSAL_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: DASHER_COMPLIANCE_PAY_UNASSIGNED
+    description: Dasher compliance pay unassigned DD & DLD reversing the amount from dasher_base_pay field.
+    db_column_name: DASHER_COMPLIANCE_PAY_UNASSIGNED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PROMO_FEES_CREDIT
+    description: Merchant Promotion Fee Credits.
+    db_column_name: PROMO_FEES_CREDIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: JETS_TASK_PAY
+    description: JETS dasher pay allocated to deliveries
+    db_column_name: JETS_TASK_PAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  joins_with:
+  - name: FACT_DELIVERY_ALLOCATION_to_DIMENSION_CONSUMERS
+    destination:
+      name: DIMENSION_CONSUMERS
+      fqn: f6e29637-0f8a-4207-9578-229f90a94972
+    "on": "[FACT_DELIVERY_ALLOCATION::CREATOR_ID] = [DIMENSION_CONSUMERS::CONSUMER_ID]"
+    type: LEFT_OUTER
+  - name: FACT_DELIVERY_ALLOCATION_to_DIMENSION_DATES
+    destination:
+      name: DIMENSION_DATES
+      fqn: 1c4c2bdb-054a-43ab-b5e0-8e761587f5a1
+    "on": "[FACT_DELIVERY_ALLOCATION::ACTIVE_DATE] = [DIMENSION_DATES::CALENDAR_DATE]"
+    type: LEFT_OUTER
+  - name: FACT_DELIVERY_ALLOCATION_to_DIMENSION_STORE
+    destination:
+      name: DIMENSION_STORE
+      fqn: b12d0ccb-3a74-4b7e-b763-b9972c6af966
+    "on": "[FACT_DELIVERY_ALLOCATION::STORE_ID] = [DIMENSION_STORE::STORE_ID]"
+    type: LEFT_OUTER
+  properties:
+    sage_config:
+      is_sage_enabled: false

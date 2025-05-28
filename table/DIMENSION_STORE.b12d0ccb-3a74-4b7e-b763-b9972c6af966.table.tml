@@ -1,0 +1,1757 @@
+guid: b12d0ccb-3a74-4b7e-b763-b9972c6af966
+table:
+  name: DIMENSION_STORE
+  db: EDW
+  schema: MERCHANT
+  db_table: DIMENSION_STORE
+  connection:
+    name: dd_snow_test_dd
+    fqn: 49cf2059-2326-45b2-9a18-92bc6af4e79d
+  columns:
+  - name: STORE_ID
+    description: "store_id (data eng: vetted on 2022 Q2  that it s included all drive + storefront stores since 2019)"
+    db_column_name: STORE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: NAME
+    description: Store Name
+    db_column_name: NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: BUSINESS_ID
+    description: business_id
+    db_column_name: BUSINESS_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: BUSINESS_NAME
+    description: business name
+    db_column_name: BUSINESS_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ORGANIZATION_FRANCHISE_ID
+    description: the store franchise id
+    db_column_name: ORGANIZATION_FRANCHISE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ORGANIZATION_FRANCHISE_NAME
+    description: the store organization name
+    db_column_name: ORGANIZATION_FRANCHISE_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ORGANIZATION_DMA_ID
+    description: the store dma id
+    db_column_name: ORGANIZATION_DMA_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ORGANIZATION_DMA_NAME
+    description: the store dma name
+    db_column_name: ORGANIZATION_DMA_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DRIVE_STORE_ID
+    description: store_id for drive
+    db_column_name: DRIVE_STORE_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEDUPED_PRIMARY_STORE_ID
+    description: primary store id found after deduplication from (edw.merchant.dimension_primary_store)
+    db_column_name: DEDUPED_PRIMARY_STORE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: UNIFIED_PRIMARY_BUSINESS_ID
+    description: Business id mapping from unified portal product
+    db_column_name: UNIFIED_PRIMARY_BUSINESS_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: UNIFIED_PRIMARY_STORE_ID
+    description: "[Data Eng vetted on 22 Q2 ] Drive <> MP store id mapping from unified portal product"
+    db_column_name: UNIFIED_PRIMARY_STORE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STORE_UUID
+    description: store_uuid from maindb_store
+    db_column_name: STORE_UUID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: EXPERIENCE
+    description: shows platforms Merchant is enabled on
+    db_column_name: EXPERIENCE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LEGACY_CAVIAR_STORE_ID
+    description: Legacy Caviar Store ID
+    db_column_name: LEGACY_CAVIAR_STORE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: BUSINESS_VERTICAL_ID
+    description: id the business vertical this store is associated with
+    db_column_name: BUSINESS_VERTICAL_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: NV_ORG
+    description: "organization name e.g.  drive, CnGnA, Retail, Other"
+    db_column_name: NV_ORG
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NV_VERTICAL_NAME
+    description: "name of vertical e.g. drive_convenience, drive_p2p, drive_retail, 1P convenience etc"
+    db_column_name: NV_VERTICAL_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NV_BUSINESS_LINE
+    description: "new verticals business line e.g. flowers, alcohol, drive_pharmacy etc"
+    db_column_name: NV_BUSINESS_LINE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NV_BUSINESS_SUB_TYPE
+    description: "new verticals business subtype e.g. restaurant, home chef, home goods, electronics"
+    db_column_name: NV_BUSINESS_SUB_TYPE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESFORCE_ID
+    description: id from salesforce
+    db_column_name: SALESFORCE_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESFORCE_DDMX_ID
+    description: the raw salesforce account id in ddmx
+    db_column_name: SALESFORCE_DDMX_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESFORCE_FIGMENT_ID
+    description: the salesforce account id in figment
+    db_column_name: SALESFORCE_FIGMENT_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESFORCE_LEAD_ID
+    description: lead id from salesforce
+    db_column_name: SALESFORCE_LEAD_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESFORCE_ULTIMATE_PARENT_ID
+    description: salesforce account id of the parent account for enterprise mx
+    db_column_name: SALESFORCE_ULTIMATE_PARENT_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESFORCE_ULTIMATE_PARENT_NAME
+    description: "salesforce account name of the parent account for enterprise mx i.e. Yum, Mcdonalds"
+    db_column_name: SALESFORCE_ULTIMATE_PARENT_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SALESFORCE_BUSINESS_TYPE
+    description: corporate or franchise
+    db_column_name: SALESFORCE_BUSINESS_TYPE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FIRST_CLOSE_WON_DATE
+    description: date of first close won when mx signed contract (from salesforce)
+    db_column_name: FIRST_CLOSE_WON_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: LAST_CLOSE_WON_DATE
+    description: date of last close won mx signed contract (can be different if merchant churned and came back. (from salesforce))
+    db_column_name: LAST_CLOSE_WON_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: MANAGEMENT_TYPE
+    description: "management type of store, unmanaged, enterprise, mid market, oam core etc"
+    db_column_name: MANAGEMENT_TYPE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MANAGEMENT_TYPE_GROUPED
+    description: "groups management_type into 3 buckets ENTERPRISE, UNMANAGED SMB, MANAGED SMB"
+    db_column_name: MANAGEMENT_TYPE_GROUPED
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DECK_RANK
+    description: "Ranks Local Mx based on TAM, with granularity by submarket and business level"
+    db_column_name: DECK_RANK
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DELIVERY_RADIUS
+    description: delivery radius for mx
+    db_column_name: DELIVERY_RADIUS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ACTIVATION_SOURCE
+    description: source of activation
+    db_column_name: ACTIVATION_SOURCE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CREATED_AT
+    description: created_at from maindb_store
+    db_column_name: CREATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: UPDATED_AT
+    description: updated_at from maindb_store
+    db_column_name: UPDATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: ACTIVATED_AT
+    description: activated time from maindb_store
+    db_column_name: ACTIVATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: RETAIL_SERVICE_ONBOARDED_DATE
+    description: the date when a store has been onboarded to retail service
+    db_column_name: RETAIL_SERVICE_ONBOARDED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: ORDER_PROTOCOL
+    description: "Order Origination like ipad, drive, phone, email, pos etc"
+    db_column_name: ORDER_PROTOCOL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CONFIRM_PROTOCOL
+    description: Confirm Order Origination
+    db_column_name: CONFIRM_PROTOCOL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SHOPPING_PROTOCOL
+    description: "Shopping Protocol like Dasher Pick, Merchant Pick etc"
+    db_column_name: SHOPPING_PROTOCOL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: IS_ACTIVE
+    description: If the store is active according to the maindb_store table or if it was activated in the last 7 days.
+    db_column_name: IS_ACTIVE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_ACTIVE_STORE
+    description: "Active Store Flag:  s.is_active <> FALSE, is_active_business <> FALSE, is_active_menulink <> FALSE, s.starting_point_id IS NOT NULL, AND s.is_test = 0, is_test_business = 0"
+    db_column_name: IS_ACTIVE_STORE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_ACTIVE_BUSINESS
+    description: Flag to indicate if Business is Active from maindb_business
+    db_column_name: IS_ACTIVE_BUSINESS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_TEST
+    description: Flag to indicate if store is a test store
+    db_column_name: IS_TEST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_TEST_BUSINESS
+    description: Flag to indicate if Business is a test business
+    db_column_name: IS_TEST_BUSINESS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_PARTNER
+    description: Is Partner Flag from maindb_store
+    db_column_name: IS_PARTNER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_PARTNER_PARTNERSHIP
+    description: "same as is_partner, kept for backwards compatibility"
+    db_column_name: IS_PARTNER_PARTNERSHIP
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_CONSUMER_SUBSCRIPTION_ELIGIBLE
+    description: Whether store is eligible for consumer dashpass subscription
+    db_column_name: IS_CONSUMER_SUBSCRIPTION_ELIGIBLE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_CORPORATE
+    description: Flag to indicate if store is a corporate location (for enterprise mx)
+    db_column_name: IS_CORPORATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_FRANCHISE
+    description: Flag to indicate if store is a franchise location (for enterprise mx)
+    db_column_name: IS_FRANCHISE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_MP_ENABLED
+    description: "[Data Eng vetted on 22 Q2 ] A store_id level flag to identify if this store_id enabled Marketplace product or not"
+    db_column_name: IS_MP_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_CAVIAR_ENABLED
+    description: is_caviar_enabled
+    db_column_name: IS_CAVIAR_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_CNG
+    description: flag to indicate if store is convenience and grocery
+    db_column_name: IS_CNG
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_RESTAURANT
+    description: flag to indicate if store is restaurant
+    db_column_name: IS_RESTAURANT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_DRIVE_ENABLED
+    description: "[Data Eng vetted on 22 Q2 ] A store_id level flag to identify if this store_id enabled core drive product or not"
+    db_column_name: IS_DRIVE_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_STOREFRONT_ENABLED
+    description: "[Data Eng vetted on 22 Q2 ] A store_id level flag to identify if this store_id enabled storefront product or not"
+    db_column_name: IS_STOREFRONT_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_VOICE_ORDERING_ENABLED
+    description: This column identifies order via voice order portal.
+    db_column_name: IS_VOICE_ORDERING_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_FOOD_TRUCK
+    description: This column identifies if store is a food truck
+    db_column_name: IS_FOOD_TRUCK
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_ACTIVE_MENULINK
+    description: This column identifies if store has an active menu
+    db_column_name: IS_ACTIVE_MENULINK
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_VIRTUAL_BRAND
+    description: This column identifies if the store is a virtual brand
+    db_column_name: IS_VIRTUAL_BRAND
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_POS_PARTNER
+    description: This column identifies if the store is a virtual brand
+    db_column_name: IS_POS_PARTNER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_NATIONAL_BUSINESS
+    description: This column identifies if the store is enterprise
+    db_column_name: IS_NATIONAL_BUSINESS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_PICKUP_ENABLED
+    description: This column identifies if the store offers pickup
+    db_column_name: IS_PICKUP_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_DELIVERY_ENABLED
+    description: This column identifies if the store offers delivery
+    db_column_name: IS_DELIVERY_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_SELF_FULFILLMENT_ENABLED
+    description: This column identifies if the store has own delivery drivers
+    db_column_name: IS_SELF_FULFILLMENT_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_CUSTOM_DELIVERY_ZONE_ENABLED
+    description: This column identifies if the store  has selected custom delivery zone or default
+    db_column_name: IS_CUSTOM_DELIVERY_ZONE_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_MANAGED_ACCOUNT
+    description: This column identifies if the store is a managed store (enterprise mx)
+    db_column_name: IS_MANAGED_ACCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_NOTIFY_DASHER_FOR_PICKUP_ENABLED
+    description: should deprecate
+    db_column_name: IS_NOTIFY_DASHER_FOR_PICKUP_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_EXEMPT_FROM_CHARGEBACKS
+    description: tbd
+    db_column_name: IS_EXEMPT_FROM_CHARGEBACKS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_HIDE_FROM_HOMEPAGE_LIST_ENABLED
+    description: True if the merchant should be hidden from the homepage list
+    db_column_name: IS_HIDE_FROM_HOMEPAGE_LIST_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_ONLY_ASSIGN_DELIVERIES_AFTER_ORDER_PLACE_ENABLED
+    description: only_assign_deliveries_after_order_place
+    db_column_name: IS_ONLY_ASSIGN_DELIVERIES_AFTER_ORDER_PLACE_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_EXCLUDE_FROM_MARKETING_ENABLED
+    description: True if this store should be excluded from marketing
+    db_column_name: IS_EXCLUDE_FROM_MARKETING_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_NO_SALES_TAX_ENABLED
+    description: deprecated
+    db_column_name: IS_NO_SALES_TAX_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_DRIVE_ACTIVE_LAST_30_DAY
+    description: This column identifies if the store had drive deliveries in last 30 days
+    db_column_name: IS_DRIVE_ACTIVE_LAST_30_DAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_STOREFRONT_ACTIVE_LAST_30_DAY
+    description: This column identifies if the store had storefront deliveries in last 30 days
+    db_column_name: IS_STOREFRONT_ACTIVE_LAST_30_DAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_ALCOHOL_ADDENDUM_SIGNED
+    description: is_alcohol_addendum_signed from maindb_store_extension
+    db_column_name: IS_ALCOHOL_ADDENDUM_SIGNED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_SHIPPING_ONLY
+    description: is_shipping_only from maindb_store_extension
+    db_column_name: IS_SHIPPING_ONLY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_FOOD_REQUIRED_WITH_ALCOHOL
+    description: requires_food_with_alcohol from maindb_store_extension
+    db_column_name: IS_FOOD_REQUIRED_WITH_ALCOHOL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_AUTO_RELEASE_ENABLED
+    description: "True, if this store auto release is enabled"
+    db_column_name: IS_AUTO_RELEASE_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_GRAVEYARD_BUSINESS
+    description: indicates if the store is linked to a graveyard business
+    db_column_name: IS_GRAVEYARD_BUSINESS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_NV_HISTORICAL
+    description: indicates if the store was once a nv store
+    db_column_name: IS_NV_HISTORICAL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FIRST_STOREFRONT_DELIVERY_DATE
+    description: Date of first storefront delivery
+    db_column_name: FIRST_STOREFRONT_DELIVERY_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: FIRST_DRIVE_DELIVERY_DATE
+    description: Date of first storefront delivery
+    db_column_name: FIRST_DRIVE_DELIVERY_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: LAST_30_DAY_DELIVS
+    description: Number of deliveries in the last 30 days (all platforms)
+    db_column_name: LAST_30_DAY_DELIVS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: MAX_ORDER_SIZE
+    description: max order size
+    db_column_name: MAX_ORDER_SIZE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: COMPOSITE_SCORE
+    description: Composite Score
+    db_column_name: COMPOSITE_SCORE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: NOTES
+    description: 'internal notes from store made by reps '
+    db_column_name: NOTES
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SEARCH_TERMS
+    description: search tags associated with store?
+    db_column_name: SEARCH_TERMS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PICKUP_CHECKLIST
+    description: checklist of items for dashers before picking up from this store
+    db_column_name: PICKUP_CHECKLIST
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PHONE_NUMBER
+    description: phone number of store from MINT
+    db_column_name: PHONE_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FAX_NUMBER
+    description: fax number of store from MINT
+    db_column_name: FAX_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CATERING_PHONE_NUMBER
+    description: catering phone number of store from MINT
+    db_column_name: CATERING_PHONE_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: EMAIL
+    description: primary contact email for store from MINT
+    db_column_name: EMAIL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CONTACT_EMAILS
+    description: secondary list of store contact email(s) from MINT
+    db_column_name: CONTACT_EMAILS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ERROR_REPORT_EMAILS
+    description: email(s) to report errors to from MINT
+    db_column_name: ERROR_REPORT_EMAILS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ERROR_REPORT_FREQUENCY
+    description: frequency to report errors to error email
+    db_column_name: ERROR_REPORT_FREQUENCY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CATERING_CONTACT_EMAILS
+    description: separate email(s) to contact store about catering requests
+    db_column_name: CATERING_CONTACT_EMAILS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PRIORITY_CONTACT_EMAIL
+    description: from edw.merchant.store_contact this is the email with highest in terms of reachability
+    db_column_name: PRIORITY_CONTACT_EMAIL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PRIORITY_CONTACT_PHONE
+    description: from edw.merchant.store_contact this is the phone number with highest in terms of reachability
+    db_column_name: PRIORITY_CONTACT_PHONE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PRIORITY_CONTACT_MOBILE_PHONE
+    description: from edw.merchant.store_contact this is the mobile phone number with highest in terms of reachability
+    db_column_name: PRIORITY_CONTACT_MOBILE_PHONE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MINIMUM_PREP_TIME
+    description: minimum time for store to prepare order --  check if can be deprecated
+    db_column_name: MINIMUM_PREP_TIME
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: MAXIMUM_PREP_TIME
+    description: maximum time for store to prepare order --  check if can be deprecated
+    db_column_name: MAXIMUM_PREP_TIME
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ESTIMATED_PREP_TIME
+    description: estimated time for store to prepare order --  check if can be deprecated
+    db_column_name: ESTIMATED_PREP_TIME
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ESTIMATED_PREP_TIME_TIMESTAMP
+    description: estimated_prep_time_timestamp can deprecate
+    db_column_name: ESTIMATED_PREP_TIME_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: ESTIMATED_DASHER_ASSIGNMENT_TO_PICKUP_LATENCY
+    description: estimated_dasher_assignment_to_pickup_latency check if can be deprecated
+    db_column_name: ESTIMATED_DASHER_ASSIGNMENT_TO_PICKUP_LATENCY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ESTIMATED_DASHER_ASSIGNMENT_TO_PICKUP_LATENCY_TIME
+    description: estimated_dasher_assignment_to_pickup_latency_time  check if can be deprecated
+    db_column_name: ESTIMATED_DASHER_ASSIGNMENT_TO_PICKUP_LATENCY_TIME
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: STATEMENT_DESCRIPTOR
+    description: "Process of deprecating to PAYMENT. Not yet DEPRECATED. Instead, please add to PaymentAccount"
+    db_column_name: STATEMENT_DESCRIPTOR
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: BATCHING_AGGRESSION
+    description: "Values: [-100000, -99999, -1, 0, 1, 2]"
+    db_column_name: BATCHING_AGGRESSION
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FISCAL_WEEK_START_DAY
+    description: tbd
+    db_column_name: FISCAL_WEEK_START_DAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: YELP_BUSINESS_ID
+    description: yelp business id
+    db_column_name: YELP_BUSINESS_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: TIER_LEVEL
+    description: "The tier level of the store, from 0-5"
+    db_column_name: TIER_LEVEL
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CAROUSEL_HEADER_IMAGE
+    description: Custom header image for when the store is shown in a cluster/carousel.
+    db_column_name: CAROUSEL_HEADER_IMAGE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MAX_PARTICIPANTS_FOR_GROUP_CART
+    description: he maximum number of participants this store accepts for a group cart. -1 indicates that the store does not accept group orders. Default is to allow group carts of any size.
+    db_column_name: MAX_PARTICIPANTS_FOR_GROUP_CART
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PAYMENT_PROTOCOL_ID
+    description: The id of the store''s payment protocol. 1:direct deposit. 2:dasher red card. 3:order placer red card.
+    db_column_name: PAYMENT_PROTOCOL_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PAYMENT_PROTOCOL_NAME
+    description: store''s payment protocol. 1:direct deposit. 2:dasher red card. 3:order placer red card.
+    db_column_name: PAYMENT_PROTOCOL_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MERCHANT_SUPPLIED_ID
+    description: merchant''s internal id within their system
+    db_column_name: MERCHANT_SUPPLIED_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CREATION_METHOD
+    description: "Values: [DRIVE_ADMIN_API, NIMDA, CSV_UPLOADER, BULK_TOOL, POST_API, SELF_ONBOARDING, DRIVE_AUTO_ONBOARDING]"
+    db_column_name: CREATION_METHOD
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LAST_DEACTIVATION_REASON
+    description: "Reason for deactivating the store,"
+    db_column_name: LAST_DEACTIVATION_REASON
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LAST_DEACTIVATION_NOTES
+    description: Notes on the deactivation reason
+    db_column_name: LAST_DEACTIVATION_NOTES
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LAST_DEACTIVATION_DATE
+    description: date of last deactivation
+    db_column_name: LAST_DEACTIVATION_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: PRIMARY_TAG_NAME
+    description: highest priority tag for the store from Mint
+    db_column_name: PRIMARY_TAG_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PRIMARY_CATEGORY_NAME
+    description: highest priority category for the store from Mint
+    db_column_name: PRIMARY_CATEGORY_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PRIMARY_CATEGORY_ID
+    description: id of highest priority tag for the store from Mint
+    db_column_name: PRIMARY_CATEGORY_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ALL_TAGS
+    description: comma delimited list of all business tags associated to store sorted by tag priority ascending from mint
+    db_column_name: ALL_TAGS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ALL_CATEGORIES
+    description: comma delimited list of all business categories associated to store sorted by tag priority ascending from mint
+    db_column_name: ALL_CATEGORIES
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ALL_PRIORITIES
+    description: comma delimited list of tag priorities associated to store sorted by tag priority ascending  from mint
+    db_column_name: ALL_PRIORITIES
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ALL_CATEGORY_IDS
+    description: comma delimited list of all business categories ids associated to store sorted by tag priority ascending from mint
+    db_column_name: ALL_CATEGORY_IDS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DIETARY_PREFERENCE
+    description: "from fact_Food_catalog_v2, summarizes the types of items available for store e.g. vegetarian, pescatarian, gluten free etc.  https://doordash.atlassian.net/wiki/spaces/Eng/pages/2963210291/Food+Knowledge+Graph+ETL+List"
+    db_column_name: DIETARY_PREFERENCE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CUISINE_TYPE
+    description: "from fact_Food_catalog_v2, summarizes the cuisines types for store e.g. japanese, american, etc.  https://doordash.atlassian.net/wiki/spaces/Eng/pages/2963210291/Food+Knowledge+Graph+ETL+List"
+    db_column_name: CUISINE_TYPE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: OVERRIDE_TAX_RATE
+    description: populated if tax rate for this store overrides local tax rate
+    db_column_name: OVERRIDE_TAX_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRICE_RANGE
+    description: "Price range of store based on cost per person for one meal, drink, tax and tip. Approximately corresponds to Yelp price range from 1 to 4."
+    db_column_name: PRICE_RANGE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CUSTOM_DELIVERY_FEE
+    description: Override for other delivery fees. Owned by Finance or Delivery teams.
+    db_column_name: CUSTOM_DELIVERY_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SUBSCRIPTION_COMMISSION_RATE
+    description: 'commission rate for dashpass from edw.merchant.mint_active_doordash_commissions '
+    db_column_name: SUBSCRIPTION_COMMISSION_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: COMMISSION_RATE
+    description: 'commission rate for marketplace from edw.merchant.mint_active_doordash_commissions '
+    db_column_name: COMMISSION_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PICKUP_COMMISSION_RATE
+    description: 'commission rate for pickup orders from edw.merchant.mint_active_doordash_commissions '
+    db_column_name: PICKUP_COMMISSION_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REDUCED_MP_COMMISSION_RATE
+    description: Reduced mp_commission_rate from edw.merchant.mint_active_doordash_commissions
+    db_column_name: REDUCED_MP_COMMISSION_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: REDUCED_PICKUP_COMMISSION_RATE
+    description: Reduced pickup_commission_rate from edw.merchant.mint_active_doordash_commissions
+    db_column_name: REDUCED_PICKUP_COMMISSION_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: WEEKLY_TABLET_SUBSCRIPTION_FEE
+    description: weekly tablet fee from edw.merchant.mint_active_doordash_commissions
+    db_column_name: WEEKLY_TABLET_SUBSCRIPTION_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: WEEKLY_PRINTER_SUBSCRIPTION_FEE
+    description: weekly printer fee from edw.merchant.mint_active_doordash_commissions
+    db_column_name: WEEKLY_PRINTER_SUBSCRIPTION_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRESET_MP_RATE
+    description: "Actual, active marketplace commission rate before applying above logic from edw.merchant.mint_active_doordash_commissions"
+    db_column_name: PRESET_MP_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRESET_DEFAULT_MP_RATE
+    description: "actual, active marketplace default commission rate from edw.merchant.mint_active_doordash_commissions"
+    db_column_name: PRESET_DEFAULT_MP_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRESET_REDUCED_MP_RATE
+    description: "\tActual, active reduced marketplace commission rate from edw.merchant.mint_active_doordash_commissions"
+    db_column_name: PRESET_REDUCED_MP_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: PRESET_DEFAULT_REDUCED_MP_RATE
+    description: "Actual, active reduced default marketplace commission rate from edw.merchant.mint_active_doordash_commissions"
+    db_column_name: PRESET_DEFAULT_REDUCED_MP_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: SERVICE_RATE
+    description: service_rate from merchant_financial_service_prod.public.store_partnership p
+    db_column_name: SERVICE_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: INFLATION_RATE
+    description: inflation_rate from merchant_financial_service_prod.public.store_partnership p
+    db_column_name: INFLATION_RATE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: INFLATION_ROUNDING_UNIT
+    description: 'inflation_rounding_unit from merchant_financial_service_prod.public.store_partnership '
+    db_column_name: INFLATION_ROUNDING_UNIT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: COVER_IMG_URL
+    description: URL of the over image for the store on marketplace
+    db_column_name: COVER_IMG_URL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: POS_PROVIDER
+    description: name of pos provider from mx_integrations_prod.public.store
+    db_column_name: POS_PROVIDER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LOCATION_ID
+    description: location_id from mx_integrations_prod.public.store
+    db_column_name: LOCATION_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: POS_CREATED_AT
+    description: when the store was created in the pos system
+    db_column_name: POS_CREATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: POS_UUID
+    description: the store uuid in the pos system
+    db_column_name: POS_UUID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: IS_PULL_STORE_HOURS_ENABLED
+    description: if the store will pull store hours
+    db_column_name: IS_PULL_STORE_HOURS_ENABLED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: TIMEZONE
+    description: timezone of the store
+    db_column_name: TIMEZONE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CATERING_PICKUP_ADDRESS_ID
+    description: address id if store has separate address for catering
+    db_column_name: CATERING_PICKUP_ADDRESS_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ADDRESS_ID
+    description: address id of the store
+    db_column_name: ADDRESS_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STORE_LATITUDE
+    description: latitude of the store
+    db_column_name: STORE_LATITUDE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_LONGITUDE
+    description: longitude of the store
+    db_column_name: STORE_LONGITUDE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: STORE_ADDRESS
+    description: store''s full address
+    db_column_name: STORE_ADDRESS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ADMINISTRATIVE_AREA_LEVEL_1
+    description: region/state/province/territory depending on country
+    db_column_name: ADMINISTRATIVE_AREA_LEVEL_1
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LOCALITY
+    description: "city of the store, locality from maindb_address"
+    db_column_name: LOCALITY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: COUNTRY_ID
+    description: country id from geo_region.public.country
+    db_column_name: COUNTRY_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: COUNTRY_NAME
+    description: name of country from geo_region.public.country
+    db_column_name: COUNTRY_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: COUNTRY_SHORTNAME
+    description: shortened name of country from geo_region.public.country
+    db_column_name: COUNTRY_SHORTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STARTING_POINT_ID
+    description: starting_point_id of store
+    db_column_name: STARTING_POINT_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STARTING_POINT_NAME
+    description: starting_point_name from geo_region.public.starting_point
+    db_column_name: STARTING_POINT_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MARKET_ID
+    description: market_id from geo_region.public.starting_point or doordash_Merchant.maindb_store (starting point takes priority)
+    db_column_name: MARKET_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: MARKET_NAME
+    description: market name from geo_region.public.market
+    db_column_name: MARKET_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: SUBMARKET_ID
+    description: sub_market_id from geo_region.public.starting_point or doordash_Merchant.maindb_store (starting point takes priority)
+    db_column_name: SUBMARKET_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: SUBMARKET_NAME
+    description: sub_market_name from geo_region.public.market
+    db_column_name: SUBMARKET_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: REGION_ID
+    description: region_id from geo_region.public.market
+    db_column_name: REGION_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: REGION_NAME
+    description: region name from geo_intelligence.public.maindb_region
+    db_column_name: REGION_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DISTRICT_ID
+    description: district_id from edw.geo.fact_address_district
+    db_column_name: DISTRICT_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DISTRICT_NAME
+    description: district name from geo_region.public.district
+    db_column_name: DISTRICT_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DELIVERY_RADIUS_TIER
+    description: "Operational override deteremined by is_partner. Values: [normal, reduced]"
+    db_column_name: DELIVERY_RADIUS_TIER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: EXT_MAX_DELIVERY_POLYGON_JSON
+    description: Stores Custom Delivery Zone
+    db_column_name: EXT_MAX_DELIVERY_POLYGON_JSON
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MAX_DELIVERY_RADIUS
+    description: max delivery radius for store
+    db_column_name: MAX_DELIVERY_RADIUS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: AUTO_RELEASE_DISTANCE
+    description: When to notify store to prepare food for Dx
+    db_column_name: AUTO_RELEASE_DISTANCE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DOUBLE
+  - name: AUTO_RELEASE_PROTOCOL
+    description: auto_release_protocol from maindb_store_extension
+    db_column_name: AUTO_RELEASE_PROTOCOL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CONSUMER_COUNT
+    description: number of customers available in store radius
+    db_column_name: CONSUMER_COUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: AVG_DIST
+    description: average distance a customer is from store
+    db_column_name: AVG_DIST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PARTNERSHIP_ORDERING_INSTRUCTIONS
+    description: Instructions when ordering from partnership stores
+    db_column_name: PARTNERSHIP_ORDERING_INSTRUCTIONS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: PARTNERSHIP_OBJECT_ID
+    description: id from store partnership table
+    db_column_name: PARTNERSHIP_OBJECT_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PARTNERSHIP_OBJECT_START_TIME
+    description: start time of partnership agreement
+    db_column_name: PARTNERSHIP_OBJECT_START_TIME
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: STRIPE_RECIPIENT_ID
+    description: stripe_recipient_id
+    db_column_name: STRIPE_RECIPIENT_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STRIPE_MANAGED_ACCOUNT_ID
+    description: stripe_managed_account_id
+    db_column_name: STRIPE_MANAGED_ACCOUNT_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STRIPE_MANAGED_ACCOUNT_REQUIRED
+    description: stripe_managed_account_required
+    db_column_name: STRIPE_MANAGED_ACCOUNT_REQUIRED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STRIPE_BANK_NAME
+    description: stripe_bank_name
+    db_column_name: STRIPE_BANK_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STRIPE_BANK_LAST4
+    description: stripe_bank_last4
+    db_column_name: STRIPE_BANK_LAST4
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: STRIPE_LAST_UPDATED_AT
+    description: stripe_last_updated_at
+    db_column_name: STRIPE_LAST_UPDATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: PAYMENT_ACCOUNT_ID
+    description: payment_account_id
+    db_column_name: PAYMENT_ACCOUNT_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: STRIPE_CUSTOMER_ID
+    description: stripe_customer_id
+    db_column_name: STRIPE_CUSTOMER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: VOICE_UI_FEATURE_SETTINGS
+    description: "An object containing voice ui feature settings, like delivery_fee, store accepts delivery, pay in store, and more."
+    db_column_name: VOICE_UI_FEATURE_SETTINGS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DRIVE_STORE_CREATED_AT
+    description: "[UTC] Drive store created timestamp"
+    db_column_name: DRIVE_STORE_CREATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: DRIVE_STORE_UPDATED_AT
+    description: "[UTC] Drive store updated timestamp"
+    db_column_name: DRIVE_STORE_UPDATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: DRIVE_ACCOUNT_ID
+    description: "Drive account id,(derived from drive_prod.public.accounts.id)"
+    db_column_name: DRIVE_ACCOUNT_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DRIVE_STORE_LOCKED_ADDRESS
+    description: Drive store address type locked/unlocked
+    db_column_name: DRIVE_STORE_LOCKED_ADDRESS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: DRIVE_EXTERNAL_STORE_ID
+    description: Drive store external identifier
+    db_column_name: DRIVE_EXTERNAL_STORE_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DRIVE_GEOLOCATION_ADDRESS_ID
+    description: Drive store geo location address id
+    db_column_name: DRIVE_GEOLOCATION_ADDRESS_ID
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DRIVE_STORE_STATUS
+    description: Drive store status(active/deactivated)
+    db_column_name: DRIVE_STORE_STATUS
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DRIVE_REASONS_FOR_STORE_DEACTIVATION
+    description: Drive store deactivation reasons
+    db_column_name: DRIVE_REASONS_FOR_STORE_DEACTIVATION
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DRIVE_STORE_STATUS_UPDATED_AT
+    description: "[UTC] Drive store status updated timestamp"
+    db_column_name: DRIVE_STORE_STATUS_UPDATED_AT
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: DRIVE_STORE_API_OWNED
+    description: drive_store_api_owned
+    db_column_name: DRIVE_STORE_API_OWNED
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: BOOL
+  - name: SPECIAL_INSTRUCTIONS_MAX_LENGTH
+    description: "char length for special instructions,0 means no changes, null means no limits"
+    db_column_name: SPECIAL_INSTRUCTIONS_MAX_LENGTH
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_BUNDLE_ACTIVE
+    description: is bundle experience
+    db_column_name: IS_BUNDLE_ACTIVE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_BUNDLE_ACTIVE_ON_DOORDASH
+    description: is bundle experience is doordash
+    db_column_name: IS_BUNDLE_ACTIVE_ON_DOORDASH
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_BUNDLE_ACTIVE_ON_CAVIAR
+    description: is bundle experience is caviar
+    db_column_name: IS_BUNDLE_ACTIVE_ON_CAVIAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_BUNDLE_ELIGIBLE_ON_POSTCHECKOUT
+    description: is bundle eligible on post checkout
+    db_column_name: IS_BUNDLE_ELIGIBLE_ON_POSTCHECKOUT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_BUNDLE_ELIGIBLE_ON_PRECHECKOUT
+    description: is bundle eligible on pre checkout
+    db_column_name: IS_BUNDLE_ELIGIBLE_ON_PRECHECKOUT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: BUNDLE_EXPERIENCE
+    description: bundle experience
+    db_column_name: BUNDLE_EXPERIENCE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: ACCOUNT_OWNER
+    description: "Account owner from static.mx_managed_accounts,proddb.static.ENTERPRISE_BUSINESS_BOOK"
+    db_column_name: ACCOUNT_OWNER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: GROWTH_EXECUTIVE
+    description: Store executive for growing the business from  proddb.static.ENTERPRISE_BUSINESS_BOOK
+    db_column_name: GROWTH_EXECUTIVE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: HOLDING_GROUP_NAME
+    description: Store Holding group name from STATIC.POSTSALE_AD_OWNERSHIP
+    db_column_name: HOLDING_GROUP_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: BIO
+    description: Store Biography
+    db_column_name: BIO
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: __CREATED_TIMESTAMP
+    description: insert timestamp
+    db_column_name: __CREATED_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  joins_with:
+  - name: DIMENSION_STORE_to_DIMENSION_BUSINESS
+    destination:
+      name: DIMENSION_BUSINESS
+      fqn: 0aadc021-c977-4789-9467-b53ddf3723f9
+    "on": "[DIMENSION_STORE::BUSINESS_ID] = [DIMENSION_BUSINESS::BUSINESS_ID]"
+    type: INNER
+  properties:
+    sage_config:
+      is_sage_enabled: false

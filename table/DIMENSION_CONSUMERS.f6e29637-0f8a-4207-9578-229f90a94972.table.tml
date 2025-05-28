@@ -1,0 +1,303 @@
+guid: f6e29637-0f8a-4207-9578-229f90a94972
+table:
+  name: DIMENSION_CONSUMERS
+  db: EDW
+  schema: CONSUMER
+  db_table: DIMENSION_CONSUMERS
+  connection:
+    name: dd_snow_test_dd
+    fqn: 49cf2059-2326-45b2-9a18-92bc6af4e79d
+  columns:
+  - name: __CREATED_TIMESTAMP
+    description: Created Date of the row
+    db_column_name: __CREATED_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: __MODIFIED_TIMESTAMP
+    description: Last Modified Date of the row
+    db_column_name: __MODIFIED_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: CONSUMER_ID
+    description: Doordash or caviar consumer id
+    db_column_name: CONSUMER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: USER_ID
+    description: Doordash user id
+    db_column_name: USER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: LEGACY_CAVIAR_USER_ID
+    description: legacy caviar user id
+    db_column_name: LEGACY_CAVIAR_USER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DEFAULT_ADDRESS_ID
+    description: Default address id
+    db_column_name: DEFAULT_ADDRESS_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DEFAULT_CITY
+    description: City of the default address
+    db_column_name: DEFAULT_CITY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEFAULT_ZIP_CODE
+    description: Zip code of the default address
+    db_column_name: DEFAULT_ZIP_CODE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEFAULT_DISTRICT_ID
+    description: District id of the default address
+    db_column_name: DEFAULT_DISTRICT_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DEFAULT_DISTRICT
+    description: District name of the default address
+    db_column_name: DEFAULT_DISTRICT
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEFAULT_SUBMARKET_ID
+    description: Submarket id of the default address
+    db_column_name: DEFAULT_SUBMARKET_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DEFAULT_SUBMARKET
+    description: Submarket name of the default address
+    db_column_name: DEFAULT_SUBMARKET
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEFAULT_MARKET_ID
+    description: market id of the default address
+    db_column_name: DEFAULT_MARKET_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DEFAULT_MARKET
+    description: market name of the default address
+    db_column_name: DEFAULT_MARKET
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEFAULT_REGION_ID
+    description: region id of the default address
+    db_column_name: DEFAULT_REGION_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DEFAULT_REGION
+    description: region name of the default address
+    db_column_name: DEFAULT_REGION
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEFAULT_COUNTRY_ID
+    description: Country id of the default address
+    db_column_name: DEFAULT_COUNTRY_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DEFAULT_COUNTRY
+    description: country name of the default address
+    db_column_name: DEFAULT_COUNTRY
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CREATED_TIMESTAMP
+    description: Time the consumer account was created
+    db_column_name: CREATED_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: CREATED_DATE
+    description: Date the consumer account was created
+    db_column_name: CREATED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: APPLIED_NEW_USER_CREDITS
+    description: Applied new user credits
+    db_column_name: APPLIED_NEW_USER_CREDITS
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: REFERRAL_CODE
+    description: Referral code
+    db_column_name: REFERRAL_CODE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEFAULT_SUBSTITUTION_PREFERENCE
+    description: Default substitution preference
+    db_column_name: DEFAULT_SUBSTITUTION_PREFERENCE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: REFERRER_CODE
+    description: Referrer code
+    db_column_name: REFERRER_CODE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: CAME_FROM_GROUP_SIGNUP
+    description: Group signup status
+    db_column_name: CAME_FROM_GROUP_SIGNUP
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CATERING_CONTACT_EMAIL
+    description: Catering contact email
+    db_column_name: CATERING_CONTACT_EMAIL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DEFAULT_PAYMENT_METHOD
+    description: Default payment method
+    db_column_name: DEFAULT_PAYMENT_METHOD
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DELIVERY_CUSTOMER_PII_ID
+    description: Delivery customer pii id
+    db_column_name: DELIVERY_CUSTOMER_PII_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: EXISTING_CARD_FOUND_TIMESTAMP
+    description: Existing card found time
+    db_column_name: EXISTING_CARD_FOUND_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: EXISTING_PHONE_FOUND_TIMESTAMP
+    description: Existing phone found time
+    db_column_name: EXISTING_PHONE_FOUND_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: LAST_UPDATED_DATE
+    description: Last updated time
+    db_column_name: LAST_UPDATED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: LAST_UPDATED_TIMESTAMP
+    description: Last updated time
+    db_column_name: LAST_UPDATED_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: FORGOTTEN_TIMESTAMP
+    description: Forgotten time
+    db_column_name: FORGOTTEN_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: EXPERIENCE
+    description: Consumer experience
+    db_column_name: EXPERIENCE
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: EMAIL
+    description: Consumer email address
+    db_column_name: EMAIL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: NORMALIZED_EMAIL
+    description: "Consumer normalized email address from the Fraud logic: https://doordash.atlassian.net/wiki/spaces/Eng/pages/3000434798/Normalized+Email"
+    db_column_name: NORMALIZED_EMAIL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  joins_with:
+  - name: DIMENSION_CONSUMERS_to_DIMENSION_USERS
+    destination:
+      name: DIMENSION_USERS
+      fqn: 25ecaa9f-3e37-4dc7-be74-8d88df403f6d
+    "on": "[DIMENSION_CONSUMERS::USER_ID] = [DIMENSION_USERS::USER_ID]"
+    type: LEFT_OUTER
+  properties:
+    sage_config:
+      is_sage_enabled: false

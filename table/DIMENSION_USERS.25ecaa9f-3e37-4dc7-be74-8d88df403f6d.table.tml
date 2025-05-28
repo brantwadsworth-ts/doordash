@@ -1,0 +1,209 @@
+guid: 25ecaa9f-3e37-4dc7-be74-8d88df403f6d
+table:
+  name: DIMENSION_USERS
+  db: EDW
+  schema: CORE
+  db_table: DIMENSION_USERS
+  connection:
+    name: dd_snow_test_dd
+    fqn: 49cf2059-2326-45b2-9a18-92bc6af4e79d
+  columns:
+  - name: __CREATED_TIMESTAMP
+    description: Created Date of the row
+    db_column_name: __CREATED_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: __MODIFIED_TIMESTAMP
+    description: Last Modified Date of the row
+    db_column_name: __MODIFIED_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: USER_ID
+    description: Doordash user id
+    db_column_name: USER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: HAS_DOORDASH_ACCOUNT
+    description: whether the user is doordash consumer
+    db_column_name: HAS_DOORDASH_ACCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: HAS_CAVIAR_ACCOUNT
+    description: whether the user is caviar consumer
+    db_column_name: HAS_CAVIAR_ACCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: HAS_DASHER_ACCOUNT
+    description: whether the user is a dasher
+    db_column_name: HAS_DASHER_ACCOUNT
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_STOREFRONT_USER
+    description: whether the user is a Storefront
+    db_column_name: IS_STOREFRONT_USER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: LEGACY_CAVIAR_USER_ID
+    description: Legacy User ID of Caviar platform before acquisition
+    db_column_name: LEGACY_CAVIAR_USER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: EMAIL
+    description: Email address tied to the account
+    db_column_name: EMAIL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: IS_ACTIVE
+    description: whether the user is active
+    db_column_name: IS_ACTIVE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: JOINED_TIMESTAMP
+    description: datetime the user joined
+    db_column_name: JOINED_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: JOINED_DATE
+    description: date the user joined
+    db_column_name: JOINED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PHONE_NUMBER
+    description: Phone number tied to the account
+    db_column_name: PHONE_NUMBER
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FIRST_NAME
+    description: First name from account info
+    db_column_name: FIRST_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: LAST_NAME
+    description: last name from account info
+    db_column_name: LAST_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FULL_NAME
+    description: Concatenation of first and last name
+    db_column_name: FULL_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: EMAIL_DOMAIN
+    description: user email domain
+    db_column_name: EMAIL_DOMAIN
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: IS_EMPLOYEE
+    description: user is an employee with an @doordash or @ext.doordash email address
+    db_column_name: IS_EMPLOYEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_GUEST
+    description: user is an employee with an @guest.doordash email address
+    db_column_name: IS_GUEST
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_FORGOTTEN
+    description: user is forgotten or not
+    db_column_name: IS_FORGOTTEN
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: LAST_UPDATED_DATE
+    description: When the last update was made to user
+    db_column_name: LAST_UPDATED_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: LAST_UPDATED_TIMESTAMP
+    description: When the last update was made to user
+    db_column_name: LAST_UPDATED_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  - name: NORMALIZED_EMAIL
+    description: "Consumer normalized email address from the Fraud logic: https://doordash.atlassian.net/wiki/spaces/Eng/pages/3000434798/Normalized+Email"
+    db_column_name: NORMALIZED_EMAIL
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: IS_PROHIBITED
+    description: Whether the user is prohibited to use doordash
+    db_column_name: IS_PROHIBITED
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  properties:
+    sage_config:
+      is_sage_enabled: false

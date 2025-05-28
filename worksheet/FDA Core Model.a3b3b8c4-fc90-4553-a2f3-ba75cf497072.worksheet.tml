@@ -1,0 +1,143 @@
+guid: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+model:
+  name: FDA Core Model
+  description: |
+    This Data Model is based on the Fact_Delivery_Allocation.
+  model_tables:
+  - name: FACT_DELIVERY_ALLOCATION
+    fqn: 3cca324e-c563-4906-8041-7a90d976ffc2
+    joins:
+    - with: DIMENSION_CONSUMERS
+      referencing_join: FACT_DELIVERY_ALLOCATION_to_DIMENSION_CONSUMERS
+    - with: DIMENSION_DATES
+      referencing_join: FACT_DELIVERY_ALLOCATION_to_DIMENSION_DATES
+    - with: DIMENSION_STORE
+      referencing_join: FACT_DELIVERY_ALLOCATION_to_DIMENSION_STORE
+  - name: DIMENSION_CONSUMERS
+    fqn: f6e29637-0f8a-4207-9578-229f90a94972
+    joins:
+    - with: DIMENSION_USERS
+      referencing_join: DIMENSION_CONSUMERS_to_DIMENSION_USERS
+  - name: DIMENSION_USERS
+    fqn: 25ecaa9f-3e37-4dc7-be74-8d88df403f6d
+  - name: DIMENSION_STORE
+    fqn: b12d0ccb-3a74-4b7e-b763-b9972c6af966
+  - name: DIMENSION_DATES
+    fqn: 1c4c2bdb-054a-43ab-b5e0-8e761587f5a1
+  formulas:
+  - id: aov
+    name: aov
+    expr: round ( sum ( [FACT_DELIVERY_ALLOCATION::GOV] ) / count ( [FACT_DELIVERY_ALLOCATION::DELIVERY_ID] ) , 2 )
+  filters:
+  - column:
+    - Is Filtered
+    oper: =
+    values:
+    - 'true'
+  columns:
+  - name: Active Date
+    description: Delivery completed date
+    column_id: FACT_DELIVERY_ALLOCATION::ACTIVE_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Creator Id
+    description: Customer unique identifier
+    column_id: FACT_DELIVERY_ALLOCATION::CREATOR_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Delivery Id
+    description: delivery unique identifier (primary key)
+    column_id: FACT_DELIVERY_ALLOCATION::DELIVERY_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: User Id
+    description: User Identifer
+    column_id: FACT_DELIVERY_ALLOCATION::USER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Store Id
+    description: Store identifier for the physical location
+    column_id: FACT_DELIVERY_ALLOCATION::STORE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Dasher Id
+    description: Dasher who completed the delivery
+    column_id: FACT_DELIVERY_ALLOCATION::DASHER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Gov
+    description: Total GOV of order
+    column_id: FACT_DELIVERY_ALLOCATION::GOV
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Net Revenue
+    description: Calculations in wiki
+    column_id: FACT_DELIVERY_ALLOCATION::NET_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Merchant Revenue
+    description: Calculations in wiki
+    column_id: FACT_DELIVERY_ALLOCATION::MERCHANT_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Consumer Revenue
+    description: Calculations in wiki
+    column_id: FACT_DELIVERY_ALLOCATION::CONSUMER_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Fulfillment Type
+    description: Dasher or consumer_pickup or merchant_fleet
+    column_id: FACT_DELIVERY_ALLOCATION::FULFILLMENT_TYPE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Filtered
+    description: cancelled_at IS NULL AND parent_delivery_id IS NULL AND actual_delivery_time IS NOT NULL AND is_test is FALSE
+    column_id: FACT_DELIVERY_ALLOCATION::IS_FILTERED
+    properties:
+      column_type: ATTRIBUTE
+  - name: Full Name
+    description: Concatenation of first and last name
+    column_id: DIMENSION_USERS::FULL_NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Store Name
+    description: Store Name
+    column_id: DIMENSION_STORE::NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Business Name
+    description: business name
+    column_id: DIMENSION_STORE::BUSINESS_NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: aov
+    description: Average Order Value
+    formula_id: aov
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    sage_config:
+      is_sage_enabled: true

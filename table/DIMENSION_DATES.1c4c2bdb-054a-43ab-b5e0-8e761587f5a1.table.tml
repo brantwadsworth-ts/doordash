@@ -1,0 +1,655 @@
+guid: 1c4c2bdb-054a-43ab-b5e0-8e761587f5a1
+table:
+  name: DIMENSION_DATES
+  db: EDW
+  schema: CORE
+  db_table: DIMENSION_DATES
+  connection:
+    name: dd_snow_test_dd
+    fqn: 49cf2059-2326-45b2-9a18-92bc6af4e79d
+  columns:
+  - name: DATE_ID
+    db_column_name: DATE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: CALENDAR_DATE
+    db_column_name: CALENDAR_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: DAY_OF_MONTH
+    db_column_name: DAY_OF_MONTH
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DAY_OF_QUARTER
+    db_column_name: DAY_OF_QUARTER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DAY_OF_WEEK
+    db_column_name: DAY_OF_WEEK
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DAY_OF_WEEK_ISO
+    db_column_name: DAY_OF_WEEK_ISO
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DAY_NAME
+    db_column_name: DAY_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: DAY_OF_YEAR
+    db_column_name: DAY_OF_YEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: DAY_SHORTNAME
+    db_column_name: DAY_SHORTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: IS_LEAP_YEAR
+    db_column_name: IS_LEAP_YEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_LEAP_DAY
+    db_column_name: IS_LEAP_DAY
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: MONTH_ID
+    db_column_name: MONTH_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: MONTH_SHORTNAME
+    db_column_name: MONTH_SHORTNAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MONTH_NAME
+    db_column_name: MONTH_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: MONTH
+    db_column_name: MONTH
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: QUARTER
+    db_column_name: QUARTER
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: QUARTER_NAME
+    db_column_name: QUARTER_NAME
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: QUARTER_ID
+    db_column_name: QUARTER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: WEEK_NUM_ISO
+    db_column_name: WEEK_NUM_ISO
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: WEEK_ID_ISO
+    db_column_name: WEEK_ID_ISO
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: YEAR
+    db_column_name: YEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: EPOCH_START_TIME
+    db_column_name: EPOCH_START_TIME
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: EPOCH_END_TIME
+    db_column_name: EPOCH_END_TIME
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: WEEKDAY_OCCURRENCE_IN_MONTH
+    db_column_name: WEEKDAY_OCCURRENCE_IN_MONTH
+    properties:
+      column_type: ATTRIBUTE
+    db_column_properties:
+      data_type: VARCHAR
+  - name: FIRST_DATE_OF_WEEK
+    db_column_name: FIRST_DATE_OF_WEEK
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: FIRST_DATE_OF_WEEK_ID
+    db_column_name: FIRST_DATE_OF_WEEK_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: LAST_DATE_OF_WEEK
+    db_column_name: LAST_DATE_OF_WEEK
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: LAST_DATE_OF_WEEK_ID
+    db_column_name: LAST_DATE_OF_WEEK_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FIRST_DATE_OF_WEEK_ISO
+    db_column_name: FIRST_DATE_OF_WEEK_ISO
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: FIRST_DATE_OF_WEEK_ISO_ID
+    db_column_name: FIRST_DATE_OF_WEEK_ISO_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: LAST_DATE_OF_WEEK_ISO
+    db_column_name: LAST_DATE_OF_WEEK_ISO
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: LAST_DATE_OF_WEEK_ISO_ID
+    db_column_name: LAST_DATE_OF_WEEK_ISO_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FIRST_DATE_OF_MONTH
+    db_column_name: FIRST_DATE_OF_MONTH
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: FIRST_DATE_OF_MONTH_ID
+    db_column_name: FIRST_DATE_OF_MONTH_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: LAST_DATE_OF_MONTH
+    db_column_name: LAST_DATE_OF_MONTH
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: LAST_DATE_OF_MONTH_ID
+    db_column_name: LAST_DATE_OF_MONTH_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FIRST_DATE_OF_QUARTER
+    db_column_name: FIRST_DATE_OF_QUARTER
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: FIRST_DATE_OF_QUARTER_ID
+    db_column_name: FIRST_DATE_OF_QUARTER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: LAST_DATE_OF_QUARTER
+    db_column_name: LAST_DATE_OF_QUARTER
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: LAST_DATE_OF_QUARTER_ID
+    db_column_name: LAST_DATE_OF_QUARTER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: FIRST_DATE_OF_YEAR
+    db_column_name: FIRST_DATE_OF_YEAR
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: FIRST_DATE_OF_YEAR_ID
+    db_column_name: FIRST_DATE_OF_YEAR_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: LAST_DATE_OF_YEAR
+    db_column_name: LAST_DATE_OF_YEAR
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: LAST_DATE_OF_YEAR_ID
+    db_column_name: LAST_DATE_OF_YEAR_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_MONTH_START
+    db_column_name: IS_MONTH_START
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_MONTH_END
+    db_column_name: IS_MONTH_END
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_QUARTER_START
+    db_column_name: IS_QUARTER_START
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_QUARTER_END
+    db_column_name: IS_QUARTER_END
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_YEAR_START
+    db_column_name: IS_YEAR_START
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: IS_YEAR_END
+    db_column_name: IS_YEAR_END
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PREVIOUS_DATE
+    db_column_name: PREVIOUS_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_DATE_ID
+    db_column_name: PREVIOUS_DATE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PREVIOUS_MONTH_ID
+    db_column_name: PREVIOUS_MONTH_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PREVIOUS_MONTH_START_DATE
+    db_column_name: PREVIOUS_MONTH_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_MONTH_END_DATE
+    db_column_name: PREVIOUS_MONTH_END_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_QUARTER_ID
+    db_column_name: PREVIOUS_QUARTER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PREVIOUS_QUARTER_START_DATE
+    db_column_name: PREVIOUS_QUARTER_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_QUARTER_END_DATE
+    db_column_name: PREVIOUS_QUARTER_END_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_YEAR_ID
+    db_column_name: PREVIOUS_YEAR_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PREVIOUS_YEAR_START_DATE
+    db_column_name: PREVIOUS_YEAR_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_YEAR_END_DATE
+    db_column_name: PREVIOUS_YEAR_END_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_7D_START_DATE
+    db_column_name: PREVIOUS_7D_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_28D_START_DATE
+    db_column_name: PREVIOUS_28D_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_YEAR_SAME_DATE_ID
+    db_column_name: PREVIOUS_YEAR_SAME_DATE_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PREVIOUS_YEAR_SAME_DATE
+    db_column_name: PREVIOUS_YEAR_SAME_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_YEAR_MONTH_ID
+    db_column_name: PREVIOUS_YEAR_MONTH_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PREVIOUS_YEAR_MONTH_START_DATE
+    db_column_name: PREVIOUS_YEAR_MONTH_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_YEAR_MONTH_END_DATE
+    db_column_name: PREVIOUS_YEAR_MONTH_END_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_YEAR_QUARTER_ID
+    db_column_name: PREVIOUS_YEAR_QUARTER_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PREVIOUS_YEAR_QUARTER_START_DATE
+    db_column_name: PREVIOUS_YEAR_QUARTER_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_YEAR_QUARTER_END_DATE
+    db_column_name: PREVIOUS_YEAR_QUARTER_END_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_WEEK_START_DATE
+    db_column_name: PREVIOUS_WEEK_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_WEEK_END_DATE
+    db_column_name: PREVIOUS_WEEK_END_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_WEEK_ISO_ID
+    db_column_name: PREVIOUS_WEEK_ISO_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: PREVIOUS_YEAR_WEEK_START_DATE
+    db_column_name: PREVIOUS_YEAR_WEEK_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_YEAR_WEEK_END_DATE
+    db_column_name: PREVIOUS_YEAR_WEEK_END_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: PREVIOUS_YEAR_WEEK_ID
+    db_column_name: PREVIOUS_YEAR_WEEK_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: NEXT_YEAR_SAME_DATE
+    db_column_name: NEXT_YEAR_SAME_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: NEXT_YEAR_START_DATE
+    db_column_name: NEXT_YEAR_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: NEXT_YEAR_WEEK_START_DATE
+    db_column_name: NEXT_YEAR_WEEK_START_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: NEXT_YEAR_WEEK_END_DATE
+    db_column_name: NEXT_YEAR_WEEK_END_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE
+  - name: ELAPSED_DAYS_IN_YEAR
+    db_column_name: ELAPSED_DAYS_IN_YEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: REMAINING_DAYS_IN_YEAR
+    db_column_name: REMAINING_DAYS_IN_YEAR
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ELAPSED_DAYS_IN_MONTH
+    db_column_name: ELAPSED_DAYS_IN_MONTH
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: REMAINING_DAYS_IN_MONTH
+    db_column_name: REMAINING_DAYS_IN_MONTH
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: INT64
+  - name: ETL_LOAD_TIMESTAMP
+    db_column_name: ETL_LOAD_TIMESTAMP
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+    db_column_properties:
+      data_type: DATE_TIME
+  properties:
+    sage_config:
+      is_sage_enabled: false
