@@ -162,42 +162,6 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"isStackedAsPercent\": true,\"stackedAsPercentFormat\": {\"category\": \"PERCENTAGE\",\"percentageFormatConfig\": {\"decimals\": 2.0},\"isCategoryEditable\": false},\"customProps\": \"{\\\"advancedProperties\\\":{\\\"tooltip\\\":{\\\"enabled\\\":true}}}\",\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}},{\"columnId\": \"Week(Date Hourly)\",\"columnProperty\": {}},{\"columnId\": \"Cost Type\",\"columnProperty\": {}},{\"columnId\": \"Total Cost\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"847b099c-4db1-4f25-91b4-45fe67741b3d\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Cost\"],\"isOpposite\": false}},{\"id\": \"f2cfdbeb-bf85-4229-aa90-4717cd839ec6\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Date Hourly)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"4fe4125d-dd3b-460a-9cf6-03cd52c29b5e\",\"color\": \"#FF8142\"},{\"serieName\": \"3a1de7cd-abd0-442e-8d7a-281bba0fb62a\",\"color\": \"#FCC838\"},{\"serieName\": \"adhoc\",\"color\": \"#FCC838\"},{\"serieName\": \"other\",\"color\": \"#48D1E0\"},{\"serieName\": \"schedule\",\"color\": \"#2E75F0\"},{\"serieName\": \"1ffbdd41-42eb-5886-b73a-9f58ef02a13d\",\"color\": \"#747E8C\"},{\"serieName\": \"Total Cost\",\"color\": \"#FF8142\"}],\"tooltipConfig\": {\"columnIds\": [\"Cost Type\",\"Week(Date Hourly)\",\"Total Cost\"]}}"
       display_mode: CHART_MODE
     viz_guid: d39e799b-03dd-4d17-bf9e-ff2fe8d06a0b
-  - id: Viz_5
-    answer:
-      name: Total Gov by Daily Active Date
-      tables:
-      - id: FDA Core Model
-        name: FDA Core Model
-        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
-      search_query: "[Gov] [Active Date] [Active Date].daily [Active Date].'this month'"
-      answer_columns:
-      - name: Day(Active Date)
-      - name: Total Gov
-      table:
-        table_columns:
-        - column_id: Day(Active Date)
-          headline_aggregation: MIN-MAX
-        - column_id: Total Gov
-          headline_aggregation: SUM
-        ordered_column_ids:
-        - Day(Active Date)
-        - Total Gov
-        client_state: ""
-        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
-      chart:
-        type: LINE
-        chart_columns:
-        - column_id: Day(Active Date)
-        - column_id: Total Gov
-        axis_configs:
-        - x:
-          - Day(Active Date)
-          "y":
-          - Total Gov
-        client_state: ""
-        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Total Gov\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}},{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"5c4584c5-6654-4074-a7c7-7ad9e2c12278\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Gov\"],\"isOpposite\": false}},{\"id\": \"80b625ac-a012-4f0e-bbf2-6a1dccb11bc3\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Gov\",\"color\": \"#2E75F0\"}]}"
-      display_mode: CHART_MODE
-    viz_guid: def85d5c-23a3-49c1-bf34-69fe0d287fad
   layout:
     tiles:
     - visualization_id: Viz_1
@@ -220,4 +184,3 @@ liveboard:
       "y": 5
       height: 7
       width: 6
-    - visualization_id: Viz_5
