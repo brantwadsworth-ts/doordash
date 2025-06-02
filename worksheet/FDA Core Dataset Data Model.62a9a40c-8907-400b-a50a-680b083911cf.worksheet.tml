@@ -1,0 +1,78 @@
+guid: 62a9a40c-8907-400b-a50a-680b083911cf
+model:
+  name: FDA Core Dataset Data Model
+  description: FDA Data Model created from the dataset
+  model_tables:
+  - name: fda_core_dataset
+    fqn: bb4850d0-52ed-4144-b66e-e321daba8fca
+  columns:
+  - name: Active Date
+    column_id: fda_core_dataset::ACTIVE_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: Business Unit
+    column_id: fda_core_dataset::BUSINESS_UNIT
+    properties:
+      column_type: ATTRIBUTE
+  - name: Country Name
+    column_id: fda_core_dataset::COUNTRY_NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Cx Fee
+    column_id: fda_core_dataset::CX_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Fulfillment Type
+    column_id: fda_core_dataset::FULFILLMENT_TYPE
+    properties:
+      column_type: ATTRIBUTE
+  - name: Gov
+    column_id: fda_core_dataset::GOV
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Gross Fee
+    column_id: fda_core_dataset::GROSS_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Is Filtered
+    column_id: fda_core_dataset::IS_FILTERED
+    properties:
+      column_type: ATTRIBUTE
+  - name: Is Rx
+    column_id: fda_core_dataset::IS_RX
+    properties:
+      column_type: ATTRIBUTE
+  - name: Mx Fee
+    column_id: fda_core_dataset::MX_FEE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Net Revenue
+    column_id: fda_core_dataset::NET_REVENUE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: Nv Vertical Name
+    column_id: fda_core_dataset::NV_VERTICAL_NAME
+    properties:
+      column_type: ATTRIBUTE
+  - name: Volume
+    column_id: fda_core_dataset::VOLUME
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  properties:
+    is_bypass_rls: false
+    join_progressive: true
+    sage_config:
+      is_sage_enabled: false

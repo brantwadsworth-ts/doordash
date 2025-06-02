@@ -1,0 +1,80 @@
+guid: 72b24049-9414-4e54-a621-385fd1efb51b
+liveboard:
+  name: "Financial Overview [**Datasets**]"
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Total Gov by Daily Active Date
+      tables:
+      - id: FDA Core Dataset Data Model
+        name: FDA Core Dataset Data Model
+        fqn: 62a9a40c-8907-400b-a50a-680b083911cf
+      search_query: "[Gov] [Active Date] [Active Date].daily [Active Date].'last month'"
+      answer_columns:
+      - name: Day(Active Date)
+      - name: Total Gov
+      table:
+        table_columns:
+        - column_id: Day(Active Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Gov
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Day(Active Date)
+        - Total Gov
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Day(Active Date)
+        - column_id: Total Gov
+        axis_configs:
+        - x:
+          - Day(Active Date)
+          "y":
+          - Total Gov
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}},{\"columnId\": \"Total Gov\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"4252a2ac-f98e-44d7-9257-48b55162d0fd\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Gov\"],\"isOpposite\": false}},{\"id\": \"a8d61e6a-904c-4635-b34d-9edcfd7d6de3\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Total Gov\",\"color\": \"#8C62F5\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 78974a39-0e62-4c48-87ad-322f1c829142
+  - id: Viz_2
+    answer:
+      name: Total Volume by Daily Active Date
+      tables:
+      - id: FDA Core Dataset Data Model
+        name: FDA Core Dataset Data Model
+        fqn: 62a9a40c-8907-400b-a50a-680b083911cf
+      search_query: "[Active Date] [Active Date].daily [Active Date] [Active Date].'last month' [Volume]"
+      answer_columns:
+      - name: Day(Active Date)
+      - name: Total Volume
+      table:
+        table_columns:
+        - column_id: Day(Active Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Volume
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Day(Active Date)
+        - Total Volume
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Day(Active Date)
+        - column_id: Total Volume
+        axis_configs:
+        - x:
+          - Day(Active Date)
+          "y":
+          - Total Volume
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}},{\"columnId\": \"Total Volume\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"6e2fe8c4-e87c-41ce-ac9c-016fecd4b1c8\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Volume\"],\"isOpposite\": false}},{\"id\": \"90a76f02-65c0-4798-a06c-82047a6fa8b0\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"1e0df6c9-5882-4476-9b2e-540c43227da4\",\"color\": \"#FCC838\"},{\"serieName\": \"Total Volume\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: b8d23f65-6fab-4596-a1bf-1b9f08be3c96
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+    - visualization_id: Viz_2
