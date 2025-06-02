@@ -4188,6 +4188,12 @@ table:
       fqn: b12d0ccb-3a74-4b7e-b763-b9972c6af966
     "on": "[FACT_DELIVERY_ALLOCATION::STORE_ID] = [DIMENSION_STORE::STORE_ID]"
     type: LEFT_OUTER
+  - name: FACT_DELIVERY_ALLOCATION_to_MAINDB_COUNTRY
+    destination:
+      name: MAINDB_COUNTRY
+      fqn: 63dd9bd1-fe8d-4ee3-9031-8d1fafa95ce3
+    "on": "[FACT_DELIVERY_ALLOCATION::COUNTRY_ID] = [MAINDB_COUNTRY::ID]"
+    type: LEFT_OUTER
   properties:
     sage_config:
       is_sage_enabled: false

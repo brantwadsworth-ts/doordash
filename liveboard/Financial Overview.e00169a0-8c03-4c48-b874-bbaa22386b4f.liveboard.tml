@@ -1,0 +1,356 @@
+guid: e00169a0-8c03-4c48-b874-bbaa22386b4f
+liveboard:
+  name: Financial Overview
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Total GOV Daily Trend
+      description: This graph shows the daily GOV Trend for Current Month
+      tables:
+      - id: FDA Core Model
+        name: FDA Core Model
+        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+      search_query: "[Gov] [Active Date] [Active Date].daily [Active Date] [Active Date].'last month'"
+      answer_columns:
+      - name: Day(Active Date)
+      - name: Total Gov
+      table:
+        table_columns:
+        - column_id: Day(Active Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Gov
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Day(Active Date)
+        - Total Gov
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Day(Active Date)
+        - column_id: Total Gov
+        axis_configs:
+        - x:
+          - Day(Active Date)
+          "y":
+          - Total Gov
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Total Gov\",\"columnProperty\": {}},{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"80b625ac-a012-4f0e-bbf2-6a1dccb11bc3\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"],\"name\": \"Date\",\"dynamicTitle\": \"Date\"}},{\"id\": \"5c4584c5-6654-4074-a7c7-7ad9e2c12278\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Gov\"],\"name\": \"GOV\",\"isOpposite\": false,\"dynamicTitle\": \"GOV\"}}],\"systemSeriesColors\": [{\"serieName\": \"Total Gov\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: b0785c91-148b-4f4c-9123-0dcd03963609
+  - id: Viz_2
+    answer:
+      name: Total Volume Daily Trend
+      description: This graph shows the daily Delivery Volume Trend for Current Month
+      tables:
+      - id: FDA Core Model
+        name: FDA Core Model
+        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+      search_query: "[volume] [Active Date] [Active Date].daily [Active Date].'last month'"
+      answer_columns:
+      - name: Day(Active Date)
+      - name: volume
+      table:
+        table_columns:
+        - column_id: Day(Active Date)
+          headline_aggregation: MIN-MAX
+        - column_id: volume
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Day(Active Date)
+        - volume
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: Day(Active Date)
+        - column_id: volume
+        axis_configs:
+        - x:
+          - Day(Active Date)
+          "y":
+          - volume
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}},{\"columnId\": \"volume\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"667499f3-9bd4-43ea-9670-d06fc4dc4a0e\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"],\"name\": \"Date\",\"dynamicTitle\": \"Date\"}},{\"id\": \"1aa09110-d31f-4c51-985e-14ab915d06c1\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"volume\"],\"name\": \"Volume\",\"isOpposite\": false,\"dynamicTitle\": \"Volume\"}}],\"systemSeriesColors\": [{\"serieName\": \"volume\",\"color\": \"#8C62F5\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: ff33b81a-0fa5-47b7-a140-17b4d81a7aa2
+  - id: Viz_3
+    answer:
+      name: Top 10 Business by GOV
+      description: This graph shows the Top 10 Business Name by GOV for the Current Month
+      tables:
+      - id: FDA Core Model
+        name: FDA Core Model
+        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+      search_query: "top 10 [Business Name] [Active Date] = 'last month' sort by [Gov]"
+      answer_columns:
+      - name: Business Name
+      - name: Total Gov
+      table:
+        table_columns:
+        - column_id: Business Name
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Total Gov
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Business Name
+        - Total Gov
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: BAR
+        chart_columns:
+        - column_id: Business Name
+        - column_id: Total Gov
+        axis_configs:
+        - x:
+          - Business Name
+          "y":
+          - Total Gov
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Business Name\",\"columnProperty\": {}},{\"columnId\": \"Total Gov\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"239bb7e8-7a15-49ef-93d3-7c0cee48a0e8\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Gov\"],\"isOpposite\": false}},{\"id\": \"1a06fa9f-916a-499d-b395-6c80fe23344a\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Business Name\"]}}],\"seriesColors\": [{\"serieName\": \"Total Gov\",\"color\": \"#2E75F0\"}],\"systemSeriesColors\": [{\"serieName\": \"Total Gov\",\"color\": \"#8C62F5\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 7325230d-903a-4719-a0b0-08f45e15c7e8
+  - id: Viz_4
+    answer:
+      name: Top 10 Business by Volume
+      description: This graph shows the Top 10 Business Name by Delivery Volume for the Current Month
+      tables:
+      - id: FDA Core Model
+        name: FDA Core Model
+        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+      search_query: "top 10 [Business Name] [Active Date] = 'last month' sort by [volume]"
+      answer_columns:
+      - name: Business Name
+      - name: volume
+      table:
+        table_columns:
+        - column_id: Business Name
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: volume
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Business Name
+        - volume
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: BAR
+        chart_columns:
+        - column_id: Business Name
+        - column_id: volume
+        axis_configs:
+        - x:
+          - Business Name
+          "y":
+          - volume
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Business Name\",\"columnProperty\": {}},{\"columnId\": \"volume\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"bf25dd40-f0f2-4020-834a-51518d2eaecd\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"volume\"],\"isOpposite\": false}},{\"id\": \"b313e0d0-f408-4391-bf68-b86a3e2e78c4\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Business Name\"]}}],\"seriesColors\": [{\"serieName\": \"volume\",\"color\": \"#8C62F5\"}],\"systemSeriesColors\": [{\"serieName\": \"volume\",\"color\": \"#06BF7F\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 17c90c9b-45ef-473a-ba18-9ce456342385
+  - id: Viz_5
+    answer:
+      name: WoW Growth of Total GOV
+      description: This graph shows the WoW GOV Growth for Current Month
+      tables:
+      - id: FDA Core Model
+        name: FDA Core Model
+        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+      search_query: "growth of [Gov] by [Active Date] [Active Date].daily week-over-week [Active Date] = 'last month'"
+      answer_columns:
+      - name: Day(Active Date)
+      - name: Growth of Total Gov
+      table:
+        table_columns:
+        - column_id: Day(Active Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Growth of Total Gov
+          headline_aggregation: MIN
+        ordered_column_ids:
+        - Day(Active Date)
+        - Growth of Total Gov
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: WATERFALL
+        chart_columns:
+        - column_id: Day(Active Date)
+        - column_id: Growth of Total Gov
+        axis_configs:
+        - x:
+          - Day(Active Date)
+          "y":
+          - Growth of Total Gov
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}},{\"columnId\": \"Growth of Total Gov\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"be52ac6e-44bd-4c1a-b571-7d6c9fbbdbe0\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"],\"name\": \"Date\",\"dynamicTitle\": \"Date\"}},{\"id\": \"07be6816-b809-4267-813b-efb271bf09ba\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of Total Gov\"],\"name\": \"Growth of Total GOV\",\"isOpposite\": false,\"dynamicTitle\": \"Growth of Total GOV\"}}],\"seriesColors\": [{\"serieName\": \"Growth of Total Gov\",\"color\": \"#2E75F0\"}],\"systemSeriesColors\": [{\"serieName\": \"Growth of Total Gov\",\"color\": \"#FCC838\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: c4e6c701-62b6-4f59-bc9c-0cbfe6cfd4f5
+  - id: Viz_6
+    answer:
+      name: WoW Growth of Total Delivery Volume
+      description: This graph show the WoW Delivery Volume Growth for Current Month
+      tables:
+      - id: FDA Core Model
+        name: FDA Core Model
+        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+      search_query: "growth of [volume] by [Active Date] [Active Date].daily week-over-week [Active Date] = 'last month'"
+      answer_columns:
+      - name: Day(Active Date)
+      - name: Growth of volume
+      table:
+        table_columns:
+        - column_id: Day(Active Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Growth of volume
+          headline_aggregation: MIN
+        ordered_column_ids:
+        - Day(Active Date)
+        - Growth of volume
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: WATERFALL
+        chart_columns:
+        - column_id: Day(Active Date)
+        - column_id: Growth of volume
+        axis_configs:
+        - x:
+          - Day(Active Date)
+          "y":
+          - Growth of volume
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}},{\"columnId\": \"Growth of volume\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"8e8758e8-d22f-4ec2-9e39-4697c0a5bd2c\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"],\"name\": \"Date\",\"dynamicTitle\": \"Date\"}},{\"id\": \"3d124aa6-2a39-44d9-a4c5-3c194abf0540\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Growth of volume\"],\"name\": \"Growth of Delivery Volume\",\"isOpposite\": false,\"dynamicTitle\": \"Growth of Delivery Volume\"}}],\"systemSeriesColors\": [{\"serieName\": \"Growth of volume\",\"color\": \"#8C62F5\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: a3801eef-a549-41b8-9c45-0463c11ba0a9
+  - id: Viz_7
+    answer:
+      name: Total Volume by Country Name
+      tables:
+      - id: FDA Core Model
+        name: FDA Core Model
+        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+      search_query: "[volume] [Country Name] [Active Date] = 'last month'"
+      answer_columns:
+      - name: Country Name
+      - name: volume
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: AUTO
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      table:
+        table_columns:
+        - column_id: Country Name
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: volume
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Country Name
+        - volume
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: PIE
+        chart_columns:
+        - column_id: Country Name
+        - column_id: volume
+        axis_configs:
+        - x:
+          - Country Name
+          "y":
+          - volume
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Country Name\",\"columnProperty\": {}},{\"columnId\": \"volume\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"7237bee2-9eb3-4ea0-a8dc-2683a34da73d\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"volume\"],\"isOpposite\": false}},{\"id\": \"c9661b2a-7949-4409-a894-ac81662d3521\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Country Name\"]}}],\"systemSeriesColors\": [{\"serieName\": \"australia\",\"color\": \"#06BF7F\"},{\"serieName\": \"canada\",\"color\": \"#FCC838\"},{\"serieName\": \"new zealand\",\"color\": \"#48D1E0\"},{\"serieName\": \"united states\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: ecf51992-743e-4952-9574-031e3e3c8276
+  - id: Viz_8
+    answer:
+      name: Total GOV by Business Unit
+      description: This graph shows the daily GOV Trend for Current Month by Business Unit
+      tables:
+      - id: FDA Core Model
+        name: FDA Core Model
+        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+      search_query: "[Gov] [Active Date].daily [Business Unit] [Active Date] = 'last month'"
+      answer_columns:
+      - name: Business Unit
+      - name: Day(Active Date)
+      - name: Total Gov
+      table:
+        table_columns:
+        - column_id: Business Unit
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: Day(Active Date)
+          headline_aggregation: MIN-MAX
+        - column_id: Total Gov
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Day(Active Date)
+        - Business Unit
+        - Total Gov
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: STACKED_COLUMN
+        chart_columns:
+        - column_id: Business Unit
+        - column_id: Day(Active Date)
+        - column_id: Total Gov
+        axis_configs:
+        - x:
+          - Day(Active Date)
+          "y":
+          - Total Gov
+          color:
+          - Business Unit
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"visibleSeriesNames\": [\"classic - cav\",\"dashlink\",\"doordash for business\",\"drive : checkout\",\"marketplace : classic\",\"marketplace : pickup\",\"marketplace : subscription\",\"pickup - cav\",\"storefront\",\"subscription - cav\",\"drive\"],\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"isStackedAsPercent\": true,\"stackedAsPercentFormat\": {\"category\": \"PERCENTAGE\",\"percentageFormatConfig\": {\"decimals\": 2.0,\"removeTrailingZeroes\": false},\"isCategoryEditable\": false},\"pivotSummariesState\": {}},\"showStackedLabels\": false},\"columnProperties\": [{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}},{\"columnId\": \"Business Unit\",\"columnProperty\": {}},{\"columnId\": \"Total Gov\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"c52b406b-9842-4013-9cc6-b324886d77fe\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"],\"name\": \"Date\",\"dynamicTitle\": \"Date\"}},{\"id\": \"7176d088-c85b-425c-8bde-bb56a185f048\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Gov\"],\"name\": \"GOV\",\"isOpposite\": false,\"dynamicTitle\": \"GOV\"}}],\"systemSeriesColors\": [{\"serieName\": \"classic - cav\",\"color\": \"#B094F8\"},{\"serieName\": \"dashlink\",\"color\": \"#8C62F5\"},{\"serieName\": \"doordash for business\",\"color\": \"#56D3A8\"},{\"serieName\": \"drive\",\"color\": \"#06BF7F\"},{\"serieName\": \"drive : checkout\",\"color\": \"#FCD977\"},{\"serieName\": \"marketplace : classic\",\"color\": \"#FCC838\"},{\"serieName\": \"marketplace : pickup\",\"color\": \"#82DFE9\"},{\"serieName\": \"marketplace : subscription\",\"color\": \"#48D1E0\"},{\"serieName\": \"pickup - cav\",\"color\": \"#2359B6\"},{\"serieName\": \"storefront\",\"color\": \"#71A1F4\"},{\"serieName\": \"subscription - cav\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 28ca5c55-d9b5-4a53-9aed-4dd1f85eb1a1
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      x: 0
+      "y": 0
+      height: 5
+      width: 6
+    - visualization_id: Viz_2
+      x: 6
+      "y": 0
+      height: 5
+      width: 6
+    - visualization_id: Viz_3
+      x: 0
+      "y": 5
+      height: 5
+      width: 6
+    - visualization_id: Viz_4
+      x: 6
+      "y": 5
+      height: 5
+      width: 6
+    - visualization_id: Viz_5
+      x: 0
+      "y": 10
+      height: 5
+      width: 6
+    - visualization_id: Viz_6
+      x: 6
+      "y": 10
+      height: 5
+      width: 6
+    - visualization_id: Viz_7
+      x: 6
+      "y": 15
+      height: 5
+      width: 6
+    - visualization_id: Viz_8
+      x: 0
+      "y": 15
+      height: 5
+      width: 6
