@@ -312,6 +312,42 @@ liveboard:
         client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"visibleSeriesNames\": [\"classic - cav\",\"dashlink\",\"doordash for business\",\"drive : checkout\",\"marketplace : classic\",\"marketplace : pickup\",\"marketplace : subscription\",\"pickup - cav\",\"storefront\",\"subscription - cav\",\"drive\"],\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"isStackedAsPercent\": true,\"stackedAsPercentFormat\": {\"category\": \"PERCENTAGE\",\"percentageFormatConfig\": {\"decimals\": 2.0,\"removeTrailingZeroes\": false},\"isCategoryEditable\": false},\"pivotSummariesState\": {}},\"showStackedLabels\": false},\"columnProperties\": [{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}},{\"columnId\": \"Business Unit\",\"columnProperty\": {}},{\"columnId\": \"Total Gov\",\"columnProperty\": {\"dataLabels\": false}}],\"axisProperties\": [{\"id\": \"c52b406b-9842-4013-9cc6-b324886d77fe\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"],\"name\": \"Date\",\"dynamicTitle\": \"Date\"}},{\"id\": \"7176d088-c85b-425c-8bde-bb56a185f048\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Gov\"],\"name\": \"GOV\",\"isOpposite\": false,\"dynamicTitle\": \"GOV\"}}],\"systemSeriesColors\": [{\"serieName\": \"classic - cav\",\"color\": \"#B094F8\"},{\"serieName\": \"dashlink\",\"color\": \"#8C62F5\"},{\"serieName\": \"doordash for business\",\"color\": \"#56D3A8\"},{\"serieName\": \"drive\",\"color\": \"#06BF7F\"},{\"serieName\": \"drive : checkout\",\"color\": \"#FCD977\"},{\"serieName\": \"marketplace : classic\",\"color\": \"#FCC838\"},{\"serieName\": \"marketplace : pickup\",\"color\": \"#82DFE9\"},{\"serieName\": \"marketplace : subscription\",\"color\": \"#48D1E0\"},{\"serieName\": \"pickup - cav\",\"color\": \"#2359B6\"},{\"serieName\": \"storefront\",\"color\": \"#71A1F4\"},{\"serieName\": \"subscription - cav\",\"color\": \"#2E75F0\"}]}"
       display_mode: CHART_MODE
     viz_guid: 28ca5c55-d9b5-4a53-9aed-4dd1f85eb1a1
+  - id: Viz_9
+    answer:
+      name: volume by Region Name
+      tables:
+      - id: FDA Core Model
+        name: FDA Core Model
+        fqn: a3b3b8c4-fc90-4553-a2f3-ba75cf497072
+      search_query: "[volume] by [Region Name] [Country Name] = 'united states' [Active Date] = 'last month'"
+      answer_columns:
+      - name: Region Name
+      - name: volume
+      table:
+        table_columns:
+        - column_id: Region Name
+          headline_aggregation: COUNT_DISTINCT
+        - column_id: volume
+          headline_aggregation: SUM
+        ordered_column_ids:
+        - Region Name
+        - volume
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: PIE
+        chart_columns:
+        - column_id: Region Name
+        - column_id: volume
+        axis_configs:
+        - x:
+          - Region Name
+          "y":
+          - volume
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Region Name\",\"columnProperty\": {}},{\"columnId\": \"volume\",\"columnProperty\": {}},{\"columnId\": \"Measure names\",\"columnProperty\": {}},{\"columnId\": \"Measure values\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"b5a446c3-66b1-4b4a-ad0b-89273834f16b\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"volume\"],\"isOpposite\": false}},{\"id\": \"e31da73a-60fe-4608-add9-e6af2964cb75\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Region Name\"]}}],\"systemSeriesColors\": [{\"serieName\": \"volume\",\"color\": \"#747E8C\"},{\"serieName\": \"adak test region\",\"color\": \"#B094F8\"},{\"serieName\": \"florida\",\"color\": \"#8C62F5\"},{\"serieName\": \"midwest\",\"color\": \"#56D3A8\"},{\"serieName\": \"mountain\",\"color\": \"#06BF7F\"},{\"serieName\": \"new york\",\"color\": \"#FCD977\"},{\"serieName\": \"northeast\",\"color\": \"#FCC838\"},{\"serieName\": \"northern california\",\"color\": \"#82DFE9\"},{\"serieName\": \"southeast\",\"color\": \"#48D1E0\"},{\"serieName\": \"southern california\",\"color\": \"#2359B6\"},{\"serieName\": \"southwest\",\"color\": \"#71A1F4\"},{\"serieName\": \"texas\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 4095e82f-31b9-47f5-b681-42ebec8553b2
   layout:
     tiles:
     - visualization_id: Viz_1
@@ -354,3 +390,4 @@ liveboard:
       "y": 15
       height: 5
       width: 6
+    - visualization_id: Viz_9

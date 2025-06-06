@@ -1,0 +1,94 @@
+guid: 97e8cde0-7cc8-44db-a9a8-1b6bf8637404
+sql_view:
+  name: FACT_REGION
+  description: Direct view of PRODDB.PUBLIC.FACT_REGION table.
+  connection:
+    name: dd_snow_test_dd
+    fqn: 49cf2059-2326-45b2-9a18-92bc6af4e79d
+  sql_query: select * from PRODDB.PUBLIC.FACT_REGION
+  sql_view_columns:
+  - name: REGION_ID
+    sql_output_column: REGION_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: REGION_NAME
+    sql_output_column: REGION_NAME
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: SUPER_REGION_NAME
+    sql_output_column: SUPER_REGION_NAME
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: MARKET_ID
+    sql_output_column: MARKET_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: MARKET_NAME
+    sql_output_column: MARKET_NAME
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: SUBMARKET_ID
+    sql_output_column: SUBMARKET_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: SUBMARKET_NAME
+    sql_output_column: SUBMARKET_NAME
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: MARKET_IS_ACTIVE
+    sql_output_column: MARKET_IS_ACTIVE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: REGION_IS_ACTIVE
+    sql_output_column: REGION_IS_ACTIVE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: SUBMARKET_IS_ACTIVE
+    sql_output_column: SUBMARKET_IS_ACTIVE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: TIMEZONE
+    sql_output_column: TIMEZONE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: SUBMARKET_CATEGORY
+    sql_output_column: SUBMARKET_CATEGORY
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: SUBMARKET_OWNER
+    sql_output_column: SUBMARKET_OWNER
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: IS_DASHPASS_ELIGIBLE
+    sql_output_column: IS_DASHPASS_ELIGIBLE
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+  - name: SUBMARKET_FIRST_DELIVERY_DATE
+    sql_output_column: SUBMARKET_FIRST_DELIVERY_DATE
+    properties:
+      column_type: ATTRIBUTE
+      index_type: DONT_INDEX
+  - name: COUNTRY_ID
+    sql_output_column: COUNTRY_ID
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
