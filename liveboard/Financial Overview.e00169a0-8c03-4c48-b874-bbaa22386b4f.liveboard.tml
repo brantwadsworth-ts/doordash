@@ -391,3 +391,7 @@ liveboard:
       height: 5
       width: 6
     - visualization_id: Viz_9
+      x: 0
+      "y": 20
+      height: 6
+      width: 6
