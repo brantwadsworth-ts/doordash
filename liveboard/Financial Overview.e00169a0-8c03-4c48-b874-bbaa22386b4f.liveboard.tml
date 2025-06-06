@@ -314,7 +314,7 @@ liveboard:
     viz_guid: 28ca5c55-d9b5-4a53-9aed-4dd1f85eb1a1
   - id: Viz_9
     answer:
-      name: volume by Region Name
+      name: "Total Volume by Region Name [ Only for US ]"
       tables:
       - id: FDA Core Model
         name: FDA Core Model
