@@ -45,6 +45,12 @@ model:
   - id: volume
     name: volume
     expr: count_if ( [FACT_DELIVERY_ALLOCATION::IS_FILTERED] , [FACT_DELIVERY_ALLOCATION::DELIVERY_ID] )
+  filters:
+  - column:
+    - Active Date
+    oper: '>='
+    values:
+    - 04/01/2025
   columns:
   - name: volume
     description: Total Number of Deliveries
@@ -58,6 +64,23 @@ model:
       - deliveries
       - orders
       synonym_type: USER_DEFINED
+  - name: aov
+    description: Average Order Volume
+    formula_id: aov
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
+      synonyms:
+      - Average Order Volume
+      - AOV
+  - name: Num Creators
+    description: Countof all the creators in the systm
+    formula_id: Num Creators
+    properties:
+      column_type: MEASURE
+      aggregation: SUM
+      index_type: DONT_INDEX
   - name: Region Name
     column_id: FACT_REGION::REGION_NAME
     properties:
@@ -78,16 +101,6 @@ model:
     properties:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
-  - name: aov
-    description: Average Order Volume
-    formula_id: aov
-    properties:
-      column_type: MEASURE
-      aggregation: SUM
-      index_type: DONT_INDEX
-      synonyms:
-      - Average Order Volume
-      - AOV
   - name: Business Unit
     description: Line of Business. Each delivery belongs to one of the business unit
     column_id: FACT_DELIVERY_ALLOCATION::BUSINESS_UNIT
@@ -162,13 +175,6 @@ model:
     column_id: MAINDB_COUNTRY::NAME
     properties:
       column_type: ATTRIBUTE
-  - name: Num Creators
-    description: Countof all the creators in the systm
-    formula_id: Num Creators
-    properties:
-      column_type: MEASURE
-      aggregation: SUM
-      index_type: DONT_INDEX
   properties:
     is_bypass_rls: false
     join_progressive: true
