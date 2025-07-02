@@ -271,7 +271,7 @@ liveboard:
   - id: Viz_8
     answer:
       name: Total GOV by Business Unit
-      description: This graph shows the daily GOV Trend for Current Month by Business Unit
+      description: This graph shows the daily GOV Trend for Last Month by Business Unit
       tables:
       - id: FDA Core Model
         name: FDA Core Model
