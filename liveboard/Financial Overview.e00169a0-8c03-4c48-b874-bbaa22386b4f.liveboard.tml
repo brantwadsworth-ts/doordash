@@ -79,7 +79,7 @@ liveboard:
   - id: Viz_3
     answer:
       name: Top 10 Business by GOV
-      description: This graph shows the Top 10 Business Name by GOV for the Current Month
+      description: This graph shows the Top 10 Business Name by GOV for the Last Month
       tables:
       - id: FDA Core Model
         name: FDA Core Model
