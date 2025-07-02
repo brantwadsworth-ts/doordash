@@ -190,7 +190,7 @@ liveboard:
   - id: Viz_6
     answer:
       name: WoW Growth of Total Delivery Volume
-      description: This graph show the WoW Delivery Volume Growth for Current Month
+      description: This graph show the WoW Delivery Volume Growth for Last Month
       tables:
       - id: FDA Core Model
         name: FDA Core Model
