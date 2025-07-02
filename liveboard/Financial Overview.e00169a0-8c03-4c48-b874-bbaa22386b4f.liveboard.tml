@@ -5,7 +5,7 @@ liveboard:
   - id: Viz_1
     answer:
       name: Total GOV Daily Trend
-      description: This graph shows the daily GOV Trend for Current Month
+      description: This graph shows the daily GOV Trend for Last Month
       tables:
       - id: FDA Core Model
         name: FDA Core Model
