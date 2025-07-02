@@ -116,7 +116,7 @@ liveboard:
   - id: Viz_4
     answer:
       name: Top 10 Business by Volume
-      description: This graph shows the Top 10 Business Name by Delivery Volume for the Current Month
+      description: This graph shows the Top 10 Business Name by Delivery Volume for the Last Month
       tables:
       - id: FDA Core Model
         name: FDA Core Model
