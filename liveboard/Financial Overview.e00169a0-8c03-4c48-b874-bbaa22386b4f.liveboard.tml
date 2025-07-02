@@ -42,7 +42,7 @@ liveboard:
   - id: Viz_2
     answer:
       name: Total Volume Daily Trend
-      description: This graph shows the daily Delivery Volume Trend for Current Month
+      description: This graph shows the daily Delivery Volume Trend for Last Month
       tables:
       - id: FDA Core Model
         name: FDA Core Model
