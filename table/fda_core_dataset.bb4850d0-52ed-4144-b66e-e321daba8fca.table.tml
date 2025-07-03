@@ -102,4 +102,4 @@ table:
   dataset_id: 362cdd6499d6
   properties:
     sage_config:
-      is_sage_enabled: false
+      is_sage_enabled: true

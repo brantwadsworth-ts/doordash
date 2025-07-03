@@ -9,7 +9,7 @@ liveboard:
       - id: FDA Core Dataset Data Model
         name: FDA Core Dataset Data Model
         fqn: 62a9a40c-8907-400b-a50a-680b083911cf
-      search_query: "[Gov] [Active Date] [Active Date].daily [Active Date].'last month'"
+      search_query: "[Gov] [Active Date] [Active Date].daily"
       answer_columns:
       - name: Day(Active Date)
       - name: Total Gov
