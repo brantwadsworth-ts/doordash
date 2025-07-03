@@ -26,7 +26,7 @@ liveboard:
         client_state: ""
         client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
       chart:
-        type: LINE
+        type: KPI
         chart_columns:
         - column_id: Day(Active Date)
         - column_id: Total Gov
@@ -36,7 +36,7 @@ liveboard:
           "y":
           - Total Gov
         client_state: ""
-        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Total Gov\",\"columnProperty\": {}},{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"80b625ac-a012-4f0e-bbf2-6a1dccb11bc3\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"],\"name\": \"Date\",\"dynamicTitle\": \"Date\"}},{\"id\": \"5c4584c5-6654-4074-a7c7-7ad9e2c12278\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Gov\"],\"name\": \"GOV\",\"isOpposite\": false,\"dynamicTitle\": \"GOV\"}}],\"systemSeriesColors\": [{\"serieName\": \"Total Gov\",\"color\": \"#2E75F0\"}]}"
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Total Gov\",\"columnProperty\": {}},{\"columnId\": \"Day(Active Date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"80b625ac-a012-4f0e-bbf2-6a1dccb11bc3\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Active Date)\"],\"name\": \"Date\",\"dynamicTitle\": \"Date\"}},{\"id\": \"5c4584c5-6654-4074-a7c7-7ad9e2c12278\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Total Gov\"],\"name\": \"GOV\",\"isOpposite\": false,\"dynamicTitle\": \"GOV\"}}],\"systemSeriesColors\": [{\"serieName\": \"Total Gov\",\"color\": \"#06BF7F\"}]}"
       display_mode: CHART_MODE
     viz_guid: b0785c91-148b-4f4c-9123-0dcd03963609
   - id: Viz_2
