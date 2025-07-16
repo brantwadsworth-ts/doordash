@@ -1,0 +1,748 @@
+guid: 1eadb7b5-4382-42fd-a0c1-63e505a242c3
+liveboard:
+  name: '*** User Experience'
+  visualizations:
+  - id: Viz_1
+    answer:
+      name: Latency by Week
+      tables:
+      - id: "TS: Query Stats Worksheet"
+        name: "TS: Query Stats Worksheet"
+        fqn: 321647b5-b057-4b4d-b455-0cf041e4defe
+      formulas:
+      - id: '% Late'
+        name: '% Late'
+        expr: "[> 15s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Suboptimal'
+        name: '% Suboptimal'
+        expr: "[> 5s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Unusable'
+        name: '% Unusable'
+        expr: "[> 30s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '> 15s'
+        name: '> 15s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 15000 and ( [Query Latency (External)] < 30000 ) ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 30s'
+        name: '> 30s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 30000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 5s'
+        name: '> 5s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 5000 ) and ( [Query Latency (External)] < 15000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: External Latency (s)
+        name: External Latency (s)
+        expr: "[Query Latency (External)] / 1000"
+        was_auto_generated: false
+      - id: Internal Latency (s)
+        name: Internal Latency (s)
+        expr: "( [Query Latency (Overall)] - [Query Latency (External)] ) / 1000"
+        was_auto_generated: false
+      - id: Optimal %
+        name: Optimal %
+        expr: "[< 5s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: < 5s
+        name: < 5s
+        expr: "unique_count_if ( [Query Latency (External)] <= 5000 , [Query ID] )"
+        was_auto_generated: false
+      search_query: "[Query Start Date].weekly [Query Start Date].'last 30 days' unique count [Query ID] [> 15s] [% Late] [Is System].false [Query Task] != '{null}' [> 30s] [% Unusable] [> 5s] [% Suboptimal] [< 5s] [Optimal %] average [Internal Latency (s)] average [External Latency (s)] sort by [Query Start Date] [Query Start Date].weekly"
+      answer_columns:
+      - name: '% Late'
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 0.0
+          isCategoryEditable: true
+      - name: '% Suboptimal'
+        custom_name: '% Sub optimal'
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 0.0
+          isCategoryEditable: true
+      - name: '% Unusable'
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 0.0
+          isCategoryEditable: true
+      - name: < 5s
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: THOUSANDS
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: '> 15s'
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: THOUSANDS
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: '> 30s'
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: NONE
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: '> 5s'
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: THOUSANDS
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: Average External Latency (s)
+        custom_name: Avg Ext Late (s)
+      - name: Average Internal Latency (s)
+        custom_name: Avg Int Late (s)
+      - name: Optimal %
+        custom_name: '% Optimal'
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 0.0
+          isCategoryEditable: true
+      - name: Unique Number of Query ID
+        custom_name: '# of Queries'
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: THOUSANDS
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: Week(Query Start Date)
+      table:
+        table_columns:
+        - column_id: '% Late'
+          show_headline: false
+        - column_id: '% Suboptimal'
+          show_headline: false
+        - column_id: '% Unusable'
+          show_headline: false
+        - column_id: < 5s
+          show_headline: false
+        - column_id: '> 15s'
+          show_headline: false
+        - column_id: '> 30s'
+          show_headline: false
+        - column_id: '> 5s'
+          show_headline: false
+        - column_id: Average External Latency (s)
+          show_headline: false
+        - column_id: Average Internal Latency (s)
+          show_headline: false
+        - column_id: Optimal %
+          show_headline: false
+        - column_id: Unique Number of Query ID
+          show_headline: false
+        - column_id: Week(Query Start Date)
+          show_headline: false
+        ordered_column_ids:
+        - Week(Query Start Date)
+        - Unique Number of Query ID
+        - '> 15s'
+        - '% Late'
+        - '> 30s'
+        - '% Unusable'
+        - '> 5s'
+        - '% Suboptimal'
+        - < 5s
+        - Optimal %
+        - Average Internal Latency (s)
+        - Average External Latency (s)
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"widthState\": [{\"columnId\": \"Week(Query Start Date)\",\"width\": 131.0},{\"columnId\": \"Unique Number of Query ID\",\"width\": 109.22261047363281},{\"columnId\": \"< 5s\",\"width\": 60.60557556152344},{\"columnId\": \"> 5s\",\"width\": 59.0},{\"columnId\": \"> 15s\",\"width\": 65.0},{\"columnId\": \"> 30s\",\"width\": 68.0},{\"columnId\": \"Optimal %\",\"width\": 95.94064331054688},{\"columnId\": \"% Late\",\"width\": 75.58805847167969},{\"columnId\": \"% Suboptimal\",\"width\": 78.92071533203125},{\"columnId\": \"Average Internal Latency (s)\",\"width\": 106.0},{\"columnId\": \"Average External Latency (s)\",\"width\": 156.0}],\"orderedColumnIds\": [\"Week(Query Start Date)\",\"Average Internal Latency (s)\",\"Average External Latency (s)\",\"Unique Number of Query ID\",\"< 5s\",\"> 5s\",\"> 15s\",\"> 30s\",\"Optimal %\",\"% Suboptimal\",\"% Late\",\"% Unusable\"],\"columnProperties\": [{\"columnId\": \"% Suboptimal\",\"columnProperty\": {\"wrapColumnText\": true}}]}"
+      chart:
+        type: LINE
+        chart_columns:
+        - column_id: '% Late'
+        - column_id: '% Suboptimal'
+        - column_id: '% Unusable'
+        - column_id: < 5s
+        - column_id: '> 15s'
+        - column_id: '> 30s'
+        - column_id: '> 5s'
+        - column_id: Average External Latency (s)
+        - column_id: Average Internal Latency (s)
+        - column_id: Optimal %
+        - column_id: Unique Number of Query ID
+        - column_id: Week(Query Start Date)
+        axis_configs:
+        - x:
+          - Week(Query Start Date)
+          "y":
+          - Unique Number of Query ID
+          - '> 15s'
+          - '% Late'
+          - '> 30s'
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Week(Query Start Date)\",\"columnProperty\": {}},{\"columnId\": \"Unique Number of Query ID\",\"columnProperty\": {}},{\"columnId\": \"> 15s\",\"columnProperty\": {}},{\"columnId\": \"% Late\",\"columnProperty\": {}},{\"columnId\": \"> 30s\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"f8a1aa11-0106-4628-9814-894dc1798757\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Query ID\"],\"isOpposite\": false}},{\"id\": \"a83ef663-b145-4c0b-ace2-57a3ac01db44\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"> 15s\"],\"isOpposite\": true}},{\"id\": \"8c0ee104-1582-4d47-9e6a-e7fda2521858\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"% Late\"],\"isOpposite\": true}},{\"id\": \"3e07a5d5-daa9-4194-b191-ac1f5ba14997\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"> 30s\"],\"isOpposite\": true}},{\"id\": \"2927fa01-59f5-4a12-96fb-7fe5a8e23022\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Query Start Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"f755ead7-bc81-43d6-be3f-2342f6f2a608\",\"color\": \"#8C62F5\"},{\"serieName\": \"cs tools\",\"color\": \"#2E75F0\"},{\"serieName\": \"docr prod connection\",\"color\": \"#48D1E0\"},{\"serieName\": \"dodge - snowflake prod\",\"color\": \"#FCC838\"},{\"serieName\": \"databrickscost\",\"color\": \"#06BF7F\"},{\"serieName\": \"deltatabconn\",\"color\": \"#8C62F5\"},{\"serieName\": \"deltatabgdbx\",\"color\": \"#FF8142\"},{\"serieName\": \"demo connection\",\"color\": \"#ABC7F9\"},{\"serieName\": \"gcp - dodge prod\",\"color\": \"#B5ECF2\"},{\"serieName\": \"gcp c360 prod connection\",\"color\": \"#FDE9AF\"},{\"serieName\": \"gcp emdg prod connection\",\"color\": \"#9BE5CB\"},{\"serieName\": \"gcp finance prod connection\",\"color\": \"#D1C0FB\"},{\"serieName\": \"gcp omni prod connection\",\"color\": \"#FFCCB3\"},{\"serieName\": \"gcp retail prod connection\",\"color\": \"#2359B6\"},{\"serieName\": \"gcp udp billing\",\"color\": \"#369FAA\"},{\"serieName\": \"metrics connection\",\"color\": \"#BF982A\"},{\"serieName\": \"retail ops edm prod\",\"color\": \"#049160\"},{\"serieName\": \"snowflake edm c360\",\"color\": \"#6A4ABA\"},{\"serieName\": \"snowflake edm finance\",\"color\": \"#C26232\"},{\"serieName\": \"snowflake edm omni\",\"color\": \"#71A1F4\"}]}"
+      display_mode: TABLE_MODE
+    viz_guid: 8669d8fe-2696-4617-8937-e21ed01dfac5
+  - id: Viz_2
+    answer:
+      name: Avg Weekly Latency (s)
+      tables:
+      - id: "TS: Query Stats Worksheet"
+        name: "TS: Query Stats Worksheet"
+        fqn: 321647b5-b057-4b4d-b455-0cf041e4defe
+      formulas:
+      - id: Total Latency (s)
+        name: Total Latency (s)
+        expr: "[Query Latency (Overall)] / 1000"
+        was_auto_generated: false
+      - id: '% Late'
+        name: '% Late'
+        expr: "[> 15s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Suboptimal'
+        name: '% Suboptimal'
+        expr: "[> 5s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Unusable'
+        name: '% Unusable'
+        expr: "[> 30s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '> 15s'
+        name: '> 15s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 15000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 30s'
+        name: '> 30s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 30000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 5s'
+        name: '> 5s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 5000 ) , [Query ID] )"
+        was_auto_generated: false
+      search_query: "[Query Start Date].'last five weeks' by [Query Start Date].week [Query Task] != '{null}' average [Total Latency (s)]"
+      answer_columns:
+      - name: Average Total Latency (s)
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: NONE
+            decimals: 2.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: Week(Query Start Date)
+      table:
+        table_columns:
+        - column_id: Average Total Latency (s)
+          show_headline: false
+        - column_id: Week(Query Start Date)
+          show_headline: false
+        ordered_column_ids:
+        - Week(Query Start Date)
+        - Average Total Latency (s)
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Average Total Latency (s)
+        - column_id: Week(Query Start Date)
+        axis_configs:
+        - x:
+          - Week(Query Start Date)
+          "y":
+          - Average Total Latency (s)
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Average Total Latency (s)\",\"columnProperty\": {}},{\"columnId\": \"Week(Query Start Date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"86a9c047-a227-4f6e-9aa9-56a3227eccd4\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Average Total Latency (s)\"],\"isOpposite\": false}},{\"id\": \"8b6e6711-f09a-473f-8d3f-69b644409671\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Query Start Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Average Total Latency (s)\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 7c69a2d2-8e01-42ce-85a6-f6992607da4a
+  - id: Viz_3
+    answer:
+      name: By User
+      description: Ranked by User Category
+      tables:
+      - id: "TS: Query Stats Worksheet"
+        name: "TS: Query Stats Worksheet"
+        fqn: 321647b5-b057-4b4d-b455-0cf041e4defe
+      formulas:
+      - id: '% Late'
+        name: '% Late'
+        expr: "[> 15s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Suboptimal'
+        name: '% Suboptimal'
+        expr: "[> 5s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Unusable'
+        name: '% Unusable'
+        expr: "[> 30s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '> 15s'
+        name: '> 15s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 15000 and ( [Query Latency (External)] < 30000 ) ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 30s'
+        name: '> 30s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 30000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 5s'
+        name: '> 5s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 5000 ) and ( [Query Latency (External)] < 15000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: Ext Late (s)
+        name: Ext Late (s)
+        expr: "[Query Latency (External)] / 1000"
+        was_auto_generated: false
+      - id: Int Late (s)
+        name: Int Late (s)
+        expr: "( [Query Latency (Overall)] - [Query Latency (External)] ) / 1000"
+        was_auto_generated: false
+      - id: Optimal %
+        name: Optimal %
+        expr: "[< 5s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: < 5s
+        name: < 5s
+        expr: "unique_count_if ( [Query Latency (External)] <= 5000 , [Query ID] )"
+        was_auto_generated: false
+      - id: User Category
+        name: User Category
+        expr: "if ( unique count ( [Fx(user query)] ) > 1000 ) then 'power' else if ( unique count ( [Fx(user query)] ) > 500 ) then 'normal' else 'light'"
+        was_auto_generated: false
+      - id: Fx(user query)
+        name: Fx(user query)
+        expr: "concat ( [Query ID] , [User Name] )"
+        was_auto_generated: false
+      search_query: "[Query Start Date].'last 7 days' unique count [Query ID] [> 15s] [% Late] [Is System].false [Query Task] != '{null}' [> 30s] [% Unusable] [> 5s] [% Suboptimal] [< 5s] [Optimal %] [User Name] [User Category] sort by [User Category] descending average [Int Late (s)] average [Ext Late (s)]"
+      answer_columns:
+      - name: '% Late'
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 0.0
+          isCategoryEditable: true
+      - name: '% Suboptimal'
+        custom_name: '% Sub optimal'
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 0.0
+          isCategoryEditable: true
+      - name: '% Unusable'
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 0.0
+          isCategoryEditable: true
+      - name: < 5s
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: AUTO
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: '> 15s'
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: AUTO
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: '> 30s'
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: NONE
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: '> 5s'
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: AUTO
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: Average Ext Late (s)
+        custom_name: Avg Ext Late (s)
+      - name: Average Int Late (s)
+        custom_name: Avg Int Late (s)
+      - name: Optimal %
+        custom_name: '% Optimal'
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 0.0
+          isCategoryEditable: true
+      - name: Unique Number of Query ID
+        custom_name: '# of Queries'
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: AUTO
+            decimals: 0.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: User Category
+      - name: User Name
+      table:
+        table_columns:
+        - column_id: '% Late'
+          show_headline: false
+        - column_id: '% Suboptimal'
+          show_headline: false
+        - column_id: '% Unusable'
+          show_headline: false
+        - column_id: < 5s
+          show_headline: false
+        - column_id: '> 15s'
+          show_headline: false
+        - column_id: '> 30s'
+          show_headline: false
+        - column_id: '> 5s'
+          show_headline: false
+        - column_id: Average Ext Late (s)
+          show_headline: false
+        - column_id: Average Int Late (s)
+          show_headline: false
+        - column_id: Optimal %
+          show_headline: false
+        - column_id: Unique Number of Query ID
+          show_headline: false
+        - column_id: User Category
+          show_headline: false
+        - column_id: User Name
+          show_headline: false
+        ordered_column_ids:
+        - User Name
+        - User Category
+        - Unique Number of Query ID
+        - '> 15s'
+        - '% Late'
+        - '> 30s'
+        - '% Unusable'
+        - '> 5s'
+        - '% Suboptimal'
+        - < 5s
+        - Optimal %
+        - Average Int Late (s)
+        - Average Ext Late (s)
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\",\"widthState\": [{\"columnId\": \"Unique Number of Query ID\",\"width\": 109.22261047363281},{\"columnId\": \"> 5s\",\"width\": 59.0},{\"columnId\": \"> 15s\",\"width\": 65.0},{\"columnId\": \"> 30s\",\"width\": 68.0},{\"columnId\": \"Optimal %\",\"width\": 95.94064331054688},{\"columnId\": \"% Suboptimal\",\"width\": 83.92071533203125},{\"columnId\": \"% Late\",\"width\": 75.58805847167969},{\"columnId\": \"< 5s\",\"width\": 83.60557556152344},{\"columnId\": \"Average Int Late (s)\",\"width\": 124.00238037109375}],\"orderedColumnIds\": [\"User Category\",\"User Name\",\"Unique Number of Query ID\",\"Average Int Late (s)\",\"Average Ext Late (s)\",\"< 5s\",\"> 5s\",\"> 15s\",\"> 30s\",\"Optimal %\",\"% Suboptimal\",\"% Late\",\"% Unusable\"],\"columnProperties\": [{\"columnId\": \"% Suboptimal\",\"columnProperty\": {\"wrapColumnText\": true}}]}"
+      chart:
+        type: LINE_COLUMN
+        chart_columns:
+        - column_id: '% Late'
+        - column_id: '% Suboptimal'
+        - column_id: '% Unusable'
+        - column_id: < 5s
+        - column_id: '> 15s'
+        - column_id: '> 30s'
+        - column_id: '> 5s'
+        - column_id: Average Ext Late (s)
+        - column_id: Average Int Late (s)
+        - column_id: Optimal %
+        - column_id: Unique Number of Query ID
+        - column_id: User Category
+        - column_id: User Name
+        axis_configs:
+        - x:
+          - User Name
+          "y":
+          - Unique Number of Query ID
+          - '> 15s'
+          - '% Late'
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Unique Number of Query ID\",\"columnProperty\": {}},{\"columnId\": \"> 15s\",\"columnProperty\": {}},{\"columnId\": \"% Late\",\"columnProperty\": {}},{\"columnId\": \"User Name\",\"columnProperty\": {}},{\"columnId\": \"User Category\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"79d6c4a8-9420-4ca8-baeb-0b4dcd8d2fad\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Unique Number of Query ID\"],\"isOpposite\": false}},{\"id\": \"0003a180-9a29-4a2b-9590-b59c1c23f323\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"> 15s\"],\"isOpposite\": true}},{\"id\": \"ce3ab60f-faf0-4173-bd03-9dd7f1ccb955\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"% Late\"],\"isOpposite\": true}},{\"id\": \"647e92d2-5122-4073-8481-4d499b135a78\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"User Name\"]}}],\"systemSeriesColors\": [{\"serieName\": \"10983a54-a484-4483-8620-dad32365888a\",\"color\": \"#8C62F5\"},{\"serieName\": \"cs tools\",\"color\": \"#2E75F0\"},{\"serieName\": \"docr prod connection\",\"color\": \"#48D1E0\"},{\"serieName\": \"dodge - snowflake prod\",\"color\": \"#FCC838\"},{\"serieName\": \"databrickscost\",\"color\": \"#06BF7F\"},{\"serieName\": \"deltatabconn\",\"color\": \"#8C62F5\"},{\"serieName\": \"deltatabgdbx\",\"color\": \"#FF8142\"},{\"serieName\": \"demo connection\",\"color\": \"#ABC7F9\"},{\"serieName\": \"gcp - dodge prod\",\"color\": \"#B5ECF2\"},{\"serieName\": \"gcp c360 prod connection\",\"color\": \"#FDE9AF\"},{\"serieName\": \"gcp emdg prod connection\",\"color\": \"#9BE5CB\"},{\"serieName\": \"gcp finance prod connection\",\"color\": \"#D1C0FB\"},{\"serieName\": \"gcp omni prod connection\",\"color\": \"#FFCCB3\"},{\"serieName\": \"gcp retail prod connection\",\"color\": \"#2359B6\"},{\"serieName\": \"gcp udp billing\",\"color\": \"#369FAA\"},{\"serieName\": \"metrics connection\",\"color\": \"#BF982A\"},{\"serieName\": \"retail ops edm prod\",\"color\": \"#049160\"},{\"serieName\": \"snowflake edm c360\",\"color\": \"#6A4ABA\"},{\"serieName\": \"snowflake edm finance\",\"color\": \"#C26232\"},{\"serieName\": \"snowflake edm omni\",\"color\": \"#71A1F4\"},{\"serieName\": \"Unique Number of Query ID\",\"color\": \"#FCC838\"},{\"serieName\": \"> 15s\",\"color\": \"#48D1E0\"},{\"serieName\": \"% Late\",\"color\": \"#369FAA\"}]}"
+      display_mode: TABLE_MODE
+    viz_guid: 0528eb17-9264-4545-9e97-b4b48a18cacc
+  - id: Viz_4
+    answer:
+      name: Average Latency of Liveboards w/ Link
+      tables:
+      - id: "TS: BI Server"
+        name: "TS: BI Server"
+        fqn: eaab6de7-c556-468c-8b4b-ff6d78dd3ecf
+      formulas:
+      - id: Latency (s)
+        name: Latency (s)
+        expr: "[Latency (us)] / 1000000"
+        was_auto_generated: false
+      - id: Object Link
+        name: Object Link
+        expr: "if ( [User Action] = 'pinboard_view' ) then concat ( \"{caption}liveboard link{/caption}./#/pinboard/\" , [Answer Book GUID] ) else if ( [User Action] = 'answer_view' ) then concat ( \"{caption}answer link{/caption}./#/saved-answer/\" , [Answer Book GUID] ) else 'no link avaialable'"
+        was_auto_generated: false
+      - id: Ext Late (s)
+        name: Ext Late (s)
+        expr: "[Database Latency (us)] / 1000"
+        was_auto_generated: false
+      search_query: "[Answer Book Name] [Answer Book GUID] [Timestamp].'last 7 days' [User Action] [User Action].pinboard_view [Object Link] [Timestamp] [Timestamp].daily [Query Text] average [Latency (s)]"
+      answer_columns:
+      - name: Answer Book GUID
+      - name: Answer Book Name
+      - name: Average Latency (s)
+      - name: Day(Timestamp)
+      - name: Object Link
+      - name: Query Text
+      - name: User Action
+      table:
+        table_columns:
+        - column_id: Answer Book GUID
+          show_headline: false
+        - column_id: Answer Book Name
+          show_headline: false
+        - column_id: Average Latency (s)
+          show_headline: false
+        - column_id: Day(Timestamp)
+          show_headline: false
+        - column_id: Object Link
+          show_headline: false
+        - column_id: Query Text
+          show_headline: false
+        - column_id: User Action
+          show_headline: false
+        ordered_column_ids:
+        - Answer Book Name
+        - Answer Book GUID
+        - User Action
+        - Object Link
+        - Day(Timestamp)
+        - Query Text
+        - Average Latency (s)
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: COLUMN
+        chart_columns:
+        - column_id: Answer Book GUID
+        - column_id: Answer Book Name
+        - column_id: Average Latency (s)
+        - column_id: Day(Timestamp)
+        - column_id: Object Link
+        - column_id: Query Text
+        - column_id: User Action
+        axis_configs:
+        - x:
+          - Day(Timestamp)
+          "y":
+          - Average Latency (s)
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"gridLines\": {},\"responsiveLayoutPreference\": \"USER_PREFERRED_ON\",\"chartSpecific\": {\"dataFieldArea\": \"column\"}},\"columnProperties\": [{\"columnId\": \"Answer Book Name\",\"columnProperty\": {}},{\"columnId\": \"Answer Book GUID\",\"columnProperty\": {}},{\"columnId\": \"User Action\",\"columnProperty\": {}},{\"columnId\": \"Object Link\",\"columnProperty\": {}},{\"columnId\": \"Day(Timestamp)\",\"columnProperty\": {}},{\"columnId\": \"Average Latency (s)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"5ceed7cb-ad9c-4aef-959a-f985cd8830eb\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Average Latency (s)\"],\"isOpposite\": false}},{\"id\": \"587b044f-c255-4bc4-acc9-753a59035918\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Day(Timestamp)\"]}}]}"
+      display_mode: TABLE_MODE
+    viz_guid: f2e81a1a-ee1b-4b1f-bf01-fdb5160bc3a1
+  - id: Viz_5
+    answer:
+      name: Avg Late WTD (s)
+      description: Average Latency Week to Date
+      tables:
+      - id: "TS: Query Stats Worksheet"
+        name: "TS: Query Stats Worksheet"
+        fqn: 321647b5-b057-4b4d-b455-0cf041e4defe
+      formulas:
+      - id: Total Latency (s)
+        name: Total Latency (s)
+        expr: "[Query Latency (Overall)] / 1000"
+        was_auto_generated: false
+      - id: '% Late'
+        name: '% Late'
+        expr: "[> 15s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Suboptimal'
+        name: '% Suboptimal'
+        expr: "[> 5s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Unusable'
+        name: '% Unusable'
+        expr: "[> 30s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '> 15s'
+        name: '> 15s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 15000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 30s'
+        name: '> 30s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 30000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 5s'
+        name: '> 5s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 5000 ) , [Query ID] )"
+        was_auto_generated: false
+      search_query: "[Query Task] != '{null}' average [Total Latency (s)] [Query Start Date].'this week' [Query Start Date] [Query Start Date].hourly"
+      answer_columns:
+      - name: Average Total Latency (s)
+        format:
+          category: NUMBER
+          numberFormatConfig:
+            unit: NONE
+            decimals: 2.0
+            negativeValueFormat: PREFIX_DASH
+            toSeparateThousands: true
+          isCategoryEditable: true
+      - name: Hour(Query Start Date)
+      table:
+        table_columns:
+        - column_id: Average Total Latency (s)
+          show_headline: false
+        - column_id: Hour(Query Start Date)
+          show_headline: false
+        ordered_column_ids:
+        - Hour(Query Start Date)
+        - Average Total Latency (s)
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: Average Total Latency (s)
+        - column_id: Hour(Query Start Date)
+        axis_configs:
+        - x:
+          - Hour(Query Start Date)
+          "y":
+          - Average Total Latency (s)
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"Average Total Latency (s)\",\"columnProperty\": {}},{\"columnId\": \"Hour(Query Start Date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"905dfe58-181a-48ce-8d2a-136cbbd0d8cb\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"Average Total Latency (s)\"],\"isOpposite\": false}},{\"id\": \"a0832e72-f28b-4c01-9fba-bdadb6b928d3\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Hour(Query Start Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"Average Total Latency (s)\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: b5ca2ee1-dfc1-4cec-8c32-4ca5afeab685
+  - id: Viz_6
+    answer:
+      name: '% Optimal Queries'
+      description: '% of Liveboards loading in less than 5 seconds by week'
+      tables:
+      - id: "TS: Query Stats Worksheet"
+        name: "TS: Query Stats Worksheet"
+        fqn: 321647b5-b057-4b4d-b455-0cf041e4defe
+      formulas:
+      - id: '% Optimal'
+        name: '% Optimal'
+        expr: "[< 5] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Late'
+        name: '% Late'
+        expr: "[> 15s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Suboptimal'
+        name: '% Suboptimal'
+        expr: "[> 5s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: '% Unusable'
+        name: '% Unusable'
+        expr: "[> 30s] / unique count ( [Query ID] )"
+        was_auto_generated: false
+      - id: < 5
+        name: < 5
+        expr: "unique_count_if ( ( [Query Latency (External)] < 5000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 15s'
+        name: '> 15s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 15000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 30s'
+        name: '> 30s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 30000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: '> 5s'
+        name: '> 5s'
+        expr: "unique_count_if ( ( [Query Latency (External)] > 5000 ) , [Query ID] )"
+        was_auto_generated: false
+      - id: Total Latency (s)
+        name: Total Latency (s)
+        expr: "[Query Latency (Overall)] / 1000"
+        was_auto_generated: false
+      search_query: "[Query Task] != '{null}' [% Optimal] [Query Start Date].'last 5 weeks' [Query Start Date].weekly"
+      answer_columns:
+      - name: '% Optimal'
+        format:
+          category: PERCENTAGE
+          percentageFormatConfig:
+            decimals: 2.0
+          isCategoryEditable: true
+      - name: Week(Query Start Date)
+      table:
+        table_columns:
+        - column_id: '% Optimal'
+          show_headline: false
+        - column_id: Week(Query Start Date)
+          show_headline: false
+        ordered_column_ids:
+        - Week(Query Start Date)
+        - '% Optimal'
+        client_state: ""
+        client_state_v2: "{\"tableVizPropVersion\": \"V1\"}"
+      chart:
+        type: KPI
+        chart_columns:
+        - column_id: '% Optimal'
+        - column_id: Week(Query Start Date)
+        axis_configs:
+        - x:
+          - Week(Query Start Date)
+          "y":
+          - '% Optimal'
+        client_state: ""
+        client_state_v2: "{\"version\": \"V4DOT2\",\"chartProperties\": {\"responsiveLayoutPreference\": \"AUTO_ON\",\"chartSpecific\": {\"pivotSummariesState\": {}}},\"columnProperties\": [{\"columnId\": \"% Optimal\",\"columnProperty\": {}},{\"columnId\": \"Week(Query Start Date)\",\"columnProperty\": {}}],\"axisProperties\": [{\"id\": \"a5613715-2174-4bca-92d1-728d3335b935\",\"properties\": {\"axisType\": \"Y\",\"linkedColumns\": [\"% Optimal\"],\"isOpposite\": false}},{\"id\": \"6a29c209-0258-4a79-9342-4c4b7b8bbfc9\",\"properties\": {\"axisType\": \"X\",\"linkedColumns\": [\"Week(Query Start Date)\"]}}],\"systemSeriesColors\": [{\"serieName\": \"% Optimal\",\"color\": \"#2E75F0\"}]}"
+      display_mode: CHART_MODE
+    viz_guid: 112d517d-2f21-42ee-a8ce-f26f629ace83
+  - id: Viz_7
+    viz_guid: fd249886-fef8-44ab-9785-7f1eedbabd6b
+    note_tile:
+      html_parsed_string: "<h2 class=\"theme-module__editor-h2\" dir=\"ltr\"><span style=\"color: rgb(182, 49, 62); white-space: pre-wrap;\">Read Me</span></h2><p class=\"theme-module__editor-paragraph\"><br></p><p class=\"theme-module__editor-paragraph\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Understanding what's slowing down your analytics experience is no longer a guessing game. With this custom User Experience Liveboard, you get a clear view into query latency, broken down into Internal and External components, with the ability to drill into individual Liveboards that are underperforming.</span></p><p class=\"theme-module__editor-paragraph\"><br></p><h2 class=\"theme-module__editor-h2\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">What the liveboard measures</span></h2><ul class=\"theme-module__editor-ul\"><li value=\"1\" class=\"theme-module__editor-list-item\"><span style=\"white-space: pre-wrap;\">Internal Latency: Time spent within ThoughtSpot (query generation, formula evaluation, joins, rendering)</span></li><li value=\"2\" class=\"theme-module__editor-list-item\"><span style=\"white-space: pre-wrap;\">External Latency: Time waiting on the backend data warehouse (e.g., Snowflake, BigQuery)\L- Total Latency: The full user-perceived load time from query to result</span></li></ul><p class=\"theme-module__editor-paragraph\"><br></p><p class=\"theme-module__editor-paragraph\" dir=\"ltr\"><span style=\"white-space: pre-wrap;\">Click </span><a href=\"https://docs.google.com/document/d/1lI0DvZdPbsKShBsBz4_3rtcsGcocvdo9MBnQBB281Wo/edit?tab=t.0\" target=\"_blank\" rel=\"noreferrer\" class=\"theme-module__editor-link\"><span style=\"white-space: pre-wrap;\">here for the knowledge article</span></a><span style=\"white-space: pre-wrap;\"> on how to make best of this Liveboard.</span></p><div class=\"pinboard-note-tile-module__noteTileBg editor-module__bgNode\" style=\"background-color: rgb(255, 255, 255);\"></div>"
+  layout:
+    tiles:
+    - visualization_id: Viz_1
+      x: 0
+      "y": 4
+      height: 4
+      width: 12
+    - visualization_id: Viz_2
+      x: 3
+      "y": 0
+      height: 4
+      width: 3
+    - visualization_id: Viz_3
+      x: 0
+      "y": 8
+      height: 8
+      width: 12
+    - visualization_id: Viz_4
+      x: 0
+      "y": 16
+      height: 8
+      width: 12
+    - visualization_id: Viz_5
+      x: 9
+      "y": 0
+      height: 4
+      width: 3
+    - visualization_id: Viz_6
+      x: 6
+      "y": 0
+      height: 4
+      width: 3
+    - visualization_id: Viz_7
+      x: 0
+      "y": 0
+      height: 4
+      width: 3
