@@ -356,6 +356,12 @@ liveboard:
   filters:
   - column:
     - Country Name
+    oper: in
+    values:
+    - Australia
+    - Canada
+    - New Zealand
+    - United States
     is_mandatory: false
     is_single_value: false
     display_name: ""
