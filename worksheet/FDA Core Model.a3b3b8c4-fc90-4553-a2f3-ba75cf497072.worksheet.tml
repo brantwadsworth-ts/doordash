@@ -38,7 +38,7 @@ model:
   formulas:
   - id: Num Creators
     name: Num Creators
-    expr: 'unique count ( [FACT_DELIVERY_ALLOCATION::CREATOR_ID] ) '
+    expr: unique count ( [FACT_DELIVERY_ALLOCATION::CREATOR_ID] )
   - id: aov
     name: aov
     expr: round ( sum ( [FACT_DELIVERY_ALLOCATION::GOV] ) / count ( [FACT_DELIVERY_ALLOCATION::DELIVERY_ID] ) , 2 )
@@ -101,6 +101,7 @@ model:
     properties:
       column_type: ATTRIBUTE
       index_type: DONT_INDEX
+    data_panel_column_groups: {IDs: ''}
   - name: Business Unit
     description: Line of Business. Each delivery belongs to one of the business unit
     column_id: FACT_DELIVERY_ALLOCATION::BUSINESS_UNIT
@@ -166,17 +167,32 @@ model:
     column_id: DIMENSION_STORE::NAME
     properties:
       column_type: ATTRIBUTE
+    data_panel_column_groups: {Names: ''}
   - name: Business Name
     description: business name
     column_id: DIMENSION_STORE::BUSINESS_NAME
     properties:
       column_type: ATTRIBUTE
+    data_panel_column_groups: {Names: ''}
   - name: Country Name
     column_id: MAINDB_COUNTRY::NAME
     properties:
       column_type: ATTRIBUTE
+    data_panel_column_groups: {Names: ''}
   properties:
     is_bypass_rls: false
     join_progressive: true
     sage_config:
       is_sage_enabled: true
+  column_groups:
+  - type: DATA_PANEL
+    properties:
+      status: ENABLE
+      default_sort: ENABLE
+    column_group_info:
+    - name: Names
+      include_ungrouped_columns: false
+    - name: IDs
+      include_ungrouped_columns: false
+    - name: ungrouped columns
+      include_ungrouped_columns: true
